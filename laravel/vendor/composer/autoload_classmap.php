@@ -6,7 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateAnswersTable' => $baseDir . '/database/migrations/2015_10_23_052446_create_answers_table.php',
+    'CreateClassUsersTable' => $baseDir . '/database/migrations/2015_10_23_052233_create_class_users_table.php',
+    'CreateClassesTable' => $baseDir . '/database/migrations/2015_10_23_044717_create_classes_table.php',
+    'CreateExamsTable' => $baseDir . '/database/migrations/2015_10_23_051720_create_exams_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateQuestionAnswersTable' => $baseDir . '/database/migrations/2015_10_23_052511_create_question_answers_table.php',
+    'CreateQuestionsTable' => $baseDir . '/database/migrations/2015_10_23_052413_create_questions_table.php',
+    'CreateQuizQuestionsTable' => $baseDir . '/database/migrations/2015_10_23_052429_create_quiz_questions_table.php',
+    'CreateScoreCardsTable' => $baseDir . '/database/migrations/2015_10_23_052337_create_score_cards_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
