@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClassUsersTable extends Migration
+class CreateQuizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,15 @@ class CreateClassUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_users', function (Blueprint $table) {
+        
+        Schema::create('quizes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('class_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('class_id')
-                    ->references('id')->on('classes');
-            $table->foreign('user_id')
-                    ->references('id')->on('users');
+            $table->string('description');
+            $table->integer('examTime');
+            $table->dateTime('startDate');
+            $table->dateTime('endDate'); 
+            $table->foreign('class_id')->references('id')->on('classes');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateClassUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('class_users');
+        Schema::drop('quizes');
     }
 }

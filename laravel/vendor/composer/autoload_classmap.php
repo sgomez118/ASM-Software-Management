@@ -6,17 +6,19 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AnswerTableSeeder' => $baseDir . '/database/seeds/AnswerTableSeeder.php',
     'CreateAnswersTable' => $baseDir . '/database/migrations/2015_10_23_052446_create_answers_table.php',
     'CreateClassUsersTable' => $baseDir . '/database/migrations/2015_10_23_052233_create_class_users_table.php',
     'CreateClassesTable' => $baseDir . '/database/migrations/2015_10_23_044717_create_classes_table.php',
     'CreateExamsTable' => $baseDir . '/database/migrations/2015_10_23_051720_create_exams_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreateQuestionAnswersTable' => $baseDir . '/database/migrations/2015_10_23_052511_create_question_answers_table.php',
+    'CreateQuestionAnswersTable' => $baseDir . '/database/migrations/2015_10_23_071239_create_question_answers_table.php',
     'CreateQuestionsTable' => $baseDir . '/database/migrations/2015_10_23_052413_create_questions_table.php',
     'CreateQuizQuestionsTable' => $baseDir . '/database/migrations/2015_10_23_052429_create_quiz_questions_table.php',
     'CreateScoreCardsTable' => $baseDir . '/database/migrations/2015_10_23_052337_create_score_cards_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'ExamTableSeeder' => $baseDir . '/database/seeds/ExamTableSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
@@ -89,6 +91,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'MakeExamTableSeeder' => $baseDir . '/database/seeds/MakeExamTableSeeder.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -484,6 +487,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'QuestionTableSeeder' => $baseDir . '/database/seeds/QuestionTableSeeder.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -523,4 +527,5 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
 );

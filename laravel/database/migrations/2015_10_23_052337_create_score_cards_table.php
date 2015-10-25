@@ -17,10 +17,12 @@ class CreateScoreCardsTable extends Migration
             $table->integer('score');
             $table->integer('exam_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            
             $table->foreign('exam_id')
                     ->references('id')->on('exams');
             $table->foreign('user_id')
                     ->references('id')->on('users');
+            
             $table->timestamps();
         });
     }
