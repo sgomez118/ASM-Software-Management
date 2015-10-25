@@ -15,11 +15,11 @@ class CreateScoreCardsTable extends Migration
         Schema::create('score_cards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('score');
-            $table->integer('exam_id')->unsigned();
+            $table->integer('quiz_id')->unsigned();
             $table->integer('user_id')->unsigned();
             
-            $table->foreign('exam_id')
-                    ->references('id')->on('exams');
+            $table->foreign('quiz_id')
+                    ->references('id')->on('quizes');
             $table->foreign('user_id')
                     ->references('id')->on('users');
             
