@@ -18,7 +18,7 @@ class CreateQuestionQuizTable extends Migration
             $table->integer('question_id')->unsigned();
             //Defining Foreign Relationships
             $table->foreign('quiz_id')
-                    ->references('id')->on('quizes');
+                    ->references('id')->on('quizzes');
             $table->foreign('question_id')
                     ->references('id')->on('questions');
         });
