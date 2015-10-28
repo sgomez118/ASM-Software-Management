@@ -1,5 +1,6 @@
 <?php
 
+use App\Question;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,5 +13,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	$questions = Question::all();
+    return view('welcome', ['questions' => $questions]);
 });
+
+Route::get('/classes', 'CourseController@index');
+
+Route::get('/users', 'UserController@index');
+
+Route::get('/questions', 'QuestionController@index');
+
+Route::get('/questions/{id}', 'QuestionController@show');

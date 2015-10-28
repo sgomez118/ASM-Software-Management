@@ -16,7 +16,7 @@ class CreateClassesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('term');
-            $table->integer('lecturer_id');
+            $table->integer('lecturer_id')->unsigned();
             $table->foreign('lecturer_id')->references('id')->on('classes');
             $table->timestamps();
         });
