@@ -11,8 +11,8 @@ class Question extends Model
     public function answers(){
     	return $this->belongsToMany('App\Answer');
     }
-
-    public function quizzes(){
-    	return $this->belongsToMany('App\Quiz');
+    
+    public function quizzes() {
+        return $this->belongsToMany('App\Quiz');
     }
 }

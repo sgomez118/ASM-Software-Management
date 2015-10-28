@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Class extends Model
 {
     protected $fillable = ['name', 'term', 'lecturer_id'];
+
     use SoftDeletes;
+
     public function users(){
     	return $this->belongsToMany('App\User');
     }
@@ -15,5 +17,4 @@ class Class extends Model
     public function quizzes(){
     	return $this->hasMany('App\Quiz');
     }
-
 }

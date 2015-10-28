@@ -6,13 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
-    protected $gaurded = ['id'];
-
-    public function questions(){
-    	return $this->belongsToMany('App\Question');
+    protected $fillable = ['class_id', 'description', 'quizTime', 'startDate', 'endDate'];
+    
+    public function questions()
+    {
+        return $this->belongsToMany('App\Question');
     }
-
-    public function scoreCards(){
-    	return $this->hasMany('App\ScoreCards');
+    
+    public function scoreCards()
+    {
+        return $this->hasMany('App\ScoreCard');
     }
+    
+    public function classes()
+    {
+        return $this->belongsTo('App\Class');
+    }
+    
 }
