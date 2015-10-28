@@ -19,7 +19,7 @@ class CreateScoreCardsTable extends Migration
             $table->integer('user_id')->unsigned();
             
             $table->foreign('quiz_id')
-                    ->references('id')->on('quizes');
+                    ->references('id')->on('quizzes');
             $table->foreign('user_id')
                     ->references('id')->on('users');
             
