@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'type'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -40,4 +40,9 @@ class User extends Model implements AuthenticatableContract,
     public function scoreCards(){
         return $this->hasMany('App\ScoreCards');
     }
+
+    public function classes(){
+        return $this->belongsToMany('App\Class');
+    }
+
 }
