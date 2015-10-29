@@ -8,6 +8,8 @@ class Quiz extends Model
 {
     protected $fillable = ['class_id', 'description', 'quizTime', 'startDate', 'endDate'];
     
+    public $timestamps = false;
+    
     public function questions()
     {
         return $this->belongsToMany('App\Question');
