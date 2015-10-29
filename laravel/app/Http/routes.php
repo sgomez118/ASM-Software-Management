@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome', ['questions' => $questions]);
 });
 
+Route::get('/home', 'QuestionController@create');
+
 Route::get('/classes', 'CourseController@index');
 
 Route::get('/users', 'UserController@index');

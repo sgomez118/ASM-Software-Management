@@ -46,7 +46,7 @@
                     Prints the prompt, difficulty and all the answers. 
 
                     foreach - laravel special function for blade
-                    {{}} - equivalent of php echo. 
+                    /{/{/}/} - equivalent of php echo. 
                         Note: there are others that can be used.
                 -->
                 @foreach($questions as $question)
