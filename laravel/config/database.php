@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => 'localhost',
+            'host'      => '159.203.244.79',//'localhost',
             'database'  => 'aqsDB',
-            'username'  => 'root',
-            'password'  => '',
+            'username'  => 'laravel',
+            'password'  => 'root',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

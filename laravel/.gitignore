@@ -3,5 +3,3 @@
 Homestead.yaml
 Homestead.json
 .env
-/app/Question.php
-/app/Answer.php
