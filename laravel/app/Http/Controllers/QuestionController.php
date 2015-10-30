@@ -37,7 +37,12 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $q = new Question;
+        $q->prompt = $request->prompt;
+        $q->difficulty = $request->difficulty;
+        $q->save();
+
+        return redirect('/questions');
     }
 
     /**

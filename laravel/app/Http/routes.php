@@ -12,9 +12,13 @@ use App\Question;
 |
 */
 
+// Route::get('/', function () {
+// 	$questions = Question::all();
+//     return view('welcome', ['questions' => $questions]);
+// });
+
 Route::get('/', function () {
-	$questions = Question::all();
-    return view('welcome', ['questions' => $questions]);
+    return view('landing');
 });
 
 Route::get('/home', 'QuestionController@create');
@@ -26,3 +30,5 @@ Route::get('/users', 'UserController@index');
 Route::get('/questions', 'QuestionController@index');
 
 Route::get('/questions/{id}', 'QuestionController@show');
+
+Route::post('/save_q', 'QuestionController@store');

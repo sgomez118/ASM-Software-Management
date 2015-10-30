@@ -7,11 +7,11 @@
     <div class="panel-body">
         <!-- Display Validation  csrf_field()  Errors@include('common.errors') -->
         
-        {!! Form::open(array('url' => 'questions')) !!}
+        {!! Form::open(array('url' => 'save_q')) !!}
             
         <div class="form-group">
             {!! Form::label('Input Your Question') !!}
-            {!! Form::text('promt', null, array('required', 
+            {!! Form::text('prompt', null, array('required', 
                     'class' => 'form-control',
                     'placeholder' => "What's your question?" )) !!}
         </div>
@@ -21,7 +21,10 @@
                     'easy' => 'Easy',
                     'medium' => 'Medium',
                     'hard' => 'Hard' )) !!}
+
+            {!! Form::submit('Save') !!}
         </div>
+
         {!! Form::close() !!}
     </div>
 
