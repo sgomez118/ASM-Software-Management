@@ -1,6 +1,5 @@
 <?php
 
-use App\Question;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,18 +10,11 @@ use App\Question;
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Question;
 
 Route::get('/', function () {
-	$questions = Question::all();
-    return view('welcome', ['questions' => $questions]);
+    $questions = Question::all();
+    return view('layouts.home', ['questions' => $questions]);
 });
 
-Route::get('/home', 'QuestionController@create');
 
-Route::get('/classes', 'CourseController@index');
-
-Route::get('/users', 'UserController@index');
-
-Route::get('/questions', 'QuestionController@index');
-
-Route::get('/questions/{id}', 'QuestionController@show');
