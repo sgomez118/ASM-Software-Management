@@ -54,7 +54,7 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => '159.203.244.79',//'localhost',
+            'host'      => '159.203.244.79',
             'database'  => 'aqsDB',
             'username'  => 'laravel',
             'password'  => 'root',
