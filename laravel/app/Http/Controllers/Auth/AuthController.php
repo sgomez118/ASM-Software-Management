@@ -56,10 +56,12 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        // added 'type' => $data['type'] to handle user type
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'type' => $data['type']
         ]);
     }
 }

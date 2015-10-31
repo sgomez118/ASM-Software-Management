@@ -12,7 +12,7 @@ class Question extends Model
     	return $this->belongsToMany('App\Answer');
     }
     
-    public function quizzes() {
+    public function quizzes(){
         return $this->belongsToMany('App\Quiz');
     }
 }

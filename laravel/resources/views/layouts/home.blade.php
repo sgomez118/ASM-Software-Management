@@ -1,40 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>AQS Home</title>
-        <!-- CSS And JavaScript -->
-            <!-- Latest compiled and minified CSS -->
-            <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" > -->
+        <title>Laravel Quickstart - Basic</title>
 
-            <!-- Custom -->
-            <link rel="stylesheet" href="bootstrap/css/app.css">
-            <link rel="stylesheet" href="bootstrap/css/sb-admin.css">
-            <link rel="stylesheet" href="bootstrap/css/timeline.css">
-            <!-- MetisMenu CSS -->
-    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-            
-            <!-- Optional theme -->
-            <link rel="stylesheet" href="bootstrap/css/carousel.css">
-            <link rel="stylesheet" href="bootstrap/css/bootstrap.darkly.min.css">
-             <!-- Latest compiled and minified JavaScript  -->
-             <script src="bootstrap/js/jquery-1.11.3.min.js"></script>
-             <script src="bootstrap/js/sb-admin-2.js"></script>
-             <script src="bootstrap/js/bootstrap.min.js"></script>
+        <!-- CSS And JavaScript -->
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     </head>
 
     <body>
         <div class="container">
-            @include('layouts._nav')
+            <nav class="navbar navbar-default">
+                <!-- Navbar Contents -->
+            </nav>
         </div>
-        <div>
-           @section('content')
-            <!-- <div class='mainContainer'> -->
-            <div class='wrapper'>
-                Content!
 
-                @yield('content')
-            </div>
-            @show
-        </div>
+        @yield('content')
     </body>
 </html>
