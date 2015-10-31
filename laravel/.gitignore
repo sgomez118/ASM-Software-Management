@@ -3,3 +3,8 @@
 Homestead.yaml
 Homestead.json
 .env
+/bootstrap
+/config
+/storage
+/tests
+composer.*
