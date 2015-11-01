@@ -12,38 +12,55 @@ use App\Question;
 |
 */
 
+use App\Http\Controllers\AuthenticationController;
+
+use App\Http\Middleware\Authenticate;
+
 Route::get('/', function () {
-	//$questions = Question::all();
-    return view('welcome');
+	$questions = Question::all();
+    return view('welcome', ['questions' => $questions ]);
 });
 
 Route::get('/home', 'QuestionController@index');
 
 Route::get('/classes', 'CourseController@index');
 
-Route::get('/users', 'UserController@index');
+Route::get('/users', [ 'middleware' => 'auth', 'uses' => 'UserController@index' ]);
 
-Route::get('/questions', 'QuestionController@index');
+Route::get('/questions', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@index' ]);
 
-Route::get('/questions/{id}', 'QuestionController@show');
+Route::get('/questions/{id}', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@show' ]);
 
-Route::get('/create_question', function() {
-    return view('question.create');
-});
+Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
 
 Route::post('/save_question', 'QuestionController@store');
 
+Route::get('/view_quiz', function () {
+	$questions = Question::all();
+    return view('quiz.view', ['questions' => $questions ]);
+});
+
+/**
 Route::get('/auth/register', function() {
     return view('auth.register');
 }); 
+*/
 
+/**
+Route::get('/auth/register', 'UserController@create');
 Route::post('/save_user', 'UserController@store');
+*/ 
 
 // Authentication routes...
-//Route::get('auth/login', 'Auth\AuthController@getLogin');
-//Route::post('auth/login', 'Auth\AuthController@postLogin');
-//Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-//Route::get('auth/register', 'Auth\AuthController@getRegister');
-//Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+
+
+
+

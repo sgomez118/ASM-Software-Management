@@ -7,8 +7,20 @@
     <div class="panel-body">
         <!-- Display Validation  csrf_field()  Errors@include('common.errors') -->
         
+        @if (count($errors) > 0)
+						<div class="alert alert-danger">
+							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+
+        
         {{-- The line below indicates that when the form is submitted, route associated with the /save_user URL should be used; that route points to the UserController, which invokes its store method --}}
-        {!! Form::open(array('url' => 'save_user')) !!}
+        {!! Form::open(array('url' => 'auth/register', 'method' => 'post')) !!}
             
         <div class="form-group">
             {!! Form::label('Name: ') !!}
@@ -32,9 +44,12 @@
                     'placeholder' => "Your Password" )) !!}
         </div>
         
+        
+        {{-- originall had confirm_password instead of password_confirmation and this caused errors indicating that the password and confirm_password did not match in the form even though they did; Laravel convention needs password_confirmation for its logic --}}
+        
         <div class="form-group">
             {!! Form::label('Confirm Password: ') !!}
-            {!! Form::password('confirm_password', array('required', 
+            {!! Form::password('password_confirmation', array('required', 
                     'class' => 'form-control',
                     'placeholder' => "Your Password" )) !!}
         </div>
