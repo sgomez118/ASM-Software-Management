@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Question;
 use App\Answer;
+use Illuminate\Auth\Guard;
+
+use App\User;
 
 class QuestionController extends Controller
 {
@@ -25,9 +28,20 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('question.create');
+        // check if user is the correct type
+        // if user is lecturer, he can create questions
+        // otherwise, he can't
+        $currentType = $request->user()->type;
+        if ( strcmp( $currentType, 'lecturer' ) == 0 )
+        {
+            return view('question.create');
+        }
+        else
+        {
+            return "Hey! You aren't allowed to create questions because you are a $currentType and not a lecturer!";
+        }
     }
 
     /**

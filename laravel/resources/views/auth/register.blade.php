@@ -18,55 +18,78 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+					{!! Form::open(array('url' => 'auth/register', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
 						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
+							{!! Form::label('Name', null, array('class' => 'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+								{!! Form::text('name', null, 
+									array('required', 
+				                    	'class' => 'form-control',
+				                    	'placeholder' => "Your Name",
+				                    	'value' => old('name')
+				                )) !!}
 							</div>
 						</div>
-
+						
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
+							{!! Form::label('E-Mail Address', null, array('class' => 'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								{!! Form::text('email', null, 
+									array('required', 
+				                    	'class' => 'form-control',
+				                    	'placeholder' => "example@email.com",
+				                    	'value' => old('email')
+				                )) !!}
 							</div>
 						</div>
-
+						
 						<div class="form-group">
 							<label class="col-md-4 control-label">Type</label>
+							<div class="dropdown col-md-6">
+						  		<input name="type" type="text" value="Choose Type" class="btn btn-default selectpicker dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    		{{-- Choose Type <span class="caret"></span> --}}
+						  		</input>
+							  	<ul class="dropdown-menu inner selectpicker" role='menu' aria-labelledby="dropdownMenu1">
+							    	<li value='student'><a href="#">student</a></li>
+							    	<li value='lecturer'><a href="#">professor</a></li>
+							    	<li value='chair'><a href="#">chair</a></li>
+							  	</ul>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							{!! Form::label('Password', null, array('class' => 'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="type" value="{{ old('type') }}">
+								{!! Form::password('password', 
+									array('required', 
+				                    	'class' => 'form-control',
+				                    	'placeholder' => "password"
+				                )) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							{!! Form::label('Confirm Password', null, array('class' => 'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
+								{!! Form::password('password_confirmation', 
+									array('required', 
+				                    	'class' => 'form-control',
+				                    	'placeholder' => "confirm password"
+				                )) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
+						 		{!! Form::submit('Register', array('class' => 'btn btn-primary')); !!}
 							</div>
-						</div>
-					</form>
+       					</div>
+        			{!! Form::close() !!}
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</div>        
 @endsection

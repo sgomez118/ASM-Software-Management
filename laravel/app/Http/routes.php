@@ -14,6 +14,11 @@ use App\User;
 |
 */
 
+use App\Http\Controllers\AuthenticationController;
+
+use App\Http\Middleware\Authenticate;
+
+
 Route::get('/', function () {
     return view('landing');
 });
@@ -40,13 +45,16 @@ Route::get('/dashboard', function (Request $request){
 
 Route::get('/classes', 'CourseController@index');
 
-Route::get('/users', 'UserController@index');
+Route::get('/users', [ 'middleware' => 'auth', 'uses' => 'UserController@index' ]);
 
-Route::get('/questions', 'QuestionController@index');
+Route::get('/questions', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@index' ]);
 
-Route::get('/questions/{id}', 'QuestionController@show');
+Route::get('/questions/{id}', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@show' ]);
+
 
 Route::get('/student/{student_id}/scores', 'StudentController@scores');
+
+Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
 
 Route::post('/save_q', 'QuestionController@store');
 
@@ -74,6 +82,19 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+Route::get('/view_quiz', function () {
+	$questions = Question::all();
+    return view('quiz.view', ['questions' => $questions ]);
+});
+
+Route::get('/view_users', function() {
+    $users = User::all();
+    return view('user.view', ['users' => $users]);
+});
+
 Route::get('/{user}', function($user){
 			return redirect('/login');
 });
+
+
+

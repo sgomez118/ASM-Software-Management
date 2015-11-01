@@ -35,6 +35,6 @@
         <!--  JavaScript  -->
         <script src="bootstrap/js/jquery-1.11.3.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
-        <!-- <script src="bootstrap/js/app.js"></script> -->
+        <script src="bootstrap/js/app.js"></script>
     </body>
 </html>
