@@ -1,0 +1,20 @@
+put this on hold; going to work on login in for now.  
+
+Relationship between question and answers: 
+
+Each question has multiple answer (choices), so that each question_id is associated with multiple answer_ids. 
+
+A student views a question and its answer choices and (for our demo) is able to select one or more answer choices.  
+
+In the original Question model, a Question can belong to many Answers.  However, if we make the decision to tightly bind the Answers to each question, with special flags to indicate whether they are correct or not, then we need a different model: 
+
+A Question has many Answers.  Each Answer is a pair that consists of the text and/or image for the Answer, and a flag (boolean) that indicates whether that Answer is correct or not.  The tight binding means that each Answer now only exists in relation to a Question, so that it needs to be aware of the Question it belongs to.  (If we treated Answers as separate from Questions, some of them might be correct for one Question, but wrong for another, so the flag is set with respect to the Question that the Answer belongs to).  
+
+With this in mind, we make the following adjustments: 
+(do not make these adjustments to the models, controls, schema, etc. until they are correctly described) 
+
+1.  A Question has many Answers, some of which are correct and some of which are incorrect.  In order for the Question to know which Answers are right or wrong, 
+
+2.  Each Answer is aware of which Question it is bound to; that is, an Answer belongs to only one Question.  The Answer is also aware of whether it is correct or not for that Question.  
+
+3.  

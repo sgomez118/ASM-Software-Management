@@ -1,0 +1,219 @@
+Log in notes
+
+To-do list (not in any particular order)
+
+1.  Set up login page (will use blade template, but practice in HTML with PHP if necessary)
+
+2.  Go through Laravel tutorial for Log In (+ authentication)
+
+3.  placeholder
+
+From: http://laravel.com/docs/5.1/authentication
+The authentication configuration file is located at config/auth.php
+
+1.  Add routes to the app/http/routes.php file that will point requests to the authentication controllers.  From the website: 
+
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+2.  Provide views for the controllers so that they can render them.  
+
+Though the authentication controllers are included with the framework, you will need to provide views that these controllers can render. The views should be placed in the resources/views/auth directory. You are free to customize these views however you wish. The login view should be placed at resources/views/auth/login.blade.php, and the registration view should be placed at resources/views/auth/register.blade.php.
+
+SAMPLE AUTHENTICATION PAGE FROM TUTORIAL: 
+<!-- resources/views/auth/login.blade.php -->
+
+<form method="POST" action="/auth/login">
+    {!! csrf_field() !!}
+
+    <div>
+        Email
+        <input type="email" name="email" value="{{ old('email') }}">
+    </div>
+
+    <div>
+        Password
+        <input type="password" name="password" id="password">
+    </div>
+
+    <div>
+        <input type="checkbox" name="remember"> Remember Me
+    </div>
+
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+Sample Registration Form
+
+<!-- resources/views/auth/register.blade.php -->
+
+<form method="POST" action="/auth/register">
+    {!! csrf_field() !!}
+
+    <div>
+        Name
+        <input type="text" name="name" value="{{ old('name') }}">
+    </div>
+
+    <div>
+        Email
+        <input type="email" name="email" value="{{ old('email') }}">
+    </div>
+
+    <div>
+        Password
+        <input type="password" name="password">
+    </div>
+
+    <div>
+        Confirm Password
+        <input type="password" name="password_confirmation">
+    </div>
+
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
+
+======
+
+try it out: 
+
+Test Register
+testregister@test.com
+password: test
+type: test
+
+=========
+
+the forms were easy to set up, but there are no changes being reflected in the database.  Here's the plan: 
+
+1.  examine how to add a question to the database
+2.  follow the same model, only this time we are adding a user to the database
+
+Here's the Route for creating a question: 
+Route::get('/create_question', function() {
+    return view('question.create');
+});
+
+When the fields are filled in, then everything gets inserted into the database!  
+
+the key is to examine the controller and how it handles things.  
+
+Look at this part: 
+
+ /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    Notice how when it registers a new user, it has the fields set up.  However, for our project, we need an additional field: type.  Therefore, I think I need to add the line: 'type' => $data['type']; 
+    
+    I will try this to see what happens
+    
+    Unfortunately, adding that line did not do anything.  It is still not inserting into the database.  
+    
+    Let's examine the question controller again.  
+    
+    The question controller has a special function: 
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $question = new Question;
+        $question->prompt = $request->prompt;
+        $question->difficulty = $request->difficulty;
+        $question->save();
+        return redirect('/questions');
+    }
+    
+    This thing puts it into the database.  We need a corresponding function for the User as well.  
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->type = $request->type;
+        $user->save();
+        return redirect('/users');
+    }
+    
+    OK, so I added the above function.  Is this enough?  Let's try it.  
+    
+    It's not enough because /auth/register in routes is not associated with the user controller
+    
+    I made some modification to routes.php
+    getting error: MethodNotAllowedHttpException
+    
+    stackoverflow similar problem says it occur when trying to do a POST to a GET route.  
+    
+    Look at the registration routes again: 
+    
+    // Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+There is a get as well as a post.  However, I can't find the getRegister and postRegister functions in AuthController!  Where the hell is it?  
+
+https://laracasts.com/discuss/channels/general-discussion/modifying-the-laravel-5-authentication-trait
+
+interesting code located above.  
+
+Sample from the above: 
+
+get('/register', array('as' => 'register', 'uses' => 'Auth\AuthController@getRegister'));
+post('/register', array('as' => 'register', 'uses' => 'Auth\AuthController@postRegister'));
+
+OH, I think I need to add those functions so it can actually do something.  Hmm.  
+
+Or I should just ignore it altogether and write my own thing the same way it was done with Question.  That seems like a better idea.  
+
+-------
+
+Misha fixed some stuff for me so it's working now
+
+Now we need to validate; Laravel tutorial checked for the "@" in email, but did not check if password vs confirm password was the same
+
+Page 92 of Laravel 5 Essentials PDF discusses authentication
+
+----------
+
+More Log In Notes: 
+
+AuthController can use some functions not found in in AuthController.php because it is implementing some interfaces that have some additional functions.  
+
+The authentication process is a bit tricky, 
+
+
+
