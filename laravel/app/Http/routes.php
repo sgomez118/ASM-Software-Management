@@ -1,6 +1,8 @@
 <?php
 
 use App\Question;
+use App\Course;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,17 +14,87 @@ use App\Question;
 |
 */
 
+use App\Http\Controllers\AuthenticationController;
+
+use App\Http\Middleware\Authenticate;
+
+
 Route::get('/', function () {
-	$questions = Question::all();
-    return view('welcome', ['questions' => $questions]);
+    return view('landing');
 });
 
-Route::get('/home', 'QuestionController@create');
+
+Route::get('/all_students', 'StudentController@index');
+
+Route::get('/dashboard', function (Request $request){
+	if (Auth::check()){
+		switch (Auth::user()->type) {
+			case 'student':
+				return view('user.students.dashboard');
+			case 'lecturer':
+				return view('user.professors.dashboard');
+			case 'chair':
+				return view('user.chairs.dashboard', ['courses' => Course::all()]);
+			default:
+				return redirect('/');
+			}
+	}else{
+		return redirect('/');
+	}
+});
 
 Route::get('/classes', 'CourseController@index');
 
-Route::get('/users', 'UserController@index');
+Route::get('/users', [ 'middleware' => 'auth', 'uses' => 'UserController@index' ]);
 
-Route::get('/questions', 'QuestionController@index');
+Route::get('/questions', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@index' ]);
 
-Route::get('/questions/{id}', 'QuestionController@show');
+Route::get('/questions/{id}', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@show' ]);
+
+
+Route::get('/student/{student_id}/scores', 'StudentController@scores');
+
+Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
+
+Route::post('/save_q', 'QuestionController@store');
+
+Route::resource('student', 'StudentController');
+Route::resource('quiz', 'QuizController');
+
+Route::get('/test', function (){
+	return User::getCourses(8);
+});
+
+// Authentication routes...
+Route::get('/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// Password reset link request routes...
+Route::get('email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+Route::get('/view_quiz', function () {
+	$questions = Question::all();
+    return view('quiz.view', ['questions' => $questions ]);
+});
+
+Route::get('/view_users', function() {
+    $users = User::all();
+    return view('user.view', ['users' => $users]);
+});
+
+Route::get('/{user}', function($user){
+			return redirect('/login');
+});
+
+
+

@@ -38,11 +38,16 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
     public function scoreCards(){
-        return $this->hasMany('App\ScoreCards');
+        return $this->hasMany('App\ScoreCard');
     }
 
-    public function classes(){
-        return $this->belongsToMany('App\Class');
+    public function courses(){
+        return $this->belongsToMany('App\Course');
     }
+    
+    public function scopeGetCourses($query, $id){
+        return Course::where('lecturer_id', $id)->orderBy('name', 'desc')->get();
+    }
+
 
 }

@@ -1,9 +1,6 @@
 @extends('layouts.home')
 
 @section('content')
-
-    <!-- Bootstrap Boilerplate... -->
-
     <div class="panel-body">
         <!-- Display Validation  csrf_field()  Errors@include('common.errors') -->
         
@@ -15,6 +12,7 @@
                     'class' => 'form-control',
                     'placeholder' => "What's your question?" )) !!}
         </div>
+        
         <div class="form-group">
             {!! Form::label('Select Difficulty') !!}
             {!! Form::select('difficulty', array(
@@ -27,8 +25,4 @@
 
         {!! Form::close() !!}
     </div>
-
-    <!-- TODO: Current Tasks -->
-
-
 @endsection

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
 
-class UserController extends Controller
+class ProfessorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return User::where('type', 'lecturer')->get();
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return redirect('/login');
     }
 
     /**
@@ -37,13 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->type = $request->type;
-        $user->save();
-        return redirect('/users');
+        //
     }
 
     /**
@@ -90,6 +84,4 @@ class UserController extends Controller
     {
         //
     }
-    
-    
 }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\ScoreCard;
 
-class UserController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+
+        return User::where('type','student')->get();
     }
 
     /**
@@ -26,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        //
     }
 
     /**
@@ -37,13 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->type = $request->type;
-        $user->save();
-        return redirect('/users');
+        //
     }
 
     /**
@@ -54,7 +51,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return User::find($id);
     }
 
     /**
@@ -90,6 +87,20 @@ class UserController extends Controller
     {
         //
     }
-    
-    
+
+    /**
+     * Return list os student scores
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function scores($student_id)
+    {
+        $student = User::find($student_id);
+        $scores = $student->scoreCards()->get();
+
+        if($scores->count() == 0) 
+            return 'No results to display.';
+        else
+            return $scores;
+    }
 }

@@ -39,24 +39,6 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
-                <H1>The Questions</H1>
-                <ol>
-                <!-- 
-                    Iterates through the questions passed by the routes. 
-                    Prints the prompt, difficulty and all the answers. 
-
-                    foreach - laravel special function for blade
-                    /{/{/}/} - equivalent of php echo. 
-                        Note: there are others that can be used.
-                -->
-                @foreach($questions as $question)
-                    <li><H1>{{$question->prompt}}</H1></li>
-                    <li><H2>{{$question->difficulty}}</H2></li>
-                    @foreach($question->answers as $answer)
-                    {{$answer->text}}<br>
-                    @endforeach
-                @endforeach
-                </ol>
             </div>
         </div>
     </body>
