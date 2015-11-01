@@ -1,3 +1,5 @@
+{{-- Need to modify this to display Quiz information --}}
+    {{-- For now, it just displays all the questions --}}
 
 @extends('layouts.home')
 

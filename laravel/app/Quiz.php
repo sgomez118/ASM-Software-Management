@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
-    protected $fillable = ['class_id', 'description', 'quizTime', 'startDate', 'endDate'];
+    // changed to course_id (originally class_id)
+    protected $fillable = ['course_id', 'description', 'quizTime', 'startDate', 'endDate'];
     
     public $timestamps = false;
     

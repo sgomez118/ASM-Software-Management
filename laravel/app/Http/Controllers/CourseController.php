@@ -26,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('course.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = new Course;
+        $course->name = $request->name;
+        $course->term = $request->term;
+        $course->lecturer_id = $request->lecturer_id;
+        $course->save();
+        return redirect('/view_courses'); // view courses after creation
     }
 
     /**

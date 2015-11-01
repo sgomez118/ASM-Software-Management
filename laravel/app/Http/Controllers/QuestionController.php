@@ -56,6 +56,7 @@ class QuestionController extends Controller
         $question->prompt = $request->prompt;
         $question->difficulty = $request->difficulty;
         $question->save();
+        
         $a1 = new Answer;
         $a2 = new Answer;
         $a3 = new Answer;
