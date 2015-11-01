@@ -16,6 +16,8 @@ use App\Http\Controllers\AuthenticationController;
 
 use App\Http\Middleware\Authenticate;
 
+use App\User;
+
 Route::get('/', function () {
 	$questions = Question::all();
     return view('welcome', ['questions' => $questions ]);
@@ -38,6 +40,11 @@ Route::post('/save_question', 'QuestionController@store');
 Route::get('/view_quiz', function () {
 	$questions = Question::all();
     return view('quiz.view', ['questions' => $questions ]);
+});
+
+Route::get('/view_users', function() {
+    $users = User::all();
+    return view('user.view', ['users' => $users]);
 });
 
 /**
