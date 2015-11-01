@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Laravel Quickstart - Basic</title>
+        <title>AQS Home</title>
+        <!-- CSS  -->
+            <!-- Custom -->
+            <link rel="stylesheet" href="bootstrap/css/app.css">
+            <link rel="stylesheet" href="bootstrap/css/sb-admin.css">
+            <link rel="stylesheet" href="bootstrap/css/timeline.css">
 
-        <!-- CSS And JavaScript -->
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+            <!-- MetisMenu CSS -->
+            <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+            
+            <!-- theme -->
+            <link rel="stylesheet" href="bootstrap/css/carousel.css">
+            <link rel="stylesheet" href="bootstrap/css/bootstrap.darkly.min.css">
+            
     </head>
-
     <body>
         <div class="container">
-            <nav class="navbar navbar-default">
-                <!-- Navbar Contents -->
-            </nav>
+            @include('layouts._nav') 
+            @section('navbar')  
+            @endsection
         </div>
 
-        @yield('content')
+        <div>
+            <div class='mainContainer'> 
+               <!--  Content!-->
+                @section('content')
+                    @yield('content')
+                @show
+            </div>
+        </div>
+
+        <!--  JavaScript  -->
+        <script src="bootstrap/js/jquery-1.11.3.min.js"></script>
+        <script src="bootstrap/js/sb-admin-2.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>

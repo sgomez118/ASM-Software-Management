@@ -1,5 +1,4 @@
 @section('navbar')
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -20,6 +19,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/login">Log in</a></li>
+            <li><a href="/register">Register</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
