@@ -1,28 +1,41 @@
 @section('navbar')
 <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">AQS</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/students">Students</a></li>
-            <li><a href="/professors">Professors</a></li>
-            <li><a href="/chairs">Chairs</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Log in</a></li>
-            <li><a href="/register">Register</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+      <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand active" href="#">AQS</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
+        @if(Auth::check())
+          @if(Auth::user()->type == 'student')
+            <li class="active"><a href="/students">Dashboard</a></li>
+          @elseif(Auth::user()->type == 'lecturer')
+            <li class="active"><a href="/professors">Professor Dashboard</a></li>
+          @elseif(Auth::user()->type == 'chair')
+            <li class="active"><a href="/chairs">Dashboard</a></li> 
+          @endif
+        @endif
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        @if(Auth::check())
+          <li><a href="/logout">Log Out</a></li>
+        @else
+          <li><a href="/login">Log in</a></li>
+          <li><a href="/register"> or Register?</a></li>
+        @endif
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
     </nav>
 
 @show

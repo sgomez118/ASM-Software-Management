@@ -2,6 +2,7 @@
 
 use App\Question;
 use App\Course;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,21 +18,27 @@ Route::get('/', function () {
     return view('landing');
 });
 
-// Authentication routes...
-Route::get('/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-Route::get('/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('/all_students', 'StudentController@index');
 
-Route::get('/home', 'QuestionController@create');
+Route::get('/dashboard', function (Request $request){
+	if (Auth::check()){
+		switch (Auth::user()->type) {
+			case 'student':
+				return view('user.students.dashboard');
+			case 'lecturer':
+				return view('user.professors.dashboard');
+			case 'chair':
+				return view('user.chairs.dashboard', ['courses' => Course::all()]);
+			default:
+				return redirect('/');
+			}
+	}else{
+		return redirect('/');
+	}
+});
 
 Route::get('/classes', 'CourseController@index');
-
 
 Route::get('/users', 'UserController@index');
 
@@ -46,14 +53,27 @@ Route::post('/save_q', 'QuestionController@store');
 Route::resource('student', 'StudentController');
 Route::resource('quiz', 'QuizController');
 
+Route::get('/test', function (){
+	return User::getCourses(8);
+});
+
+// Authentication routes...
+Route::get('/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+// Password reset link request routes...
+Route::get('email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
+
 Route::get('/{user}', function($user){
-	switch ($user) {
-		case 'students':
-		case 'professors':
-			return view('user.'.$user.'.welcome');
-		case 'chairs':
-			return view('user.'.$user.'.welcome', ['courses' => Course::all()]);
-		default:
-			return redirect('/');
-	}
+			return redirect('/login');
 });

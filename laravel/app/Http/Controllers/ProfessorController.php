@@ -26,7 +26,7 @@ class ProfessorController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/login');
     }
 
     /**
