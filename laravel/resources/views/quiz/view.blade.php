@@ -1,11 +1,10 @@
-
 @extends('layouts.home')
 
 @section('content')
 
         <div class="container">
             <div class="content">
-                <H1>Quiz Questions</H1>
+                <H1>Quiz List</H1>
                 <!-- 
                     Iterates through the questions passed by the routes. 
                     Prints the prompt, difficulty and all the answers. 
@@ -14,31 +13,20 @@
                     /{/{/}/} - equivalent of php echo. 
                         Note: there are others that can be used.
                 -->
+                {{-- Still need to display basic question info for each quiz --}}
                 
-                <ol>
-                @foreach($questions as $question)
-                <div class="panel panel-default">
-                    <li> <div class="panel-heading clearfix">
-                    {{$question->prompt}}
-                   <div class="pull-right">
-                   @if( $question->difficulty == "easy" )
-                       <span class="label label-info">Easy</span>
-                   @elseif( $question->difficulty == "medium" )
-                       <span class="label label-warning">Medium</span>
-                   @else
-                       <span class="label label-danger">Hard</span>
-                   @endif
-                     </div>
-                     </div>
-                    <div class="panel-body">
-                   <ol style="list-style-type: lower-alpha"> 
-                       @foreach($question->answers as $answer)
-                           <li> {{$answer->text}} </li>
-                       @endforeach
-                   </ol>
-                   </div>   
-                       
-                   </div> {{-- end panel --}} </li>
+                @foreach($quizzes as $quiz)
+                    Course ID: {{$quiz->course_id}} <br>
+                    Description: {{$quiz->description}} <br>
+                    Time Limit: {{$quiz->quizTime}} <br>
+                    Start Date: {{$quiz->startDate}} <br>
+                    End Date: {{$quiz->endDate}} <br>
+                    Quiz Questions: 
+                        @foreach($quiz->questions as $question)
+                           <li> {{ $question->prompt }} </li>
+                        @endforeach
+                    <br>
+                    <br>
                 @endforeach
                 </ol>
             </div>

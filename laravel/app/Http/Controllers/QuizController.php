@@ -46,43 +46,29 @@ class QuizController extends Controller
         $quiz->startDate = $request->startDate;
         $quiz->endDate = $request->endDate;
         $quiz->save();
-        /*
-        $question = new Question;
-        $question->prompt = 'Sample Prompt!';
-        $question->difficulty = 'easy';
-        $question->save();
-        
-        $a1 = new Answer;
-        $a2 = new Answer;
-        $a3 = new Answer;
-        $a4 = new Answer;
-        $a5 = new Answer;
-        
-        $a1->text = 'Answer Choice 1';
-        $a2->text = 'Answer Choice 2';
-        $a3->text = 'Answer Choice 3';
-        $a4->text = 'Answer Choice 4';
-        $a5->text = 'Answer Choice 5';
 
-        $a1->isCorrect = 1;
-        $a2->isCorrect = 0;
-        $a3->isCorrect = 0;
-        $a4->isCorrect = 0;
-        $a5->isCorrect = 0;
-        
-        $a1->save();
-        $a2->save();
-        $a3->save();
-        $a4->save();
-        $a5->save();
+
+
+        /*
+        $question1 = Question::find(1);
+        $question2 = Question::find(2);
+        $question3 = Question::find(3);
         */
-        // still need to add the questions from question bank
-        // see QuestionController to see how we added a whole bunch of answers for each question without changing the schema (we will need to change it eventually)
+        /*
+        $quiz->questions()->sync(array($question1->id, $question2->id, $question3->id));
+        */
         
-        $question = Question::find(1);
-        $quiz->questions()->sync(array($question->id));
         
-        return redirect('/view_quiz');
+        $question = Question::select('id')->orderByRaw("RAND()")->take(3)->get(); 
+        
+        // get the questions in random order
+        // we get a whole bunch of questions from the above
+        // now, how do we put them into an array?
+        // we want to fill the array with $question->id
+        // (each question's ID)
+        $quiz->questions()->sync($question);
+        
+        return redirect('/view_quizzes');
     }
 
     /**

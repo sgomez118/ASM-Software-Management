@@ -89,7 +89,7 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('/view_quiz', function () {
+Route::get('/view_quizzes', function () {
 	$questions = Question::all();
     return view('quiz.view', ['questions' => $questions ]);
 });
