@@ -93,7 +93,7 @@ Route::get('/view_users', function() {
 });
 
 Route::get('/{user}', function($user){
-			return redirect('/login');
+			return redirect('/');
 });
 
 
