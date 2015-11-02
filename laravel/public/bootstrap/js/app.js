@@ -14,3 +14,13 @@ $(function(){
    });
 
 });
+
+//This function is for register form.
+//when a user selects from the drop down the hidden input value will change
+ $(function() 
+{
+    $('.dropdown-menu li').click(function()
+    {
+        $('#myType').val($(this).attr('value'));
+    });
+});

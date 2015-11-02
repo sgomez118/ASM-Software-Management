@@ -4,7 +4,6 @@
         <title>AQS Home</title>
         <!-- CSS  -->
             <!-- Custom -->
-            <link rel="stylesheet" href="bootstrap/css/app.css">
             <link rel="stylesheet" href="bootstrap/css/sb-admin.css">
             <link rel="stylesheet" href="bootstrap/css/timeline.css">
 
@@ -14,6 +13,7 @@
             <!-- theme -->
             <link rel="stylesheet" href="bootstrap/css/carousel.css">
             <link rel="stylesheet" href="bootstrap/css/bootstrap.darkly.min.css">
+            <link rel="stylesheet" href="bootstrap/css/app.css">
             
     </head>
     <body>

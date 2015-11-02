@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container" role="main">
-<h1>Welcome Chair!</h1>
+<h1>Welcome {{Auth::user()->name}}!</h1>
+	<h2>Classes</h2>
 	<div class="panel panel-default">
-		
 	<table class="table table-striped">
 		<thead>
 			<td>Class</td>
@@ -21,7 +21,10 @@
 			@endforeach
 		</tbody>
 </table>
-
+	</div>
+	<h2>Users</h2>
+	<div class="panel panel-default">
+		@include('user.chairs._allUsers')
 	</div>
 </div>
 @endsection

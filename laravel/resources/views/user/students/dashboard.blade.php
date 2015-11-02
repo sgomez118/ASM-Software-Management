@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" role="main">
-	<h1>Welcome Student!</h1>
+	<h1>Welcome {{Auth::user()->name}}!</h1>
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<ul class="nav nav-pills">

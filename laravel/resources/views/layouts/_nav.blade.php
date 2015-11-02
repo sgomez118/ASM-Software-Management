@@ -18,11 +18,11 @@
         <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
         @if(Auth::check())
           @if(Auth::user()->type == 'student')
-            <li class="active"><a href="/students">Dashboard</a></li>
+            <li class="active"><a href="/dashboard">Student Dashboard</a></li>
           @elseif(Auth::user()->type == 'lecturer')
-            <li class="active"><a href="/professors">Professor Dashboard</a></li>
+            <li class="active"><a href="/dashboard">Professor Dashboard</a></li>
           @elseif(Auth::user()->type == 'chair')
-            <li class="active"><a href="/chairs">Dashboard</a></li> 
+            <li class="active"><a href="/dashboard">Chair Dashboard</a></li> 
           @endif
         @endif
       </ul>
