@@ -3,18 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Quiz;
 use App\Question;
-=======
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Quiz;
 use App\User;
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
 
 class QuizController extends Controller
 {
@@ -47,18 +40,13 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         $quiz = new Quiz;
-<<<<<<< HEAD
         $quiz->course_id = $request->course_id;
-=======
-        $quiz->class_id = $request->class_id;
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
         $quiz->description = $request->description;
         $quiz->quizTime = $request->quizTime;
         $quiz->startDate = $request->startDate;
         $quiz->endDate = $request->endDate;
         $quiz->save();
-<<<<<<< HEAD
-        /**
+        /*
         $question = new Question;
         $question->prompt = 'Sample Prompt!';
         $question->difficulty = 'easy';
@@ -94,27 +82,17 @@ class QuizController extends Controller
         $question = Question::find(1);
         $quiz->questions()->sync(array($question->id));
         
-        return redirect('/view_quizzes');
-=======
-        return redirect('/quizzes');
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
+        return redirect('/view_quiz');
     }
 
     /**
      * Display the specified resource.
-<<<<<<< HEAD
      *
-=======
-     * 
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-<<<<<<< HEAD
-        //
-=======
         $user = User::find($id);
         switch ($user->type) {
             case 'student':
@@ -126,7 +104,6 @@ class QuizController extends Controller
             default:
                 return redirect('/');
         }
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
     }
 
     /**
@@ -137,12 +114,8 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
-        //
-=======
         $quiz = Quiz::find($id);
         return view('quiz.edit', ['quiz' => $quiz]);
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
     }
 
     /**
@@ -154,9 +127,6 @@ class QuizController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-        //
-=======
         $quiz = Quiz::find($id);
         $quiz->class_id = $request->class_id;
         $quiz->description = $request->description;
@@ -165,7 +135,6 @@ class QuizController extends Controller
         $quiz->endDate = $request->endDate;
         $quiz->save();
         return redirect('/quizzes');
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
     }
 
     /**
@@ -176,15 +145,7 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
-        //
-    }
-    
-    
-=======
         Quiz::destroy($id);
         return redirect('/quizzes');
     }
-
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
 }

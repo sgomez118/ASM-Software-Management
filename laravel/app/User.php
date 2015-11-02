@@ -46,8 +46,6 @@ class User extends Model implements AuthenticatableContract,
     }
     
     public function scopeGetCourses($query, $id){
-        return Course::where('lecturer_id', $id)->orderBy('name', 'desc')->get();
+        return Course::where('lecturer_id', $id)->orderBy('name', 'asc')->get();
     }
-
-
 }

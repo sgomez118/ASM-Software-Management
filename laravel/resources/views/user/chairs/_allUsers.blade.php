@@ -15,7 +15,6 @@
 					<td>{{ $user->email }}</td>
 					<td>{{ $user->type }}</td>
 				</tr>
-				
 			@endforeach
 		</tbody>
 </table>

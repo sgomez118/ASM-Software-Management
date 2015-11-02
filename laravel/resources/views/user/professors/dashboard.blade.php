@@ -8,7 +8,8 @@
 			<ul class="nav nav-pills span2">
 				<li role="presentation" class="active"><a href="#classes" aria-controls="classes" role="tab" data-toggle="tab">Classes</a></li>
 				<li role="presentation"><a href="#scores" aria-controls="scores" role="tab" data-toggle="tab">Quizzes</a></li>
-				<li role="presentation"><a href="#take-quiz" aria-controls="take-quiz" role="tab" data-toggle="tab">Create A Quiz</a></li>
+				<li role="presentation"><a href="/create_quiz" aria-controls="take-quiz" role="tab" >Create A Quiz</a></li>
+				<li role="presentation"><a href="/create_question" aria-controls="take-quiz" role="tab" >Create A Question</a></li>
 			</ul>
 			<br>
 			<div class="tab-content">
@@ -22,7 +23,7 @@
 				<div role="tabpanel" class="tab-pane" id="scores">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							You haven't taken any quiz!
+							@include('user.professors.quizzes')
 						</div>
 					</div>
 				</div>

@@ -43,6 +43,9 @@ Route::get('/dashboard', function (Request $request){
 	}
 });
 
+Route::get('/create_quiz', 'QuizController@create');
+Route::post('/save_quiz', 'QuizController@store');
+
 Route::get('/classes', 'CourseController@index');
 
 Route::get('/users', [ 'middleware' => 'auth', 'uses' => 'UserController@index' ]);
@@ -62,7 +65,11 @@ Route::resource('student', 'StudentController');
 Route::resource('quiz', 'QuizController');
 
 Route::get('/test', function (){
-	return User::getCourses(8);
+	// return User::getCourses(8);
+	//select question_id from questions ordered->random, limit->3
+	// return Question::select('id')->orderByRaw("RAND()")->take(3)->get();
+	echo "string";
+	return Course::find(3)->quizzes()->get();
 });
 
 // Authentication routes...
@@ -93,7 +100,7 @@ Route::get('/view_users', function() {
 });
 
 Route::get('/{user}', function($user){
-			return redirect('/login');
+			return redirect('/');
 });
 
 

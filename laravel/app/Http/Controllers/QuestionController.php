@@ -30,9 +30,6 @@ class QuestionController extends Controller
      */
     public function create(Request $request)
     {
-        // check if user is the correct type
-        // if user is lecturer, he can create questions
-        // otherwise, he can't
         $currentType = $request->user()->type;
         if ( strcmp( $currentType, 'lecturer' ) == 0 )
         {
