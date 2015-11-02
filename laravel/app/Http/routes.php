@@ -18,6 +18,7 @@ use App\Http\Controllers\AuthenticationController;
 
 use App\Http\Middleware\Authenticate;
 
+use App\Quiz;
 
 Route::get('/', function () {
     return view('landing');
@@ -54,12 +55,12 @@ Route::get('/questions', [ 'middleware' => 'auth', 'uses' =>  'QuestionControlle
 
 Route::get('/questions/{id}', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@show' ]);
 
-
 Route::get('/student/{student_id}/scores', 'StudentController@scores');
 
 Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
 
-Route::post('/save_q', 'QuestionController@store');
+// edited so that it is now '/save_question
+Route::post('/save_question', 'QuestionController@store');
 
 Route::resource('student', 'StudentController');
 Route::resource('quiz', 'QuizController');
@@ -89,9 +90,10 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+// this needs to be modified so that quizzes can be viewed
 Route::get('/view_quizzes', function () {
-	$questions = Question::all();
-    return view('quiz.view', ['questions' => $questions ]);
+	$quizzes = Quiz::all();
+    return view('quiz.view', ['quizzes' => $quizzes ]);
 });
 
 Route::get('/view_users', function() {

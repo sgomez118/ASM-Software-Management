@@ -20,7 +20,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return Question::all();
+        return view('question.view', ['questions' => Question::all()]);
     }
 
     /**
