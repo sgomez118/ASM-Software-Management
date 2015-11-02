@@ -3,18 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use App\Http\Requests;
+
 use App\Http\Controllers\Controller;
 use App\Quiz;
 use App\Question;
-=======
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Quiz;
-use App\User;
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
 
 class QuizController extends Controller
 {
@@ -47,17 +39,12 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         $quiz = new Quiz;
-<<<<<<< HEAD
         $quiz->course_id = $request->course_id;
-=======
-        $quiz->class_id = $request->class_id;
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
         $quiz->description = $request->description;
         $quiz->quizTime = $request->quizTime;
         $quiz->startDate = $request->startDate;
         $quiz->endDate = $request->endDate;
         $quiz->save();
-<<<<<<< HEAD
         /**
         $question = new Question;
         $question->prompt = 'Sample Prompt!';
@@ -91,42 +78,40 @@ class QuizController extends Controller
         // still need to add the questions from question bank
         // see QuestionController to see how we added a whole bunch of answers for each question without changing the schema (we will need to change it eventually)
         
-        $question = Question::find(1);
-        $quiz->questions()->sync(array($question->id));
+        // for now, we can just randomly pull from the database
+        // generate a random integer using some PHP function
+        // then... 
+        /**
+        $question1 = Question::find(1);
+        $question2 = Question::find(2);
+        $question3 = Question::find(3);
+        */
+        /*
+        $quiz->questions()->sync(array($question1->id, $question2->id, $question3->id));
+        */
+        
+        
+        $question = Question::select('id')->orderByRaw("RAND()")->take(3)->get(); 
+        
+        // get the questions in random order
+        // we get a whole bunch of questions from the above
+        // now, how do we put them into an array?
+        // we want to fill the array with $question->id
+        // (each question's ID)
+        $quiz->questions()->sync($question);
         
         return redirect('/view_quizzes');
-=======
-        return redirect('/quizzes');
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
     }
 
     /**
      * Display the specified resource.
-<<<<<<< HEAD
      *
-=======
-     * 
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-<<<<<<< HEAD
         //
-=======
-        $user = User::find($id);
-        switch ($user->type) {
-            case 'student':
-                return view('user.student.quizzes');
-            case 'lecturer':
-                return view('user.lecturer.quizzes');
-            case 'chair':
-                return view('user.chair.quizzes');
-            default:
-                return redirect('/');
-        }
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
     }
 
     /**
@@ -137,12 +122,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
         //
-=======
-        $quiz = Quiz::find($id);
-        return view('quiz.edit', ['quiz' => $quiz]);
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
     }
 
     /**
@@ -154,18 +134,7 @@ class QuizController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
         //
-=======
-        $quiz = Quiz::find($id);
-        $quiz->class_id = $request->class_id;
-        $quiz->description = $request->description;
-        $quiz->quizTime = $request->quizTime;
-        $quiz->startDate = $request->startDate;
-        $quiz->endDate = $request->endDate;
-        $quiz->save();
-        return redirect('/quizzes');
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
     }
 
     /**
@@ -176,15 +145,8 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
         //
     }
     
     
-=======
-        Quiz::destroy($id);
-        return redirect('/quizzes');
-    }
-
->>>>>>> 2faccdfb0d3002e5cb944e5a56c994bca5b2f701
 }
