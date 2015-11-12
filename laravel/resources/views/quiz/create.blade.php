@@ -13,13 +13,13 @@
                     )) !!}
                     <div class="form-group">
                         {!! Form::label('Title',
-                        null, array(
-                        'class' => 'col-md-4 control-label')
-                        ) !!}
+                        null,
+                        array('class' => 'col-md-4 control-label')
+                        )!!}
                         <div class="col-md-6">
                             {!! Form::text('description', 
-                            null, array('required', 
-                            'class' => 'form-control'
+                            null,
+                            array('required', 'class' => 'form-control'
                             )) !!}
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                         <div class="col-md-6 col-md-offset-4">
                         {!! Form::submit('Save Quiz!',
                             array('class' => 'btn btn-primary')
-                        ); !!}
+                        ) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}

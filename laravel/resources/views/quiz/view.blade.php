@@ -28,7 +28,6 @@
                     <br>
                     <br>
                 @endforeach
-                </ol>
             </div>
         </div>
 
