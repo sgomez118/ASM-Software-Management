@@ -14,7 +14,9 @@ class CreateScoreCardsTable extends Migration
     {
         Schema::create('score_cards', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('score');
+            $table->double('score');
+            $table->boolean('is_taken');
+            
             $table->integer('quiz_id')->unsigned();
             $table->integer('user_id')->unsigned();
             

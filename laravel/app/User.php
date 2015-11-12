@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'type'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'type'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -41,11 +41,12 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\ScoreCard');
     }
 
-    public function courses(){
-        return $this->belongsToMany('App\Course');
+    public function subjects(){
+        return $this->belongsToMany('App\Subject');
     }
     
-    public function scopeGetCourses($query, $id){
-        return Course::where('lecturer_id', $id)->orderBy('name', 'asc')->get();
+    public function quizzes(){
+        return $this->hasMany('App\Quiz');
     }
+    
 }

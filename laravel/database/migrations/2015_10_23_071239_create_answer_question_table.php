@@ -16,6 +16,8 @@ class CreateAnswerQuestionTable extends Migration
             $table->increments('id');
             $table->integer('question_id')->unsigned();
             $table->integer('answer_id')->unsigned();
+            $table->boolean('is_correct');
+            
             //Defining Foreign Relationships
             $table->foreign('question_id')
                     ->references('id')->on('questions');

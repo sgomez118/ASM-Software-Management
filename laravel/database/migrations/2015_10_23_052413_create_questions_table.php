@@ -14,9 +14,16 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('subject_id');
             $table->string('prompt');
             $table->string('difficulty');
+            $table->string('type');
+            $table->binary('image')->nullable();
             $table->timestamps();
+            
+            $table->foreign('subject_id')
+                    ->references('id')->on('subjects');
+            
         });
 
     }
