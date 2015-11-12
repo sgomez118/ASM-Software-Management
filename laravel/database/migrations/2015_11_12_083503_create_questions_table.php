@@ -13,8 +13,8 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('subject_id');
+            $table->increments('id')->unsigned();
+            $table->integer('subject_id')->unsigned();
             $table->string('prompt');
             $table->string('difficulty');
             $table->string('type');
@@ -23,9 +23,7 @@ class CreateQuestionsTable extends Migration
             
             $table->foreign('subject_id')
                     ->references('id')->on('subjects');
-            
         });
-
     }
 
     /**
