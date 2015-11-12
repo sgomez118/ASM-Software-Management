@@ -40,5 +40,10 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="bootstrap/js/bootstrap-datetimepicker.js"></script>
         <script src="bootstrap/js/app.js"></script>
+        <ul class='custom-menu'>
+          <li data-action="first">First thing</li>
+          <li data-action="second">Second thing</li>
+          <li data-action="third">Third thing</li>
+        </ul>
     </body>
 </html>

@@ -7,8 +7,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Question;
 use App\Answer;
-use Illuminate\Auth\Guard;
-
 use App\User;
 
 class QuestionController extends Controller
@@ -30,8 +28,7 @@ class QuestionController extends Controller
      */
     public function create(Request $request)
     {
-        $currentType = $request->user()->type;
-        if ( strcmp( $currentType, 'lecturer' ) == 0 )
+        if ( $request->user()->type == "lecturer" )
         {
             return view('question.create');
         }
