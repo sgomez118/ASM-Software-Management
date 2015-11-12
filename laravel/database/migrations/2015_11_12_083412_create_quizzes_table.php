@@ -12,7 +12,6 @@ class CreateQuizzesTable extends Migration
      */
     public function up()
     {
-        
         Schema::create('quizzes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('subject_id')->unsigned();
@@ -30,9 +29,6 @@ class CreateQuizzesTable extends Migration
                     ->references('id')->on('subjects');
             $table->foreign('user_id')
                     ->references('id')->on('users');
-            
-            
-            
         });
     }
 

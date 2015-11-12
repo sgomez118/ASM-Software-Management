@@ -3,14 +3,8 @@
 @extends('layouts.home')
 
 @section('content')
-
-    <!-- Bootstrap Boilerplate... -->
-
-    <div class="panel-body">
-        <!-- Display Validation  csrf_field()  Errors@include('common.errors') -->
-        
+    <div class="panel-body">        
         <h1> Create a Course! </h1>
-        
         {!! Form::open(array('url' => 'save_course')) !!}
             
         <div class="form-group">
@@ -41,9 +35,6 @@
         </div>
         {!! Form::close() !!}
     </div>
-
-    <!-- TODO: Current Tasks -->
-
 
 @endsection
 

@@ -3,6 +3,9 @@
 use App\Question;
 use App\Course;
 use App\User;
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Middleware\Authenticate;
+use App\Quiz;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -14,16 +17,9 @@ use App\User;
 |
 */
 
-use App\Http\Controllers\AuthenticationController;
-
-use App\Http\Middleware\Authenticate;
-
-use App\Quiz;
-
 Route::get('/', function () {
     return view('landing');
 });
-
 
 Route::get('/all_students', 'StudentController@index');
 
@@ -59,16 +55,12 @@ Route::get('/student/{student_id}/scores', 'StudentController@scores');
 
 Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
 
-// edited so that it is now '/save_question
 Route::post('/save_question', 'QuestionController@store');
 
 Route::resource('student', 'StudentController');
 Route::resource('quiz', 'QuizController');
 
 Route::get('/test', function (){
-	// return User::getCourses(8);
-	//select question_id from questions ordered->random, limit->3
-	// return Question::select('id')->orderByRaw("RAND()")->take(3)->get();
 	echo "string";
 	return Course::find(3)->quizzes()->get();
 });
@@ -104,6 +96,3 @@ Route::get('/view_users', function() {
 Route::get('/{user}', function($user){
 			return redirect('/');
 });
-
-
-
