@@ -13,6 +13,7 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
+            $table->softDeletes();
             $table->increments('id')->unsigned();
             $table->integer('subject_id')->unsigned();
             $table->string('prompt');
