@@ -16,14 +16,14 @@
 				<div role="tabpanel" class="tab-pane active" id="classes">
 					 <div class="panel panel-default">
 						<div class="panel-body">
-							@include('user.professors.courses')
+							{{-- @include('user.professors.courses') --}}
 						</div>
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="scores">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							@include('user.professors.quizzes')
+							{{-- @include('user.professors.quizzes') --}}
 						</div>
 					</div>
 				</div>
