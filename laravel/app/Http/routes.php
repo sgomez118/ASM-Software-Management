@@ -1,11 +1,12 @@
 <?php
 
 use App\Question;
-use App\Course;
 use App\User;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Middleware\Authenticate;
 use App\Quiz;
+use App\Subject;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -31,7 +32,7 @@ Route::get('/dashboard', function (Request $request){
 			case 'lecturer':
 				return view('user.professors.dashboard');
 			case 'chair':
-				return view('user.chairs.dashboard', ['courses' => Course::all()]);
+				return view('user.chairs.dashboard', ['subjects' => Subject::all()]);
 			default:
 				return redirect('/');
 			}

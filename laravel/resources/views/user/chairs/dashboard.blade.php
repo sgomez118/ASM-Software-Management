@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" role="main">
-<h1>Welcome {{Auth::user()->name}}!</h1>
+<h1>Welcome {{ Auth::user()->first_name }}!</h1>
 	<h2>Classes</h2>
 	<div class="panel panel-default">
 	<table class="table table-striped">
@@ -12,11 +12,11 @@
 			<td># of Students</td>
 		</thead>
 		<tbody>
-			@foreach($courses as $course)
-				<tr data-lecturerID="{{ $course->lecturer_id }}" data-courseID="{{ $course->id }}">
-					<td>{{ $course->name }}</td>
-					<td>{{ App\User::find($course->lecturer_id)->name }}</td>
-					<td>{{ $course->users()->count() }}</td>
+			@foreach($subjects as $subject)
+				<tr data-lecturerID="{{ $subject->lecturer_id }}" data-subjectID="{{ $subject->id }}">
+					<td>{{ $subject->name }}</td>
+					<td>{{ App\User::find($subject->lecturer_id)->name }}</td>
+					<td>{{ $subject->users()->count() }}</td>
 				</tr>
 			@endforeach
 		</tbody>

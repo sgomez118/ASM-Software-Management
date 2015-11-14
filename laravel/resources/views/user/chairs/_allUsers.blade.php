@@ -11,7 +11,7 @@
 			@foreach(App\User::all() as $user)
 				<tr data-userID="{{ $user->id }}">
 					<td>{{ $count++ }}</td>
-					<td>{{ $user->name }}</td>
+					<td>{{ $user->first_name.' '.$user->last_name }}</td>
 					<td>{{ $user->email }}</td>
 					<td>{{ $user->type }}</td>
 				</tr>
