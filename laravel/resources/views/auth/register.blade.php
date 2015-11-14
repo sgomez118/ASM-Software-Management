@@ -21,13 +21,24 @@
 					{!! Form::open(array('url' => 'auth/register', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="form-group">
-							{!! Form::label('Name', null, array('class' => 'col-md-4 control-label')) !!}
+							{!! Form::label('First Name', null, array('class' => 'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								{!! Form::text('name', null, 
+								{!! Form::text('first_name', null, 
 									array('required', 
 				                    	'class' => 'form-control',
-				                    	'placeholder' => "Your Name",
-				                    	'value' => old('name')
+				                    	'placeholder' => "First Name",
+				                    	'value' => old('first_name')
+				                )) !!}
+							</div>
+						</div>
+						<div class="form-group">
+							{!! Form::label('Last Name', null, array('class' => 'col-md-4 control-label')) !!}
+							<div class="col-md-6">
+								{!! Form::text('last_name', null, 
+									array('required', 
+				                    	'class' => 'form-control',
+				                    	'placeholder' => "Last Name",
+				                    	'value' => old('last_name')
 				                )) !!}
 							</div>
 						</div>
