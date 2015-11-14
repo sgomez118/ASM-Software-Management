@@ -37,6 +37,8 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    use SoftDeletes;
+    
     public function scoreCards(){
         return $this->hasMany('App\ScoreCard');
     }

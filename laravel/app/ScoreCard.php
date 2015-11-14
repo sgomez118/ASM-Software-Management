@@ -15,13 +15,9 @@ class ScoreCard extends Model
     public function users(){
     	return $this->belongsTo('App\User');
     }
-    
-    // ScoreCard belongs to many AnswerQuestions
-    // we customize the name of the pivot table that connects the two
-    // the pivot table name is 'student_answer'
-    // this overrides the default name that Laravel will look for 
+
     public function answer_questions(){
-        return $this->belongsToMany('App\AnswerQuestion', 'student_answer');
+        return $this->belongsToMany('App\AnswerQuestion');
     }
 
 }
