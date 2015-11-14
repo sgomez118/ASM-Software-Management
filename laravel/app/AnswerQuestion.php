@@ -11,6 +11,8 @@ class AnswerQuestion extends Model
     
     // establish the correct relationships
     
-    public function 
-    
+    // without override, it will look for AnswerQuestion_ScoreCard' or something else
+    public function score_cards(){
+        $this->belongsToMany('App\ScoreCard', 'student_answer');
+    }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
-    protected $fillable = ['class_id', 'description', 'quizTime', 'startDate', 'endDate'];
+    protected $fillable = ['subject_id', 'user_id', 'title', 'quiz_time', 'num_of_questions', 'start_date', 'end_date', 'percentage_easy', 'percentage_medium', 'percentage_hard'];
     
     public $timestamps = false;
     
@@ -20,9 +20,9 @@ class Quiz extends Model
         return $this->hasMany('App\ScoreCard');
     }
     
-    public function classes()
+    public function users()
     {
-        return $this->belongsTo('App\Class');
+        return $this->belongsTo('App\User');
     }
     
 }

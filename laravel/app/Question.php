@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['prompt', 'difficulty'];
+    protected $fillable = ['subject_id', 'prompt', 'difficulty', 'type', 'image'];
 
     public function answers(){
-    	return $this->belongsToMany('App\Answer');
+    	return $this->belongsToMany('App\Answer')->withPivot('is_correct');
     }
     
     public function quizzes(){

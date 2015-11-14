@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScoreCard extends Model
 {
-    protected $fillable = ['score', 'is_taken'];
+    protected $fillable = ['quiz_id', 'user_id', 'score', 'is_taken'];
 
     public function quizzes(){
     	return $this->belongsTo('App\Quiz');

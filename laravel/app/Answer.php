@@ -10,6 +10,6 @@ class Answer extends Model
     // protected $fillable = ['text', 'image', 'isCorrect'];
 
     public function questions(){
-    	return $this->belongsToMany('App\Question')->withPivot('isCorrect');
+    	return $this->belongsToMany('App\Question')->withPivot('is_correct');
     }
 }
