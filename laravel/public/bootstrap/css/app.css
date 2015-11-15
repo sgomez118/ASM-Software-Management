@@ -3,6 +3,11 @@ body {
     font-size: 18px; 
 }
 
+.answers {
+    font-size:14px;
+}
+
+
 .center-block {
   display: block;
   margin-left: auto;

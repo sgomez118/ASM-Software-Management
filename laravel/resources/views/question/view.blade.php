@@ -23,7 +23,12 @@
                    <div class="panel-body">
                      <ol style="list-style-type: lower-alpha"> 
                        @foreach($question->answers as $answer)
-                       <li> {{$answer->text}} </li>
+                       <li> @if($answer->pivot->is_correct == TRUE)
+                             <span class="answers label label-success "> {{$answer->text}} </span>
+                            @else
+                                {{$answer->text}}
+                            @endif
+                       </li>
                        @endforeach
                      </ol>
                    </div>   
