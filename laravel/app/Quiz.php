@@ -16,6 +16,11 @@ class Quiz extends Model
     {
         return $this->belongsToMany('App\Question');
     }
+
+    public function subjects()
+    {
+        return $this->belongsTo('App\Subject');
+    }
     
     public function scoreCards()
     {
