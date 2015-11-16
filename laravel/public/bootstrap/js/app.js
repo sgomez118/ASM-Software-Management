@@ -1,9 +1,3 @@
-
-// $(".nav a").on("click", function(){
-//    $(".nav").find(".active").removeClass("active");
-//    $(this).parent().addClass("active");
-// });
-
 $(function(){
 
     $(".dropdown-menu li a").click(function(){
@@ -40,29 +34,32 @@ $(function () {
     });
 
 
+//Custom Menu
+// $(document).bind("contextmenu", function (event) {
+    
+//     // Avoid the real one
+//     event.preventDefault();
+    
+//     // Show contextmenu
+//     $(".custom-menu").finish().toggle(100).
+    
+//     // In the right position (the mouse)
+//     css({
+//         top: event.pageY + "px",
+//         left: event.pageX + "px"
+//     });
+// });
 
-$(document).bind("contextmenu", function (event) {
+// $(document).bind("mousedown", function (e) {
     
-    // Avoid the real one
-    event.preventDefault();
-    
-    // Show contextmenu
-    $(".custom-menu").finish().toggle(100).
-    
-    // In the right position (the mouse)
-    css({
-        top: event.pageY + "px",
-        left: event.pageX + "px"
-    });
-});
-
-$(document).bind("mousedown", function (e) {
-    
-    // If the clicked element is not the menu
-    if (!$(e.target).parents(".custom-menu").length > 0) {
-        $(".custom-menu").hide(100);
+//     // If the clicked element is not the menu
+//     if (!$(e.target).parents(".custom-menu").length > 0) {
+//         $(".custom-menu").hide(100);
         
-        // Hide it
-    }
-});
+//         // Hide it
+//     }
+// });
 
+
+
+//Try save answer question

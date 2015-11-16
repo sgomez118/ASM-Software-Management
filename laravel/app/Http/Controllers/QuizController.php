@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Quiz;
 use App\Question;
 use App\User;
+use Auth;
+use DateTime;
 
 class QuizController extends Controller
 {
@@ -40,34 +42,19 @@ class QuizController extends Controller
     public function store(Request $request)
     {
         $quiz = new Quiz;
-        $quiz->course_id = $request->course_id;
-        $quiz->description = $request->description;
-        $quiz->quizTime = $request->quizTime;
-        $quiz->startDate = $request->startDate;
-        $quiz->endDate = $request->endDate;
-        $quiz->save();
-
-
-
-        /*
-        $question1 = Question::find(1);
-        $question2 = Question::find(2);
-        $question3 = Question::find(3);
-        */
-        /*
-        $quiz->questions()->sync(array($question1->id, $question2->id, $question3->id));
-        */
-        
-        
-        $question = Question::select('id')->orderByRaw("RAND()")->take(3)->get(); 
-        
-        // get the questions in random order
-        // we get a whole bunch of questions from the above
-        // now, how do we put them into an array?
-        // we want to fill the array with $question->id
-        // (each question's ID)
-        $quiz->questions()->sync($question);
-        
+        $quiz->user_id = Auth::user()->id;
+        $quiz->subject_id = $request->subject_id;
+        $quiz->title = $request->title;
+        $quiz->quiz_time = $request->quiz_time;
+        $formatedStart = DateTime::createFromFormat('m/d/Y h:i a', $request->start_date);
+            $quiz->start_date =  $formatedStart->format("Y-m-d H:i:s");
+        $formatedEnd = DateTime::createFromFormat('m/d/Y H:i a', $request->end_date);
+            $quiz->end_date = $formatedEnd->format("Y-m-d H:i:s");
+        $quiz->num_of_questions = $request->num_of_questions;
+        $quiz->percentage_easy = $request->percentage_easy;
+        $quiz->percentage_medium = $request->percentage_medium;
+        $quiz->percentage_hard = $request->percentage_hard;
+        $quiz->save();        
         return redirect('/view_quizzes');
     }
 
@@ -79,17 +66,19 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        return view('quiz.takeQuiz');
+        /*$user = User::find($id);
         switch ($user->type) {
             case 'student':
-                return view('user.student.quizzes');
+                // return view('user.student.quizzes');
+            
             case 'lecturer':
                 return view('user.lecturer.quizzes');
             case 'chair':
                 return view('user.chair.quizzes');
             default:
                 return redirect('/');
-        }
+        }*/
     }
 
     /**
@@ -133,5 +122,11 @@ class QuizController extends Controller
     {
         Quiz::destroy($id);
         return redirect('/quizzes');
+    }
+
+
+    public function takeQuiz()
+    {
+
     }
 }

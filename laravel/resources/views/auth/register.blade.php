@@ -59,8 +59,6 @@
 							<label class="col-md-4 control-label">Type</label>
 							<div class="dropdown col-md-6">
 						  		<input type="submit" value="Choose Type" class="btn btn-default selectpicker dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    		{{-- Choose Type <span class="caret"></span> 
-						  		</input>--}}
 							  	<ul class="dropdown-menu inner selectpicker" role='menu' aria-labelledby="dropdownMenu1">
 							    	<li value='student'><a href="#">Student</a></li>
 							    	<li value='lecturer'><a href="#">Professor</a></li>

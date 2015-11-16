@@ -41,6 +41,15 @@ Route::get('/dashboard', function (Request $request){
 	}
 });
 
+Route::get('/take_quiz', function ()
+{
+	return view('quiz.takeQuiz', ['questions' => Question::paginate(1)]);
+});
+Route::post('/finish_quiz', function (Request $request)
+{
+	# code...
+});
+
 Route::get('/create_quiz', 'QuizController@create');
 Route::post('/save_quiz', 'QuizController@store');
 

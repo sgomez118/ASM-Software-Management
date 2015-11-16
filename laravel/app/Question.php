@@ -11,7 +11,7 @@ class Question extends Model
     use SoftDeletes;
     
     public function answers(){
-    	return $this->belongsToMany('App\Answer')->withPivot('is_correct');
+    	return $this->belongsToMany('App\Answer')->withPivot('id','is_correct');
     }
     
     public function quizzes(){

@@ -17,32 +17,25 @@
                         array('class' => 'col-md-4 control-label')
                         )!!}
                         <div class="col-md-6">
-                            {!! Form::text('description', 
+                            {!! Form::text('title', 
                             null,
                             array('required', 'class' => 'form-control'
                             )) !!}
                         </div>
                     </div>
 
-                    <input type="hidden" name="course_id" id="myType">
+                    <input type="hidden" name="subject_id" id="myType">
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Choose Course</label>
+                        <label class="col-md-4 control-label">Choose Subject</label>
                         <div class="dropdown col-md-6">
-                            <input type="submit" value="Choose Course" class="btn btn-default selectpicker dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {{-- Choose Type <span class="caret"></span> 
-                            </input>--}}
+                            <input type="submit" value="Subject" class="btn btn-default selectpicker dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <ul class="dropdown-menu inner selectpicker" role='menu' aria-labelledby="dropdownMenu1">
-                                @if(Auth::check())
-                                    @foreach(App\User::getCourses(Auth::user()->id) as $course)
-                                        <li value={{$course->id}}><a href="#">{{$course->name}}</a></li>
-                                    @endforeach
-                                @endif
+                                @foreach(App\Subject::all() as $subject)
+                                    <li value={{$subject->id}}><a href="#">{{$subject->name}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
-                    </div>
-
-                        
-                       
+                    </div>                   
 
                     <div class="form-group">
                         {!! Form::label('Time Limit',
@@ -50,7 +43,22 @@
                         'class' => 'col-md-4 control-label')
                         ) !!}
                         <div class="col-md-6">
-                            {!! Form::text('quizTime', 
+                            {{-- FUTURE: Break quiz time up into hours and minutes --}}
+                            {!! Form::text('quiz_time', 
+                            null, array('required', 
+                            'class' => 'form-control',
+                            'placeholder' => 'hours [ex. 1 hr 30 m = 1.5 hours]'
+                            )) !!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('# of Questions',
+                        null, array(
+                        'class' => 'col-md-4 control-label')
+                        ) !!}
+                        <div class="col-md-6">
+                            {!! Form::text('num_of_questions', 
                             null, array('required', 
                             'class' => 'form-control'
                             )) !!}
@@ -64,7 +72,7 @@
                         ) !!}
                         <div class='col-md-6'>
                             <div class='input-group date' id='datetimepicker6' >
-                                <input type='text' class="form-control" name='startDate' />
+                                <input type='datetime' class="form-control" name='start_date' />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -79,11 +87,50 @@
                         ) !!}
                          <div class='col-md-6'>
                             <div class='input-group date' id='datetimepicker7' >
-                                <input type='text' class="form-control"name='endDate' />
+                                <input type='datetime' class="form-control"name='end_date' />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        {!! Form::label('Easy',
+                        null, array(
+                        'class' => 'col-md-4 control-label')
+                        ) !!}
+                        <div class="col-md-6">
+                            
+                        <div class="input-group">
+                            <input type="text" name="percentage_easy" class="form-control" placeholder="% of easy [ex. 60]" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2">%</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('Medium',
+                        null, array(
+                        'class' => 'col-md-4 control-label')
+                        ) !!}
+                        <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" name="percentage_medium" class="form-control" placeholder="% of meduim [ex. 30]" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2">%</span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('Hard',
+                        null, array(
+                        'class' => 'col-md-4 control-label')
+                        ) !!}
+                        <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" name="percentage_hard" class="form-control" placeholder="% of hard [ex. 10]" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2">%</span>
+                        </div>
                         </div>
                     </div>
 

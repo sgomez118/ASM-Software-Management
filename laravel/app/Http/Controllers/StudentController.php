@@ -18,7 +18,6 @@ class StudentController extends Controller
      */
     public function index()
     {
-
         return User::where('type','student')->get();
     }
 
