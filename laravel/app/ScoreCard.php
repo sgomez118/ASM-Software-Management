@@ -8,16 +8,16 @@ class ScoreCard extends Model
 {
     protected $fillable = ['quiz_id', 'user_id', 'score', 'is_taken'];
 
-    public function quizzes(){
+    public function quiz(){
     	return $this->belongsTo('App\Quiz');
     }
 
-    public function users(){
+    public function user(){
     	return $this->belongsTo('App\User');
     }
 
     public function answer_questions(){
-        return $this->belongsToMany('App\AnswerQuestion');
+        return $this->belongsToMany('App\AnswerQuestion', 'student_answers');
     }
 
 }

@@ -127,6 +127,7 @@ class QuizController extends Controller
 
     public function takeQuiz()
     {
+       
 
-    }
+
 }

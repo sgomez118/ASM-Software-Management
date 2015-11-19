@@ -17,7 +17,7 @@ class Quiz extends Model
         return $this->belongsToMany('App\Question');
     }
 
-    public function subjects()
+    public function subject()
     {
         return $this->belongsTo('App\Subject');
     }
@@ -27,7 +27,7 @@ class Quiz extends Model
         return $this->hasMany('App\ScoreCard');
     }
     
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }

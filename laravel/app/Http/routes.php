@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Middleware\Authenticate;
 use App\Quiz;
 use App\Subject;
+use App\ScoreCard;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,29 @@ Route::resource('student', 'StudentController');
 Route::resource('quiz', 'QuizController');
 
 Route::get('/test', function (){
-	echo "string";
-	return Course::find(3)->quizzes()->get();
+    $scoreCard = ScoreCard::find(1);
+    // $answers = ScoreCard::find(1)->answer_questions()->get();
+    $answers = $scoreCard->answer_questions()->get();
+    echo $scoreCard->user->first_name; //Get Name
+    echo "<br>";
+    foreach ($answers as $a) {
+    	echo $a->id;
+    	echo "<br>";
+    }
+    echo "<br>";
+    $users = User::all();
+    foreach ($users as $u) {
+    	$s = $u->scoreCards()->get();
+    	echo "User: ";
+    	echo $u->first_name;
+    	echo "<br>";
+    	foreach ($s as $c) {
+    	echo $c->id;
+    	echo "<br>";
+    		# code...
+    	}
+    }
+
 });
 
 // Authentication routes...
