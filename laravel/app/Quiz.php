@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Quiz extends Model
 {
     protected $fillable = ['subject_id', 'user_id', 'title', 'quiz_time', 'num_of_questions', 
-        'start_date', 'end_date', 'percentage_easy', 'percentage_medium', 'percentage_hard'];
+        'start_date', 'end_date', 'num_of_easy', 'num_of_medium', 'num_of_hard'];
     
     use SoftDeletes;
     

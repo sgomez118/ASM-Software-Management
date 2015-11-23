@@ -17,4 +17,8 @@ class Question extends Model
     public function quizzes(){
         return $this->belongsToMany('App\Quiz');
     }
+
+    public function scoreCards(){
+        return $this->belongsToMany('App\ScoreCard');
+    }
 }

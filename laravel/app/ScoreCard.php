@@ -16,6 +16,10 @@ class ScoreCard extends Model
     	return $this->belongsTo('App\User');
     }
 
+    public function questions(){
+        return $this->belongsToMany('App\Question', 'student_answers');
+    }
+
     public function answer_questions(){
         return $this->belongsToMany('App\AnswerQuestion', 'student_answers');
     }

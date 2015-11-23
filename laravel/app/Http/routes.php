@@ -44,7 +44,7 @@ Route::get('/dashboard', function (Request $request){
 
 Route::get('/take_quiz', function ()
 {
-	return view('quiz.takeQuiz', ['questions' => Question::paginate(1)]);
+	return view('quiz.question', ['questions' => Question::paginate(1)]);
 });
 Route::post('/finish_quiz', function (Request $request)
 {
@@ -124,6 +124,52 @@ Route::get('/view_users', function() {
     $users = User::all();
     return view('user.view', ['users' => $users]);
 });
+Route::get('/t', function ()
+{
+    return User::find(1)->scoreCards()->get();
+});
+
+Route::get('/scorecard/questions/{scorecardID}', function ($scorecardID)
+{
+    //Get ScoreCard
+    $sc = ScoreCard::find($scorecardID);
+
+    $studentAnswers  = $sc->answer_questions()->get();
+   // echo $sc->questions()->get();
+    foreach ($studentAnswers as $answer) {
+        //echo $answer;
+        $qID = $answer->question_id;
+        $question = Question::find($qID);
+
+        switch ($question->type) {
+            case 'single-choice':
+                # code...
+                break;
+            
+            case 'multi-value':
+                foreach ($question->answers as $answer) {
+                    //is answer in student_answers?
+
+                }
+                break;
+            
+            case 'free-response':
+                # code...
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+        # code...
+    }
+
+    return $sc->questions()->get();
+});
+
+Route::get('/t/{id}', 'QuizController@generateQuestions');
+
 
 Route::get('/{user}', function($user){
 			return redirect('/');

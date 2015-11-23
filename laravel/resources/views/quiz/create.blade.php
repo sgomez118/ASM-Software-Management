@@ -53,14 +53,15 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('# of Questions',
+                        {!! Form::label('Number of Questions',
                         null, array(
                         'class' => 'col-md-4 control-label')
                         ) !!}
                         <div class="col-md-6">
                             {!! Form::text('num_of_questions', 
                             null, array('required', 
-                            'class' => 'form-control'
+                            'class' => 'form-control',
+                            'placeholder' => "Max " . App\Question::all()->count()
                             )) !!}
                         </div>
                     </div>
@@ -104,8 +105,9 @@
                         <div class="col-md-6">
                             
                         <div class="input-group">
-                            <input type="text" name="percentage_easy" class="form-control" placeholder="% of easy [ex. 60]" aria-describedby="basic-addon2">
-                            <span class="input-group-addon" id="basic-addon2">%</span>
+                            <span class="input-group-addon" id="basic-addon2">#</span>
+                            <input type="text" name="num_of_easy" class="form-control" 
+                            placeholder="# of easy [Max {{App\Question::where('difficulty', 'easy')->get()->count()}}]" aria-describedby="basic-addon2">
                         </div>
                         </div>
                     </div>
@@ -116,8 +118,9 @@
                         ) !!}
                         <div class="col-md-6">
                         <div class="input-group">
-                            <input type="text" name="percentage_medium" class="form-control" placeholder="% of meduim [ex. 30]" aria-describedby="basic-addon2">
-                            <span class="input-group-addon" id="basic-addon2">%</span>
+                            <span class="input-group-addon" id="basic-addon2">#</span>
+                            <input type="text" name="num_of_medium" class="form-control" 
+                            placeholder="# of meduim [Max {{App\Question::where('difficulty', 'medium')->get()->count()}}]" aria-describedby="basic-addon2">
                         </div>
                         </div>
                     </div>
@@ -128,8 +131,9 @@
                         ) !!}
                         <div class="col-md-6">
                         <div class="input-group">
-                            <input type="text" name="percentage_hard" class="form-control" placeholder="% of hard [ex. 10]" aria-describedby="basic-addon2">
-                            <span class="input-group-addon" id="basic-addon2">%</span>
+                            <span class="input-group-addon" id="basic-addon2">#</span>
+                            <input type="text" name="num_of_hard" class="form-control" 
+                            placeholder="# of meduim [Max {{App\Question::where('difficulty', 'hard')->get()->count()}}]" aria-describedby="basic-addon2">
                         </div>
                         </div>
                     </div>
