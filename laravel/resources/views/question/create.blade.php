@@ -36,7 +36,7 @@
         <div class="form-group">
             <div class="col-md-2 control-label">
                 <label class="checkbox-inline">
-                    <input type="checkbox" id="isCorrect{{ $q }}" value="1"> Option {{ $q }} 
+                    <input type="checkbox" id="isCorrect{{ $q }}" name="isCorrect{{ $q }}" value="1"> Option {{ $q }} 
                 </label>  
             </div>
             <div class="col-md-10">

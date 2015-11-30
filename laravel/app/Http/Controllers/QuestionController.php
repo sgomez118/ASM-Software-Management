@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Question;
 use App\Answer;
 use App\User;
+use Redirect;
 
 class QuestionController extends Controller
 {
@@ -51,7 +52,9 @@ class QuestionController extends Controller
         $question = new Question;
         $question->prompt = $request->prompt;
         $question->difficulty = $request->difficulty;
+        $question->subject_id = 1;
         $question->save();
+
         $a1 = new Answer;
         $a2 = new Answer;
         $a3 = new Answer;
@@ -64,20 +67,19 @@ class QuestionController extends Controller
         $a4->text = $request->choice4;
         $a5->text = $request->choice5;
 
-        $a1->isCorrect = $request->isCorrect1;
-        $a2->isCorrect = $request->isCorrect2;
-        $a3->isCorrect = $request->isCorrect3;
-        $a4->isCorrect = $request->isCorrect4;
-        $a5->isCorrect = $request->isCorrect5;
-        
         $a1->save();
         $a2->save();
         $a3->save();
         $a4->save();
         $a5->save();
-        
-        $question->answers()->sync(array($a1->id, $a2->id, $a3->id, $a4->id, $a5->id));
-        
+
+        $question->answers()->attach($a1->id, array('is_correct' => ($request->isCorrect1 != 1 ? 0 : 1)));
+        $question->answers()->attach($a2->id, array('is_correct' => ($request->isCorrect2 != 1 ? 0 : 1)));
+        $question->answers()->attach($a3->id, array('is_correct' => ($request->isCorrect3 != 1 ? 0 : 1)));
+        $question->answers()->attach($a4->id, array('is_correct' => ($request->isCorrect4 != 1 ? 0 : 1)));
+        $question->answers()->attach($a5->id, array('is_correct' => ($request->isCorrect5 != 1 ? 0 : 1)));
+
+        // return Redirect::back()->withMsg('Quiz Question Created');
         return redirect('/questions');
     }
 
