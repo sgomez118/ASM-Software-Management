@@ -20,7 +20,7 @@ class ScoreCard extends Model
     }
 
     public function questions(){
-        return $this->belongsToMany('App\Question', 'student_answers');
+        return $this->belongsToMany('App\Question', 'student_answers')->withPivot('answer_question_id');
     }
 
     public function answer_questions(){
@@ -35,7 +35,7 @@ class ScoreCard extends Model
      * @param int $id
      * @return list of question for quiz
      */
-    public function generateQuestions()
+    public function generate_questions()
     {
         $quiz = Quiz::find($this->quiz_id);
         $allQuestions;
@@ -70,14 +70,20 @@ class ScoreCard extends Model
         }
 
         $this->my_questions = $allQuestions;
+        $this->store_my_questions();
         return $this->my_questions[0];
     }
 
     public function store_my_questions(){
-        foreach ($this->my_questions as $question) {
+        foreach ($this->my_questions->distinct() as $question) {
             echo "Storing: ".$question->id;
-            $this->questions()->attach($question->id);//null, array("question_id" => $question->id));
+            $this->questions()->attach($question->id);
         }
+    }
+
+    public function load_questions(){
+        $this->my_questions = $this->questions()->groupBy('id')->get();
+        return $this->my_questions[0];
     }
 
     public function next()

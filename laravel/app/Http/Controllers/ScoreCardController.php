@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\ScoreCard;
 use App\Quiz;
+use App\Question;
 
 class ScoreCardController extends Controller
 {
@@ -31,15 +32,67 @@ class ScoreCardController extends Controller
         //
     }
 
+    public function take_quiz(Request $request, $score_card_id){
+        $scoreCard = ScoreCard::find($score_card_id);
+        $first_question;
+        if($scoreCard->questions()->count() > 0){
+            $first_question = $scoreCard->load_questions();
+        }else{
+            $first_question = $scoreCard->generate_questions();
+        }
+        $request->session()->put('score_card', $scoreCard);
+
+        return view('quiz.take', ['question' => $first_question]);
+    }
+
     /**
      * Store a newly created resource in storage.
-     *
+     * Assumption: All quesitons are multi-value,
+     *      Questions are in the database already
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $scoreCard = $request->session()->get('score_card'); 
+        $answers = $scoreCard->answer_questions()->wherePivot('question_id', '=', $request->qID)->get();
+        $student_response = $scoreCard->questions()->where('questions.id', '=', $request->qID)->get();
+
+
+        $studentAnswers = array();
+        foreach (Question::find($request->qID)->answers()->get() as $a) {
+            if($request->has('cb'.$a->pivot->id)){
+                array_push($studentAnswers, $a->pivot->id);
+                
+            }
+        }
+        // echo "count: ".count($studentAnswers);
+
+        if(count($studentAnswers) > 0){
+            // echo "detaching...<br>";
+            $scoreCard->questions()->detach($request->qID);
+            foreach ($studentAnswers as $a) {
+                // echo "attaching...".$a."<br>";
+                $scoreCard->questions()->attach($request->qID, array('answer_question_id' => $a));
+            }
+        }else{
+            $scoreCard->questions()->detach($request->qID);
+            $scoreCard->questions()->attach($request->qID, array('answer_question_id' => null));
+        }
+
+        if($request->has('next')){
+            echo "<br>go to next";
+            $next = $scoreCard->next();
+            if($next != null){
+                return view('quiz.take', ['question' => $next]);
+            }else{
+                return redirect('/finished_quiz');
+            }
+
+        }
+        if ($request->has('prev')) {
+            echo "<br>go to prev";
+        }
     }
 
     /**

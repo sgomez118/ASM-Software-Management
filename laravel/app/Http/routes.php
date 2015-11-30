@@ -42,13 +42,24 @@ Route::get('/dashboard', function (Request $request){
 	}
 });
 
-Route::get('/take_quiz', function ()
+Route::get('/take_quiz/{score_card_id}', 'ScoreCardController@take_quiz');
+//     , function ()
+// {
+//     return view('quiz.question_experimental'
+//     // return view('quiz.question_experimental', ['question' => ScoreCard::find(1)->load_questions()]);
+// });
+
+Route::post('/take_quiz', 'ScoreCardController@store');
+
+// Route::get('/take_quiz', function ()
+// {
+//     return view('quiz.question', ['questions' => ScoreCard::find(1)->load_questions()]);
+// });
+
+
+Route::get('/finished_quiz', function (Request $request)
 {
-	return view('quiz.question', ['questions' => Question::paginate(1)]);
-});
-Route::post('/finish_quiz', function (Request $request)
-{
-	# code...
+	return redirect('/t/wherepivot');
 });
 
 Route::get('/create_quiz', 'QuizController@create');
@@ -132,6 +143,7 @@ Route::get('/t', function ()
 Route::get('/t/wherepivot', function ()
 {
     $sc = ScoreCard::find(1);
+    echo "==============================================";
     foreach ($sc->questions()->get() as $q) {
         echo "<br>Question ".$q->id;
         $correct_answers = $q->answers()->select('answer_question.id')->wherePivot('is_correct', '=', 1)->get();
@@ -145,8 +157,9 @@ Route::get('/t/wherepivot', function ()
         foreach ($student_answers as $student_answer) {
             array_push($student_ids, $student_answer->answer_question_id);
         }
-        echo "<br>Correct".$correct_answers;
-        echo "<br>Student".$student_answers;
+        // echo "<br>Correct".$correct_answers;
+        // echo "<br>Student".$student_answers;
+        echo "<br>----------------------------------------------";
         if($correct_ids == $student_ids){
             echo "<br>Answers: Correct<br>";
             
@@ -175,10 +188,12 @@ Route::get('/t/quiz/gen_question', function ()
 
 Route::get('/t/quiz/scorecard', function ()
 {
-    $sc = ScoreCard::find(1);
-
-    echo "<br>Current: ".$sc->generateQuestions()->id;
-    $sc->store_my_questions();
+    $sc = ScoreCard::find(2);
+    if($sc->questions()->count() > 0){
+        echo "<br>Current: ".$sc->load_questions()->id;
+    }else{
+        echo "<br>Current: ".$sc->generate_questions()->id;
+    }
     $test = $sc->next();
     while($test != null){
         echo "<br>Next: ".$test->id;
@@ -238,7 +253,7 @@ Route::get('/scorecard/questions/{scorecardID}', function ($scorecardID)
 
 Route::get('/t/{id}', 'QuizController@generateQuestions');
 
-Route::get('/{user}', function($user){
-	return redirect('/');
-});
+// Route::get('/{user}', function($user){
+// 	return redirect('/');
+// });
 

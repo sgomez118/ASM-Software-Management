@@ -2,7 +2,7 @@
 
 @section('question')
 <H1>Quiz</H1>
-    {!! Form::open(array('url' => '/taks_quiz?page', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
+    {!! Form::open(array('url' => '/take_quiz', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
     @foreach($questions as $question)
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -18,7 +18,9 @@
     @endforeach
 
     <div class="row">
+    	<div class="col-md-12 text-center">
       {!! $questions->render() !!}
+      	</div>
     </div>
 
     <div class="form-group">

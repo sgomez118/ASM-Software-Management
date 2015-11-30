@@ -10,6 +10,10 @@ class AnswerQuestion extends Model
     protected $table = 'answer_question';
 
     public function score_cards(){
-        $this->belongsToMany('App\ScoreCard');
+        return $this->belongsToMany('App\ScoreCard');
     }
+
+    // public function questions(){
+    // 	return 
+    // }
 }

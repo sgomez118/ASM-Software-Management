@@ -4,16 +4,16 @@
         <title>AQS Home</title>
         <!-- CSS  -->
             <!-- Custom -->
-            <link rel="stylesheet" href="bootstrap/css/sb-admin.css">
-            <link rel="stylesheet" href="bootstrap/css/timeline.css">
+            <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/sb-admin.css') }}">
+            <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/timeline.css') }}">
 
             <!-- MetisMenu CSS -->
-            <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+            <link href="{{ URL::asset('../bower_components/metisMenu/dist/metisMenu.min.css') }}" rel="stylesheet">
             
             <!-- theme -->
-            <link rel="stylesheet" href="bootstrap/css/carousel.css">
-            <link rel="stylesheet" href="bootstrap/css/bootstrap.darkly.min.css">
-            <link rel="stylesheet" href="bootstrap/css/app.css">
+            <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/carousel.css') }}">
+            <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.darkly.min.css') }}">
+            <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/app.css') }}">
             
     </head>
     <body>
@@ -33,13 +33,14 @@
         </div>
 
         <!--  JavaScript  -->
-        <script src="bootstrap/js/jquery-1.11.3.min.js"></script>
-        <script src="bootstrap/js/moment.js"></script>
-        <script src="bootstrap/js/transition.js"></script>
-        <script src="bootstrap/js/collapse.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="bootstrap/js/bootstrap-datetimepicker.js"></script>
-        <script src="bootstrap/js/app.js"></script>
+        <script src="{{ URL::asset('bootstrap/js/jquery-1.11.3.min.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/moment.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/transition.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/collapse.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/bootstrap-datetimepicker.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/app.js"></script>
+
         <ul class='custom-menu'>
           <li data-action="first">First thing</li>
           <li data-action="second">Second thing</li>
