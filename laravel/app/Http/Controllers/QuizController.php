@@ -10,6 +10,7 @@ use App\Question;
 use App\User;
 use Auth;
 use DateTime;
+use App\ScoreCard;
 
 class QuizController extends Controller
 {
@@ -47,9 +48,9 @@ class QuizController extends Controller
         $quiz->title = $request->title;
         $quiz->quiz_time = $request->quiz_time;
         $formatedStart = DateTime::createFromFormat('m/d/Y h:i a', $request->start_date);
-        $quiz->start_date =  $formatedStart->format("Y-m-d H:i:s");
+            $quiz->start_date =  $formatedStart->format("Y-m-d H:i:s");
         $formatedEnd = DateTime::createFromFormat('m/d/Y H:i a', $request->end_date);
-        $quiz->end_date = $formatedEnd->format("Y-m-d H:i:s");
+            $quiz->end_date = $formatedEnd->format("Y-m-d H:i:s");
         $quiz->num_of_questions = $request->num_of_questions;
         $quiz->percentage_easy = $request->percentage_easy;
         $quiz->percentage_medium = $request->percentage_medium;
@@ -67,19 +68,18 @@ class QuizController extends Controller
     public function show($id)
     {
         return view('quiz.takeQuiz');
-        /*
-        $user = User::find($id);
+        /*$user = User::find($id);
         switch ($user->type) {
             case 'student':
-                return view('user.student.quizzes');
+                // return view('user.student.quizzes');
+            
             case 'lecturer':
                 return view('user.lecturer.quizzes');
             case 'chair':
                 return view('user.chair.quizzes');
             default:
                 return redirect('/');
-        }
-        */
+        }*/
     }
 
     /**
@@ -124,53 +124,4 @@ class QuizController extends Controller
         Quiz::destroy($id);
         return redirect('/quizzes');
     }
-
-
-    public function takeQuiz()
-    {
-
-    }
-
-    /**
-     * Returns a list of quiz qustions based on quiz id
-     * @param int $id
-     * @return list of question for quiz
-     */
-    public function generateQuestions($id)
-    {
-        $quiz = Quiz::find($id);
-        $allQuestions;
-        $easyInDB = Question::where('difficulty', 'easy')->get()->count();
-        $medInDB = Question::where('difficulty', 'medium')->get()->count();
-        $hardInDB = Question::where('difficulty', 'hard')->get()->count();
-
-
-        if($easyInDB != 0 && $quiz->num_of_easy != 0){
-            if($quiz->num_of_easy > $easyInDB){
-                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($easyInDB)->get();
-            }else{
-                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($quiz->num_of_easy)->get();
-            }
-        }
-
-        if($medInDB != 0 && $quiz->num_of_medium != 0){
-            if($quiz->num_of_medium > $medInDB){
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($medInDB)->get());
-            }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($quiz->num_of_medium)->get());
-            }
-        }
-
-        if($hardInDB != 0 && $quiz->num_of_hard != 0){
-            if($quiz->num_of_hard > $hardInDB){
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($hardInDB)->get());
-            }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($quiz->num_of_hard)->get());
-            }
-        }
-
-        return $allQuestions;
-
-    }
-
 }
