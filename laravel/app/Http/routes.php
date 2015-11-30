@@ -124,9 +124,66 @@ Route::get('/view_users', function() {
     $users = User::all();
     return view('user.view', ['users' => $users]);
 });
+
 Route::get('/t', function ()
 {
     return User::find(1)->scoreCards()->get();
+});
+Route::get('/t/wherepivot', function ()
+{
+    $sc = ScoreCard::find(1);
+    foreach ($sc->questions()->get() as $q) {
+        echo "<br>Question ".$q->id;
+        $correct_answers = $q->answers()->select('answer_question.id')->wherePivot('is_correct', '=', 1)->get();
+        $student_answers = $sc->answer_questions()->select('answer_question_id')->wherePivot('question_id', '=', $q->id)->get();
+        $correct_ids = array();
+        $student_ids = array();
+
+        foreach ($correct_answers as $correct_answer) {
+            array_push($correct_ids, $correct_answer->id);
+        }
+        foreach ($student_answers as $student_answer) {
+            array_push($student_ids, $student_answer->answer_question_id);
+        }
+        echo "<br>Correct".$correct_answers;
+        echo "<br>Student".$student_answers;
+        if($correct_ids == $student_ids){
+            echo "<br>Answers: Correct<br>";
+            
+        }else{
+            echo "<br>Answers: Incorrect<br>";
+            
+        }
+        foreach ($correct_answers as $a) {
+            echo "id ".$a->id;   
+            echo "<br>";
+        }
+        echo "----------------------------------------------";
+        echo "<br>Student Answers:<br>";
+        foreach ($student_answers as $a) {
+            echo "id ".$a->answer_question_id;   
+            echo "<br>";
+        }
+        echo "==============================================";
+    }
+});
+
+Route::get('/t/quiz/gen_question', function ()
+{
+    return Quiz::find(2)->generateQuestions()->count();  
+});
+
+Route::get('/t/quiz/scorecard', function ()
+{
+    $sc = ScoreCard::find(1);
+
+    echo "<br>Current: ".$sc->generateQuestions()->id;
+    $sc->store_my_questions();
+    $test = $sc->next();
+    while($test != null){
+        echo "<br>Next: ".$test->id;
+        $test = $sc->next();
+    }
 });
 
 Route::get('/scorecard/questions/{scorecardID}', function ($scorecardID)
@@ -134,43 +191,54 @@ Route::get('/scorecard/questions/{scorecardID}', function ($scorecardID)
     //Get ScoreCard
     $sc = ScoreCard::find($scorecardID);
 
-    $studentAnswers  = $sc->answer_questions()->get();
-   // echo $sc->questions()->get();
-    foreach ($studentAnswers as $answer) {
-        //echo $answer;
-        $qID = $answer->question_id;
-        $question = Question::find($qID);
+    //Get questions
+    $questions  = $sc->questions()->get();
 
-        switch ($question->type) {
-            case 'single-choice':
-                # code...
-                break;
-            
-            case 'multi-value':
-                foreach ($question->answers as $answer) {
-                    //is answer in student_answers?
+    foreach ($questions as $question) {
+        echo $question;
+        
+        foreach(Question::find($question->id)->answers as $a){
+             echo "<br>";
+            echo $a->pivot->id;
+            echo "<br>";
 
-                }
-                break;
-            
-            case 'free-response':
-                # code...
-                break;
-            
-            default:
-                # code...
-                break;
         }
+        echo "<br>";
+        echo "<br>";
+        //echo $answer;
+        //$qID = $answer->question_id;
+        // $question = Question::find($qID);
+
+        // switch ($question->type) {
+        //     case 'single-choice':
+        //         # code...
+        //         break;
+            
+        //     case 'multi-value':
+        //         foreach ($question->answers as $answer) {
+        //             //is answer in student_answers?
+
+        //         }
+        //         break;
+            
+        //     case 'free-response':
+        //         # code...
+        //         break;
+            
+        //     default:
+        //         # code...
+        //         break;
+        // }
 
         # code...
     }
 
-    return $sc->questions()->get();
+    // return $sc->questions()->get();
 });
 
 Route::get('/t/{id}', 'QuizController@generateQuestions');
 
-
 Route::get('/{user}', function($user){
-			return redirect('/');
+	return redirect('/');
 });
+

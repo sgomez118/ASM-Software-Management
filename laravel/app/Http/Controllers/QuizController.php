@@ -132,7 +132,10 @@ class QuizController extends Controller
     }
 
     /**
-     * Returns a list of quiz qustions based on quiz id
+     * Returns a list of quiz qustions based on quiz id.
+     * Currently assumes that questions are in quiz bank and if there aren't enough
+     * it returns all the questions that are in the bank.
+     * This can be improved with futher thought.
      * @param int $id
      * @return list of question for quiz
      */
@@ -152,6 +155,7 @@ class QuizController extends Controller
                 $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($quiz->num_of_easy)->get();
             }
         }
+        
 
         if($medInDB != 0 && $quiz->num_of_medium != 0){
             if($quiz->num_of_medium > $medInDB){
