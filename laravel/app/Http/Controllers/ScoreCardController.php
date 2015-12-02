@@ -90,8 +90,12 @@ class ScoreCardController extends Controller
             }
 
         }
-        if ($request->has('prev')) {
+        if ($request->has('prev')){
             echo "<br>go to prev";
+            $prev = $scoreCard->prev();
+            if($prev != null){
+                return view('quiz.take', ['question' => $prev]);
+            }
         }
     }
 

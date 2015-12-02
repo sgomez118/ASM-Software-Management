@@ -43,19 +43,8 @@ Route::get('/dashboard', function (Request $request){
 });
 
 Route::get('/take_quiz/{score_card_id}', 'ScoreCardController@take_quiz');
-//     , function ()
-// {
-//     return view('quiz.question_experimental'
-//     // return view('quiz.question_experimental', ['question' => ScoreCard::find(1)->load_questions()]);
-// });
 
 Route::post('/take_quiz', 'ScoreCardController@store');
-
-// Route::get('/take_quiz', function ()
-// {
-//     return view('quiz.question', ['questions' => ScoreCard::find(1)->load_questions()]);
-// });
-
 
 Route::get('/finished_quiz', function (Request $request)
 {

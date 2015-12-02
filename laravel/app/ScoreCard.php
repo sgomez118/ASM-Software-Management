@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScoreCard extends Model
 {
-    protected $fillable = ['quiz_id', 'user_id', 'score', 'is_taken'];
+    protected $fillable = ['quiz_id', 'user_id', 'score', 'is_available'];
 
     private $my_questions;
     private $current_question = 0;
@@ -35,8 +35,7 @@ class ScoreCard extends Model
      * @param int $id
      * @return list of question for quiz
      */
-    public function generate_questions()
-    {
+    public function generate_questions(){
         $quiz = Quiz::find($this->quiz_id);
         $allQuestions;
         $easyInDB = Question::where('difficulty', 'easy')->get()->count();
@@ -86,8 +85,7 @@ class ScoreCard extends Model
         return $this->my_questions[0];
     }
 
-    public function next()
-    {
+    public function next(){
         if(($this->current_question + 1) >= $this->my_questions->count()){
             return null;
         }else{
@@ -95,12 +93,20 @@ class ScoreCard extends Model
         }
     }
 
-    public function prev()
-    {
+    public function prev(){
         if(($this->current_question - 1) < 0){
             return null;
         }else{
             return $this->my_questions[--$this->current_question];
+        }
+    }
+
+    public function goto_index($index){
+        if($index < 0 || $index >= $this->my_questions->count()){
+            return null;
+        }else{
+            $this->current_question = $index;
+            return $this->my_questions[$this->current_question];
         }
     }
 
