@@ -9,13 +9,23 @@
       </div>
       <input type="hidden" name="qID" value="{{ $question->id }}">
       <div class="panel-body">
+      <ol>
         @foreach($question->answers as $answer)
-          <label><input type="checkbox" data-id="{{$answer->pivot->id}}" name='cb{{$answer->pivot->id}}' class="answers" value="1">  {{$answer->text}}</label>
+            <label>
+          @if($selected_answers->contains($answer->pivot->id))
+          <input type="checkbox" data-id="{{$answer->pivot->id}}" name='cb{{$answer->pivot->id}}' class="answers" value="1" checked> 
+          @else
+          <input type="checkbox" data-id="{{$answer->pivot->id}}" name='cb{{$answer->pivot->id}}' class="answers" value="1"> 
+
+          @endif
+          {{ $answer->text }}
+          </label>
+          <!-- <li type="A"> </li> -->
           <br>
         @endforeach
+      </ol>
       </div>   
     </div> {{-- end panel --}}
-
 
     <div class="form-group">
       <div class="col-md-6">

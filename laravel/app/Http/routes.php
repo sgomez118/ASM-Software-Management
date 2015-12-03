@@ -129,7 +129,10 @@ Route::get('/t', function ()
 {
     return User::find(1)->scoreCards()->get();
 });
-Route::get('/t/wherepivot', function ()
+
+
+Route::get('/t/wherepivot', "ScoreCardController@grade_quiz");
+Route::get('/t/wherepivo', function ()
 {
     $sc = ScoreCard::find(1);
     echo "==============================================";

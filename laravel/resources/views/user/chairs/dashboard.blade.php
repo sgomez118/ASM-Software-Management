@@ -3,19 +3,19 @@
 @section('content')
 <div class="container" role="main">
 <h1>Welcome {{ Auth::user()->first_name }}!</h1>
-	<h2>Classes</h2>
+	<h2>Subjects</h2>
 	<div class="panel panel-default">
 	<table class="table table-striped">
 		<thead>
 			<td>Class</td>
-			<td>Professor</td>
+			<td># of Professor</td>
 			<td># of Students</td>
 		</thead>
 		<tbody>
 			@foreach($subjects as $subject)
 				<tr data-lecturerID="{{ $subject->lecturer_id }}" data-subjectID="{{ $subject->id }}">
 					<td>{{ $subject->name }}</td>
-					<td>{{ App\User::find($subject->lecturer_id)->name }}</td>
+					<td>{{ $subject->lecturers()->count() }}</td>
 					<td>{{ $subject->users()->count() }}</td>
 				</tr>
 			@endforeach

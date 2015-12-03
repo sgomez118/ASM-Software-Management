@@ -27,6 +27,7 @@ class Quiz extends Model
         return $this->hasMany('App\ScoreCard');
     }
     
+    //This funtion yeilds the quiz creator
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -42,7 +43,7 @@ class Quiz extends Model
      */
     public function generateQuestions()
     {
-        $quiz = $this;//Quiz::find($id);
+        $quiz = $this;
         $allQuestions;
         $easyInDB = Question::where('difficulty', 'easy')->get()->count();
         $medInDB = Question::where('difficulty', 'medium')->get()->count();

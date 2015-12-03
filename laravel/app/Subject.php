@@ -15,4 +15,8 @@ class Subject extends Model
     public function quizzes(){
     	return $this->hasMany('App\Quiz');
     }
+
+    public function lecturers(){
+    	return $this->users()->where('type', 'lecturer');
+    }
 }

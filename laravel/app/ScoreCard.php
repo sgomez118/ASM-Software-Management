@@ -24,7 +24,7 @@ class ScoreCard extends Model
     }
 
     public function answer_questions(){
-        return $this->belongsToMany('App\AnswerQuestion', 'student_answers');
+        return $this->belongsToMany('App\AnswerQuestion', 'student_answers')->withPivot('answer_question_id');
     }
 
     /**
