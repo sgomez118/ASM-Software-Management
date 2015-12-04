@@ -28,63 +28,42 @@ class ScoreCard extends Model
     }
 
     /**
-     * Returns a list of quiz qustions based on quiz id.
-     * Currently assumes that questions are in quiz bank and if there aren't enough
-     * it returns all the questions that are in the bank.
-     * This can be improved with futher thought.
-     * @param int $id
-     * @return list of question for quiz
-     */
-    public function generate_questions(){
+      * This function is called when a student starts the test.
+      * If the test is already started, load_questions() should be called
+      * else a new set of questions will be loaded into memory.
+      * @return question
+    */
+    public function get_questions(){
         $quiz = Quiz::find($this->quiz_id);
-        $allQuestions;
-        $easyInDB = Question::where('difficulty', 'easy')->get()->count();
-        $medInDB = Question::where('difficulty', 'medium')->get()->count();
-        $hardInDB = Question::where('difficulty', 'hard')->get()->count();
-
-
-        if($easyInDB != 0 && $quiz->num_of_easy != 0){
-            if($quiz->num_of_easy > $easyInDB){
-                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($easyInDB)->get();
-            }else{
-                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($quiz->num_of_easy)->get();
-            }
-        }
-        
-
-        if($medInDB != 0 && $quiz->num_of_medium != 0){
-            if($quiz->num_of_medium > $medInDB){
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($medInDB)->get());
-            }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($quiz->num_of_medium)->get());
-            }
-        }
-
-        if($hardInDB != 0 && $quiz->num_of_hard != 0){
-            if($quiz->num_of_hard > $hardInDB){
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($hardInDB)->get());
-            }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($quiz->num_of_hard)->get());
-            }
-        }
-
-        $this->my_questions = $allQuestions;
+        $this->my_questions = $quiz->generate_questions();
         $this->store_my_questions();
         return $this->my_questions[0];
     }
 
+    /**
+      * This function stores the generated questions.
+    */
     public function store_my_questions(){
         foreach ($this->my_questions->distinct() as $question) {
-            echo "Storing: ".$question->id;
             $this->questions()->attach($question->id);
         }
     }
 
+    /**
+      * This function loads questions that was stored in memory.
+      * This is used if the user refreshes the page.
+      * @return question
+    */
     public function load_questions(){
         $this->my_questions = $this->questions()->groupBy('id')->get();
         return $this->my_questions[0];
     }
 
+
+    /**
+      * This function returns the next question of the quiz
+      *  @return question
+    */
     public function next(){
         if(($this->current_question + 1) >= $this->my_questions->count()){
             return null;
@@ -93,6 +72,10 @@ class ScoreCard extends Model
         }
     }
 
+    /**
+      * This function returns the previous question of the quiz
+      * @return question
+    */
     public function prev(){
         if(($this->current_question - 1) < 0){
             return null;
@@ -101,6 +84,11 @@ class ScoreCard extends Model
         }
     }
 
+    /**
+      * This function returns the question at the selected index position
+      * @param index the question position
+      * @return question
+    */
     public function goto_index($index){
         if($index < 0 || $index >= $this->my_questions->count()){
             return null;

@@ -38,11 +38,13 @@ class ScoreCardController extends Controller
         if($scoreCard->questions()->count() > 0){
             $first_question = $scoreCard->load_questions();
         }else{
-            $first_question = $scoreCard->generate_questions();
+            $first_question = $scoreCard->get_questions();
         }
-        $request->session()->put('score_card', $scoreCard);//
+        $request->session()->put('score_card', $scoreCard);
 
-        return view('quiz.take', ['question' => $first_question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $first_question->id)->get()]);
+        return view('scorecard.take', ['question' => $first_question, 
+            'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id',
+            $first_question->id)->get()]);
     }
 
     /**
@@ -89,7 +91,6 @@ class ScoreCardController extends Controller
             }
 
         }
-
 
         if ($request->has('prev')){
             $question = $scoreCard->prev();

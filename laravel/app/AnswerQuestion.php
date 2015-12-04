@@ -13,7 +13,4 @@ class AnswerQuestion extends Model
         return $this->belongsToMany('App\ScoreCard');
     }
 
-    // public function questions(){
-    // 	return 
-    // }
 }

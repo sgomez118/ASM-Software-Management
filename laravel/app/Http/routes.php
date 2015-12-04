@@ -19,58 +19,76 @@ use App\ScoreCard;
 |
 */
 
+//[OK]
 Route::get('/', function () {
     return view('landing');
 });
 
+//[CHECK THIS]
 Route::get('/all_students', 'StudentController@index');
 
+//[OK]
 Route::get('/dashboard', function (Request $request){
-	if (Auth::check()){
-		switch (Auth::user()->type) {
-			case 'student':
-				return view('user.students.dashboard');
-			case 'lecturer':
-				return view('user.professors.dashboard');
-			case 'chair':
-				return view('user.chairs.dashboard', ['subjects' => Subject::all()]);
-			default:
-				return redirect('/');
-			}
-	}else{
-		return redirect('/');
-	}
+    if (Auth::check()){
+        switch (Auth::user()->type) {
+            case 'student':
+                return view('user.students.dashboard');
+            case 'lecturer':
+                return view('user.professors.dashboard');
+            case 'chair':
+                return view('user.chairs.dashboard', ['subjects' => Subject::all()]);
+            default:
+                return redirect('/');
+            }
+    }else{
+        return redirect('/');
+    }
 });
 
+//[MODIFY THIS]
 Route::get('/take_quiz/{score_card_id}', 'ScoreCardController@take_quiz');
 
+//[MODIFY THIS]
 Route::post('/take_quiz', 'ScoreCardController@store');
 
+//[MODIFY THIS]
 Route::get('/finished_quiz', function (Request $request)
 {
-	return redirect('/t/wherepivot');
+    return redirect('/t/wherepivot');
 });
 
+//[MODIFY THIS ROUTE NAME]
 Route::get('/create_quiz', 'QuizController@create');
+//[MODIFY THIS ROUTE NAME]
 Route::post('/save_quiz', 'QuizController@store');
 
+//[CHECK THIS]
 Route::get('/classes', 'CourseController@index');
 
+//[CHECK THIS]
 Route::get('/users', [ 'middleware' => 'auth', 'uses' => 'UserController@index' ]);
 
+//[CHECK THIS]
 Route::get('/questions', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@index' ]);
 
+//[CHECK THIS]
 Route::get('/questions/{id}', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@show' ]);
 
+//[MODIFY THIS]
 Route::get('/student/{student_id}/scores', 'StudentController@scores');
 
+//[DELETE THIS]
 Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
 
+//[MAKE RESTFUL]
 Route::post('/save_question', 'QuestionController@store');
 
+//[CHECK ROUTES]
 Route::resource('student', 'StudentController');
+//[CHECK ROUTES]
 Route::resource('quiz', 'QuizController');
 
+//[DELETE THIS]
 Route::get('/test', function (){
     $scoreCard = ScoreCard::find(1);
     // $answers = ScoreCard::find(1)->answer_questions()->get();
@@ -125,13 +143,16 @@ Route::get('/view_users', function() {
     return view('user.view', ['users' => $users]);
 });
 
+//[DELETE THIS]
 Route::get('/t', function ()
 {
     return User::find(1)->scoreCards()->get();
 });
 
-
+//[DELETE THIS]
 Route::get('/t/wherepivot', "ScoreCardController@grade_quiz");
+
+//[DELETE THIS]
 Route::get('/t/wherepivo', function ()
 {
     $sc = ScoreCard::find(1);
@@ -173,11 +194,14 @@ Route::get('/t/wherepivo', function ()
     }
 });
 
+//[DELETE THIS]
 Route::get('/t/quiz/gen_question', function ()
 {
     return Quiz::find(2)->generateQuestions()->count();  
 });
 
+
+//[DELETE THIS]
 Route::get('/t/quiz/scorecard', function ()
 {
     $sc = ScoreCard::find(2);
@@ -243,9 +267,11 @@ Route::get('/scorecard/questions/{scorecardID}', function ($scorecardID)
     // return $sc->questions()->get();
 });
 
+//[DELETE/REPLACE THIS]
 Route::get('/t/{id}', 'QuizController@generateQuestions');
 
-// Route::get('/{user}', function($user){
-// 	return redirect('/');
-// });
+//[OK]
+Route::get('/{user}', function($user){
+	return redirect('/');
+});
 

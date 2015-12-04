@@ -41,42 +41,40 @@ class Quiz extends Model
      * @param int $id
      * @return list of question for quiz
      */
-    public function generateQuestions()
+    public function generate_questions()
     {
-        $quiz = $this;
         $allQuestions;
         $easyInDB = Question::where('difficulty', 'easy')->get()->count();
         $medInDB = Question::where('difficulty', 'medium')->get()->count();
         $hardInDB = Question::where('difficulty', 'hard')->get()->count();
 
 
-        if($easyInDB != 0 && $quiz->num_of_easy != 0){
-            if($quiz->num_of_easy > $easyInDB){
+        if($easyInDB != 0 && $this->num_of_easy != 0){
+            if($this->num_of_easy > $easyInDB){
                 $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($easyInDB)->get();
             }else{
-                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($quiz->num_of_easy)->get();
+                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($this->num_of_easy)->get();
             }
         }
         
 
-        if($medInDB != 0 && $quiz->num_of_medium != 0){
-            if($quiz->num_of_medium > $medInDB){
+        if($medInDB != 0 && $this->num_of_medium != 0){
+            if($this->num_of_medium > $medInDB){
                 $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($medInDB)->get());
             }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($quiz->num_of_medium)->get());
+                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($this->num_of_medium)->get());
             }
         }
 
-        if($hardInDB != 0 && $quiz->num_of_hard != 0){
-            if($quiz->num_of_hard > $hardInDB){
+        if($hardInDB != 0 && $this->num_of_hard != 0){
+            if($this->num_of_hard > $hardInDB){
                 $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($hardInDB)->get());
             }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($quiz->num_of_hard)->get());
+                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($this->num_of_hard)->get());
             }
         }
 
         return $allQuestions;
-
     }
     
 }
