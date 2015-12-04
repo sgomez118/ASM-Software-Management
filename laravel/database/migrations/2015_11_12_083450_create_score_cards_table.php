@@ -15,7 +15,9 @@ class CreateScoreCardsTable extends Migration
         Schema::create('score_cards', function (Blueprint $table) {
             $table->increments('id');
             $table->double('score');
-            $table->boolean('is_taken');
+            $table->boolean('is_available');
+            $table->double('free_response_score');
+            $table->double('multi_choice_score');
             $table->integer('quiz_id')->unsigned();
             $table->integer('user_id')->unsigned();
             

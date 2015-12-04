@@ -15,12 +15,15 @@ class CreateStudentAnswersTable extends Migration
         Schema::create('student_answers', function (Blueprint $table) {
             $table->integer('answer_question_id')->unsigned();
             $table->integer('score_card_id')->unsigned();
+            $table->integer('free_response_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('answer_question_id')
                     ->references('id')->on('answer_question');
             $table->foreign('score_card_id')
                     ->references('id')->on('score_cards');
+            $table->foreign('free_response_id')
+                    ->references('id')->on('free_response');
         });
     }
 

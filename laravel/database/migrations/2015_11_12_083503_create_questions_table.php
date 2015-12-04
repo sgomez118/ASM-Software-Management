@@ -16,10 +16,11 @@ class CreateQuestionsTable extends Migration
             $table->softDeletes();
             $table->increments('id')->unsigned();
             $table->integer('subject_id')->unsigned();
-            $table->string('prompt');
+            $table->longtext('prompt');
             $table->string('difficulty');
             $table->string('type');
             $table->binary('image')->nullable();
+            $table->double('total_score');
             $table->timestamps();
             
             $table->foreign('subject_id')

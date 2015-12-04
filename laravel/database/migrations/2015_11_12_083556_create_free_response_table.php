@@ -12,7 +12,18 @@ class CreateFreeResponseTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('free_response', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('question_id')->unsigned();
+            $table->integer('graded_by')->unsigned();
+            $table->longtext('response');
+            $table->double('actual_score');
+            
+            $table->foreign('question_id')
+                    ->references('id')->on('questions');
+            $table->foreign('graded_by')
+                    ->references('id')->on('users');
+        });
     }
 
     /**
@@ -22,6 +33,6 @@ class CreateFreeResponseTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('free_response');
     }
 }

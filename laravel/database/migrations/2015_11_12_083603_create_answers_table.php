@@ -14,7 +14,7 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('text');
+            $table->longtext('text');
             $table->binary('image')->nullable();
             $table->timestamps();
         });

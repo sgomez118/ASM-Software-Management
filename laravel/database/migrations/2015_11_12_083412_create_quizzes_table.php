@@ -20,11 +20,12 @@ class CreateQuizzesTable extends Migration
             $table->string('title');
             $table->integer('quiz_time');
             $table->integer('num_of_questions');
+            $table->integer('num_of_free_response');
             $table->dateTime('start_date');
             $table->dateTime('end_date'); 
-            $table->double('percentage_easy');
-            $table->double('percentage_medium');
-            $table->double('percentage_hard');
+            $table->double('num_of_easy');
+            $table->double('num_of_medium');
+            $table->double('num_of_hard');
             
             $table->foreign('subject_id')
                     ->references('id')->on('subjects');
