@@ -5,12 +5,12 @@
   <div class="content">
   @include('scorecard._question')
   @include('scorecard._instructions')
-  @if(Auth::user()->session()->has('agreed'))
+  @if(Session::has('scorecardID'))
   	<?php $goto = 'question' ?>
-  @eles
+  @else
   	<?php $goto = 'instructions' ?>
   @endif
-    @section('question')
+    @section($goto)
     @show
   </div>
 </div>

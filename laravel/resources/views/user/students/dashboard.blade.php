@@ -63,7 +63,7 @@
 											<td>{{ App\Subject::find(App\Quiz::find($scorecard->quiz_id)->subject_id)->name }}</td>
 											<td>{{ App\Quiz::find($scorecard->quiz_id)->title }}</td>
 											<td>{{ App\Quiz::find($scorecard->quiz_id)->quiz_time }} mins</td>
-											<td><a href="/take_quiz/{{ $scorecard->id }}">Take Quiz</a></td>
+											<td><a href="/instructions/{{ $scorecard->id }}">Take Quiz</a></td>
 										</tr>
 									@endif
 								@endforeach
