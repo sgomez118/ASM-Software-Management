@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 use App\Answer;
 use App\Question;
 
@@ -13,83 +14,10 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        $json = '{
-            "questions":[{
-                "prompt" : "Which of the following operations are NOT part of the Abstract Data Type Stack?",
-                "difficulty": "easy", 
-                "type": "multiple", 
-                "total_score" : "1",
-                "subject_id": "1",
-                "image": null, 
-                
-                "answers":[
-                {
-                    "text": "push()", 
-                    "image": null, 
-                    "is_correct" : "false"
-                },
-                {
-                    "text": "reverse()", 
-                    "image": null, 
-                    "is_correct" : "true"
-                },
-                {
-                    "text": "getFirstElement()", 
-                    "image": null, 
-                    "is_correct" : "true"
-                },
-                {
-                    "text": "pop()", 
-                    "image": null, 
-                    "is_correct" : "false"
-                },
-                {
-                    "text": "rotate", 
-                    "image": null, 
-                    "is_correct" : "true"
-                }
-
-                ]
-            },
-            
-            {
-                "prompt" : "What is the storage policy for a Stack?",
-                "difficulty": "easy", 
-                "type": "single", 
-                "total_score" : "1",
-                "subject_id": "1",
-                "image": null, 
-                "answers":[
-                {
-                    "text": "LIFO", 
-                    "image": null, 
-                    "is_correct" : "true"
-                },
-                {
-                    "text": "FIFO", 
-                    "image": null, 
-                    "is_correct" : "false"
-                },
-                {
-                    "text": "NEMO", 
-                    "image": null, 
-                    "is_correct" : "false"
-                },
-                {
-                    "text": "NOMO", 
-                    "image": null, 
-                    "is_correct" : "false"
-                },
-                {
-                    "text": "LIMO", 
-                    "image": null, 
-                    "is_correct" : "false"
-                }
-
-                ]
-            }
-        ]}';
+        $json = Storage::get('questions.json');
+        $this->command->info($json);
         $questions = json_decode($json, true);
+
         foreach($questions['questions'] as $question_keys => $question){
             $this->command->info("Adding Question".$question_keys."..."); 
     		$answers = $question['answers'];
