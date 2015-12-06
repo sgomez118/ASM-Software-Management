@@ -3,7 +3,7 @@
     {!! Form::open(array('url' => '/take_quiz', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        {{$question->prompt}}
+        <strong>{{$question->prompt}}</strong>
       </div>
       <input type="hidden" name="qID" value="{{ $question->id }}">
       <div class="panel-body">

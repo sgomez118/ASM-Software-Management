@@ -4,7 +4,7 @@
 <div class="container">
   <div class="content">
   @include('scorecard._question')
-    @section(question)
+    @section('question')
     @show
   </div>
 </div>

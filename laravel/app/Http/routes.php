@@ -64,7 +64,7 @@ Route::get('/dashboard', function (Request $request){
 Route::get('/all_students', 'StudentController@index');
 
 Route::get('/instructions/{scorecardID}', function($scorecardID){ 
-    Session::put('scorecardID', $scorecardID); 
+    session(['scorecardID'=> $scorecardID]); 
     return view('scorecard._instructions'); 
 });
 
@@ -96,7 +96,8 @@ Route::post('/take_quiz', 'ScoreCardController@store');
 //[MODIFY THIS]
 Route::get('/finished_quiz', function (Request $request)
 {
-    return redirect('/t/wherepivot');
+   $sc = ScoreCard::find(session('score_card')->id);
+   return view('scorecard.finished', ['scorecard' => $sc]);
 });
 
 //[MODIFY THIS]
@@ -191,13 +192,8 @@ Route::get('/scorecard/questions/{scorecardID}', function ($scorecardID)
     // return $sc->questions()->get();
 });
 
-//[DELETE/REPLACE THIS]
-Route::get('/t/{id}', 'QuizController@generateQuestions');
 
-//[OK]
-Route::get('/{user}', function($user){
-    return redirect('/');
-});
+
 
 Route::get('/view_users', function() {
     $users = User::all();
@@ -241,8 +237,17 @@ Route::get('/t', function ()
     return User::find(1)->scoreCards()->get();
 });
 
+Route::get('/test/genQ', function ()
+{
+    return Quiz::find(2)->generate_questions();
+});
+
+
 //[DELETE THIS]
 Route::get('/t/wherepivot', "ScoreCardController@grade_quiz");
+
+//[DELETE/REPLACE THIS]
+Route::get('/t/{id}', 'QuizController@generateQuestions');
 
 //[DELETE THIS]
 Route::get('/t/wherepivo', function ()
@@ -309,3 +314,7 @@ Route::get('/t/quiz/scorecard', function ()
     }
 });
 
+//[OK]
+Route::get('/{user}', function($user){
+    return redirect('/');
+});
