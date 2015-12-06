@@ -32,15 +32,14 @@ class ScoreCardController extends Controller
         //
     }
 
-    public function take_quiz(Request $request, $score_card_id){
-        $scoreCard = ScoreCard::find($score_card_id);
+    public function take_quiz(){
+        $scoreCard = ScoreCard::find("scorecardID");
         $first_question;
         if($scoreCard->questions()->count() > 0){
             $first_question = $scoreCard->load_questions();
         }else{
             $first_question = $scoreCard->get_questions();
         }
-        $request->session()->put('score_card', $scoreCard);
 
         return view('scorecard.take', ['question' => $first_question, 
             'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id',

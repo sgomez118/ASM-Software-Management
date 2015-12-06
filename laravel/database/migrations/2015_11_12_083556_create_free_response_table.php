@@ -13,7 +13,7 @@ class CreateFreeResponseTable extends Migration
     public function up()
     {
         Schema::create('free_response', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->integer('question_id')->unsigned();
             $table->integer('graded_by')->unsigned();
             $table->longtext('response');

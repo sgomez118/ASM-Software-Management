@@ -13,7 +13,7 @@ class CreateQuestionsQuizTable extends Migration
     public function up()
     {
         Schema::create('question_quiz', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->integer('quiz_id')->unsigned();
             $table->integer('question_id')->unsigned();
             //Defining Foreign Relationships
