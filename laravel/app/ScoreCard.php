@@ -30,7 +30,7 @@ class ScoreCard extends Model
     public function selected_answers($question_id)
     {
         return $this->answer_questions()->where('answer_question.question_id',
-            $first_question->id)->get();
+            $question_id)->get();
     }
 
     /**
@@ -50,7 +50,7 @@ class ScoreCard extends Model
       * This function stores the generated questions.
     */
     public function store_my_questions(){
-        foreach ($this->my_questions->distinct() as $question) {
+        foreach ($this->my_questions as $question) {
             $this->questions()->attach($question->id);
         }
     }

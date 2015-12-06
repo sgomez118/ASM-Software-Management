@@ -15,7 +15,7 @@ class QuestionSeeder extends Seeder
     {
         $json = '{
             "questions":[{
-                "prompt" : "Which of the following operations are NOT part of the Abstract Data Type Stack? ",
+                "prompt" : "Which of the following operations are NOT part of the Abstract Data Type Stack?",
                 "difficulty": "easy", 
                 "type": "multiple", 
                 "total_score" : "1",
@@ -59,7 +59,6 @@ class QuestionSeeder extends Seeder
                 "total_score" : "1",
                 "subject_id": "1",
                 "image": null, 
-                
                 "answers":[
                 {
                     "text": "LIFO", 
@@ -102,12 +101,13 @@ class QuestionSeeder extends Seeder
         	}
 
     		$this->command->info("Adding answers..."); 
+            $answer_ids = array();
 			foreach ($answers as $answer_index => $answer) {
     			$this->command->info("Adding ".($answer_index + 1)."..."); 
 				$a = new Answer($answer);
 				$a->save();
-				$q->answers()->sync([$a->id]);
-			}
+                $q->answers()->save($a, ['is_correct' => ($answer['is_correct']==="false" ? 0 : 1)]);
+            }
             $this->command->info(""); 
         }
     }
