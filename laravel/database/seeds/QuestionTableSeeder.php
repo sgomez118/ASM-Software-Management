@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class QuestionTableSeeder extends Seeder
 {
@@ -114,7 +116,7 @@ class QuestionTableSeeder extends Seeder
             
             
             ]
-}';
+        }';
             
             
             $questions = json_decode($string, true);
