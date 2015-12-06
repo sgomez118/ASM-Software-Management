@@ -30,13 +30,9 @@ class QuestionController extends Controller
     public function create(Request $request)
     {
         $currentType = $request->user()->type;
-        if ( $request->user()->type == "lecturer" || 
-             $request->user()->type == "chair" )
-        {
+        if ( $request->user()->type == "lecturer" || $request->user()->type == "chair" ){
             return view('question.create');
-        }
-        else
-        {
+        }else{
             return "Hey! You aren't allowed to create questions because you are a $currentType and not a lecturer!";
         }
     }
