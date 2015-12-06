@@ -65,7 +65,7 @@ Route::get('/all_students', 'StudentController@index');
 
 Route::get('/instructions/{scorecardID}', function($scorecardID){ 
     Session::put('scorecardID', $scorecardID); 
-    return view('scorecard.take'); 
+    return view('scorecard._instructions'); 
 });
 
 Route::post('/quiz_agree', 'ScoreCardController@take_quiz');

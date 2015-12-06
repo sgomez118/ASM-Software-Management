@@ -4,13 +4,7 @@
 <div class="container">
   <div class="content">
   @include('scorecard._question')
-  @include('scorecard._instructions')
-  @if(Session::has('scorecardID'))
-  	<?php $goto = 'question' ?>
-  @else
-  	<?php $goto = 'instructions' ?>
-  @endif
-    @section($goto)
+    @section(question)
     @show
   </div>
 </div>
