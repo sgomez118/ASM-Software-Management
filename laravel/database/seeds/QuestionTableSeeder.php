@@ -11,6 +11,6 @@ class QuestionTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
     }
 }

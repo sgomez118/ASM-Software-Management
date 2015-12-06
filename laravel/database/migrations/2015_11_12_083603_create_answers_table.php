@@ -13,7 +13,7 @@ class CreateAnswersTable extends Migration
     public function up()
     {
         Schema::create('answers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->longtext('text');
             $table->binary('image')->nullable();
             $table->timestamps();
