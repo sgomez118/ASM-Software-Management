@@ -13,7 +13,7 @@ class CreateSubjectUserTable extends Migration
     public function up()
     {
         Schema::create('subject_user', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->integer('subject_id')->unsigned();
             $table->integer('user_id')->unsigned();
             

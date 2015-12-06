@@ -13,7 +13,7 @@ class CreateAnswerQuestionTable extends Migration
     public function up()
     {
         Schema::create('answer_question', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->integer('question_id')->unsigned();
             $table->integer('answer_id')->unsigned();
             $table->boolean('is_correct');

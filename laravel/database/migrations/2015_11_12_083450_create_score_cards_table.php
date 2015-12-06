@@ -13,7 +13,7 @@ class CreateScoreCardsTable extends Migration
     public function up()
     {
         Schema::create('score_cards', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->double('score');
             $table->boolean('is_available');
             $table->double('free_response_score');
