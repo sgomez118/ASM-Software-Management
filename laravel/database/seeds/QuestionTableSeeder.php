@@ -11,7 +11,14 @@ class QuestionTableSeeder extends Seeder
      */
     public function run()
     {
-        // string is a JSON that contains ALL of the questions we want to add to the database
+        // DB::table('classes')->insert([
+        //     'name' => str_random(10),
+        //     'term' => str_random(10).'@gmail.com',
+        //     'lecturer_id' => 1,
+        // ]);
+
+        $this->command->info('test');
+         // string is a JSON that contains ALL of the questions we want to add to the database
         
         /** Question object has the following attributes: 
                 subject_id
@@ -114,7 +121,7 @@ class QuestionTableSeeder extends Seeder
             
             
             ]
-}';
+                    }';
             
             
             $questions = json_decode($string, true);
