@@ -42,8 +42,7 @@ class ScoreCardController extends Controller
         }
 
         return view('scorecard.take', ['question' => $first_question, 
-            'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id',
-            $first_question->id)->get()]);
+            'selected_answers' => $scoreCard->selected_answers($first_question->id)]);
     }
 
     /**

@@ -27,6 +27,12 @@ class ScoreCard extends Model
         return $this->belongsToMany('App\AnswerQuestion', 'student_answers')->withPivot('answer_question_id');
     }
 
+    public function selected_answers($question_id)
+    {
+        return $this->answer_questions()->where('answer_question.question_id',
+            $first_question->id)->get();
+    }
+
     /**
       * This function is called when a student starts the test.
       * If the test is already started, load_questions() should be called
