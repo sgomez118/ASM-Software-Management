@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <div class="container">
+            <div class="content">
+                <H1>The Users</H1>
+                <!-- 
+                    Iterates through the questions passed by the routes. 
+                    Prints the prompt, difficulty and all the answers. 
+
+                    foreach - laravel special function for blade
+                    /{/{/}/} - equivalent of php echo. 
+                        Note: there are others that can be used.
+                -->
+                <?php foreach($users as $user): ?>
+                    Name: <?php echo e($user->name); ?> <br>
+                    Email: <?php echo e($user->email); ?> <br>
+                    Type: <?php echo e($user->type); ?> <br>
+                    <br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+

@@ -1,0 +1,46 @@
+<?php /* Displays all the questions */ ?>
+
+
+<?php $__env->startSection('content'); ?>
+        <div class="container">
+            <div class="content">
+                <H1>Quiz Questions</H1>
+                <ol>
+                  <?php foreach($questions as $question): ?>
+                   <li> <div class="panel panel-default">
+                   <div class="panel-heading clearfix">
+                      <?php echo e($question->prompt); ?>
+
+                      <div class="pull-right">
+                       <?php if( $question->difficulty == "easy" ): ?>
+                       <span class="label label-info">Easy</span>
+                       <?php elseif( $question->difficulty == "medium" ): ?>
+                       <span class="label label-warning">Medium</span>
+                       <?php else: ?>
+                       <span class="label label-danger">Hard</span>
+                       <?php endif; ?>
+                     </div>
+                   </div>
+                   <div class="panel-body">
+                     <ol style="list-style-type: lower-alpha"> 
+                       <?php foreach($question->answers as $answer): ?>
+                       <li> 
+                            <?php if($answer->pivot->is_correct == TRUE): ?>
+                             <span class="label label-success"> <?php echo e($answer->text); ?> </span>
+                            <?php else: ?>
+                                <?php echo e($answer->text); ?>
+
+                            <?php endif; ?>
+                       </li>
+                       <?php endforeach; ?>
+                     </ol>
+                   </div>   
+                   
+                 </div> <?php /* end panel */ ?> </li>
+                 <?php endforeach; ?>
+               </ol>
+            </div>
+        </div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

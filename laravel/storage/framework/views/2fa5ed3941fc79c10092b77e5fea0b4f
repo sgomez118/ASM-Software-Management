@@ -1,0 +1,29 @@
+<?php /* Display ScoreCard information */ ?>
+<?php /* Need to pass in a score card to this view */ ?>
+
+<html>
+    <div class="container">
+        <div class="content">
+            <H1>Score Card Information</H1>
+                
+            ID = <?php echo e($scoreCard->id); ?> <br>
+            QuizID = <?php echo e($scoreCard->quiz_id); ?><br>
+            UserID = <?php echo e($scoreCard->user_id); ?><br>
+            Score = <?php echo e($scoreCard->score); ?> <br>
+            Status = <?php echo e($scoreCard->is_taken); ?> <br>
+            <br>
+            
+            <H2> Student Answers: </H2> <br>
+            <?php foreach($scoreCard->answer_questions as $student_answer): ?>
+                Student Answer ID = <?php echo e($student_answer->id); ?> <br>
+                Question ID = <?php echo e($student_answer->question_id); ?> <br>
+                Answer ID = <?php echo e($student_answer->answer_id); ?> <br>
+                Is it correct (0 for no, 1 for yes)? = <?php echo e($student_answer->is_correct); ?> <br>
+                <br>
+
+            <?php endforeach; ?>
+            
+            
+            </div>
+        </div>
+</html>

@@ -1,0 +1,37 @@
+<?php $__env->startSection('content'); ?>
+
+        <div class="container">
+            <div class="content">
+                <H1>Quiz List</H1>
+                <!-- 
+                    Iterates through the questions passed by the routes. 
+                    Prints the prompt, difficulty and all the answers. 
+
+                    foreach - laravel special function for blade
+                    /{/{/}/} - equivalent of php echo. 
+                        Note: there are others that can be used.
+                -->
+                <?php /* Still need to display basic question info for each quiz */ ?>
+                
+                <?php foreach($quizzes as $quiz): ?>
+                    Course ID: <?php echo e($quiz->course_id); ?> <br>
+                    Description: <?php echo e($quiz->description); ?> <br>
+                    Time Limit: <?php echo e($quiz->quizTime); ?> <br>
+                    Start Date: <?php echo e($quiz->startDate); ?> <br>
+                    End Date: <?php echo e($quiz->endDate); ?> <br>
+                    Quiz Questions: 
+                        <?php foreach($quiz->questions as $question): ?>
+                           <li> <?php echo e($question->prompt); ?> </li>
+                        <?php endforeach; ?>
+                    <br>
+                    <br>
+                <?php endforeach; ?>
+                </ol>
+            </div>
+        </div>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('layouts.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

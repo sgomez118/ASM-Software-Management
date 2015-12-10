@@ -1,0 +1,11 @@
+<?php $__env->startSection('content'); ?>
+<div class="container">
+  <div class="content">
+  <?php echo $__env->make('quiz.question_experimental', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php $__env->startSection('question'); ?>
+    <?php echo $__env->yieldSection(); ?>
+  </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

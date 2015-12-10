@@ -1,0 +1,81 @@
+<?php $__env->startSection('content'); ?>
+<div class="container" role="main">
+	<h1>Welcome <?php echo e(Auth::user()->first_name); ?>!</h1>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="#scores" aria-controls="scores" role="tab" data-toggle="tab">Your Scores</a></li>
+				<li role="presentation"><a href="#take-quiz" aria-controls="take-quiz" role="tab" data-toggle="tab">Take A Quiz</a></li>
+			</ul>
+			<br>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="scores">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<?php if(Auth::user()->scoreCards()->where('is_available', '=', 0)->count() > 0): ?>
+								<table class="table table-striped">
+								<thead>
+									<th><tr>
+										<td>Subject</td>
+										<td>Test Title</td>
+										<td>Score</td>
+										<td>Quiz Time</td>
+									</tr></th>
+								</thead>
+									<tbody>
+								<?php foreach(Auth::user()->scoreCards as $scorecard): ?>
+									<?php if(!$scorecard->is_available): ?>
+										<tr>
+											<td><?php echo e(App\Subject::find(App\Quiz::find($scorecard->quiz_id)->subject_id)->name); ?></td>
+											<td><?php echo e(App\Quiz::find($scorecard->quiz_id)->title); ?></td>
+											<td><?php echo e($scorecard->score); ?>%</td>
+											<td><?php echo e(App\Quiz::find($scorecard->quiz_id)->quiz_time); ?></td>
+										</tr>
+									<?php endif; ?>
+								<?php endforeach; ?>
+									</tbody>
+								</table>
+							<?php else: ?>
+								<p>No test scores to report at this time.</p>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="take-quiz">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<?php if(Auth::user()->scoreCards()->where('is_available', '=', 1)->count() > 0): ?>
+								<table class="table table-striped">
+								<thead>
+									<th><tr>
+										<td>Subject</td>
+										<td>Test Title</td>
+										<td>Quiz Time</td>
+										<td></td>
+									</tr></th>
+								</thead>
+									<tbody>
+								<?php foreach(Auth::user()->scoreCards as $scorecard): ?>
+									<?php if($scorecard->is_available): ?>
+										<tr>
+											<td><?php echo e(App\Subject::find(App\Quiz::find($scorecard->quiz_id)->subject_id)->name); ?></td>
+											<td><?php echo e(App\Quiz::find($scorecard->quiz_id)->title); ?></td>
+											<td><?php echo e(App\Quiz::find($scorecard->quiz_id)->quiz_time); ?> mins</td>
+											<td><a href="/take_quiz/<?php echo e($scorecard->id); ?>">Take Quiz</a></td>
+										</tr>
+									<?php endif; ?>
+								<?php endforeach; ?>
+									</tbody>
+								</table>
+							<?php else: ?>
+								<p>No test to take at this time.</p>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+	  </div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
