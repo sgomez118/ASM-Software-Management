@@ -21,7 +21,14 @@
                      </div>
                    </div>
                    <div class="panel-body">
+                   
+                   @if($question->type == "free-response")
+                       @foreach($question->answers as $answer)
+                            Answer Key: {{$answer->text}}
+                       @endforeach
+                   @else
                      <ol style="list-style-type: lower-alpha"> 
+                       
                        @foreach($question->answers as $answer)
                        <li> 
                             @if($answer->pivot->is_correct == TRUE)
@@ -32,12 +39,14 @@
                        </li>
                        @endforeach
                      </ol>
+                   @endif
                    </div>   
                    
                  </div> {{-- end panel --}} </li>
                  @endforeach
                </ol>
             </div>
+            {!! $questions->render() !!}
         </div>
 
 @endsection
