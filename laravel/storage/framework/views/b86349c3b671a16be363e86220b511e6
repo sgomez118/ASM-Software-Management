@@ -22,7 +22,15 @@
                      </div>
                    </div>
                    <div class="panel-body">
+                   
+                   <?php if($question->type == "free-response"): ?>
+                       <?php foreach($question->answers as $answer): ?>
+                            Answer Key: <?php echo e($answer->text); ?>
+
+                       <?php endforeach; ?>
+                   <?php else: ?>
                      <ol style="list-style-type: lower-alpha"> 
+                       
                        <?php foreach($question->answers as $answer): ?>
                        <li> 
                             <?php if($answer->pivot->is_correct == TRUE): ?>
@@ -34,12 +42,15 @@
                        </li>
                        <?php endforeach; ?>
                      </ol>
+                   <?php endif; ?>
                    </div>   
                    
                  </div> <?php /* end panel */ ?> </li>
                  <?php endforeach; ?>
                </ol>
             </div>
+            <?php echo $questions->render(); ?>
+
         </div>
 
 <?php $__env->stopSection(); ?>

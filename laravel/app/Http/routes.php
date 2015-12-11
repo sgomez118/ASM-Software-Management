@@ -204,6 +204,10 @@ Route::get('/view_users', function() {
 //[DELETE THIS]
 Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
 
+
+Route::get('/create_free_response_question', 'QuestionController@create_free_response');
+Route::post('/save_free_response_question', 'QuestionController@store_free_response');
+
 //[DELETE THIS]
 Route::get('/test', function (){
     $scoreCard = ScoreCard::find(1);

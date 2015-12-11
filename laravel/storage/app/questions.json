@@ -414,7 +414,7 @@
     
     {
       "prompt": "What are any 2 characteristics of a good algorithm?",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -431,7 +431,7 @@
     
     {
       "prompt": "What notation have we learned that gives an upper bound on algorithms performance?",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -511,7 +511,7 @@
     
     {
       "prompt": "What is the difference between an interface and an abstract class in Java?",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -527,7 +527,7 @@
     
     {
       "prompt": "What are two useful characteristics of Abstract Data Types (ADT)",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -543,7 +543,7 @@
     
     {
       "prompt": "What method is used to compare the contents of arrays in Java?",
-      "difficulty": "medium",
+      "difficulty": "easy",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -803,7 +803,7 @@
     
     {
       "prompt": "Write a method that takes an integer array as input, and returns the maximum element from the array. What is the time complexity of the program? Method signature: int FindMax (int [ ] myArray)",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -819,7 +819,7 @@
     
     {
       "prompt": "Write the enqueue() method for a queue implementation using circular array",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -851,7 +851,7 @@
     
     {
       "prompt": "Convert the infix expression, A + B * C + D, to postfix expression showing the state of the stack after processing each element of the infix input.",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -867,7 +867,7 @@
     
     {
       "prompt": "Write the method reallocate() for an array implementation of stack, for inserting data into full stack",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -899,7 +899,7 @@
     
     {
       "prompt": "Implement the enqueue() and dequeue() methods of a queue using stack(s). Assume the stack implementation already exists.",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "type": "free-response",
       "total_score": "1",
       "subject_id": "1",
@@ -1166,7 +1166,7 @@
     },
     
     {
-      "prompt": "Which of the following data structures requires a MINIMUM of O(log n) time to determine whether a given element is present in the structure?",
+      "prompt": "Which of the following data structures requires an AVERAGE of O(log n) time to determine whether a given element is present in the structure?",
       "difficulty": "medium",
       "type": "single",
       "total_score": "1",
@@ -1199,7 +1199,454 @@
           "is_correct": "false"
         }
       ]
+    },
+    
+    {
+      "prompt": "What is the worst case run time for searching for an element in a binary search tree with n elements?",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the worst case run time for inserting an element in a binary search tree with n elements?",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the worst case run time for deleting an element in a binary search tree with n elements?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the maximum number of nodes at level X in a binary search tree?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "log X",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2X",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^X",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^(X+1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^(X-1)",
+          "image": null,
+          "is_correct": "true"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the maximum number of nodes in a binary tree of height H?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "log H",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^(H+1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^H + 1",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^H - 1",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "2^(H-1)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following are all depth-first traversals of a binary search tree?",
+      "difficulty": "hard",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "preorder traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "inorder traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "postorder traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "level order traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "breadth-first traversal",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following are all breadth-first traversals of a binary search tree?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "preorder traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "inorder traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "postorder traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "level order traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "node rotation traversal",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Select all correct statements: ",
+      "difficulty": "hard",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "A binary heap is a complete binary tree",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "a binary heap is a binary tree where every node has exactly two children",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "a binary heap is a binary tree where every node has exactly one child",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "a binary heap that is a min heap has exactly one root, and this root is minimum among all keys in the heap",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "a binary heap that is a max heap has exactly one root, and this root is maximum among all keys in the heap",
+          "image": null,
+          "is_correct": "true"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity of retrieving (not removing) the minimum key in a min binary heap?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity of REMOVING the minimum key in a min binary heap?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity of inserting a new key in a min binary heap?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "What is the time complexity of deleting a key in a min binary heap?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "Implement a method that inserts an integer into a binary search tree that contains integers. ",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
     }
-
     ]
 }

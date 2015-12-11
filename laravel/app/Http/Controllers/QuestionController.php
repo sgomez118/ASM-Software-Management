@@ -19,7 +19,12 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('question.view', ['questions' => Question::all()]);
+        
+        $questions = Question::paginate(10);
+
+        return view('question.view', ['questions' => $questions]);
+        
+       // return view('question.view', ['questions' => Question::all()]);
     }
 
     /**
@@ -36,6 +41,12 @@ class QuestionController extends Controller
             return "Hey! You aren't allowed to create questions because you are a $currentType and not a lecturer!";
         }
     }
+    
+    public function create_free_response(Request $request)
+    {
+        return view('question.create_free_response');
+    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -78,6 +89,24 @@ class QuestionController extends Controller
         // return Redirect::back()->withMsg('Quiz Question Created');
         return redirect('/questions');
     }
+    
+    public function store_free_response(Request $request)
+    {
+        $question = new Question;
+        $question->prompt = $request->prompt;
+        $question->difficulty = $request->difficulty;
+        $question->subject_id = 1;
+        $question->type = 'free-response';
+        $question->save();
+        
+        $a1 = new Answer;
+        $a1->text = $request->choice1;
+        $a1->save();
+        $question->answers()->attach($a1->id, array('is_correct' => 0));
+        return redirect('/questions');
+    }
+    
+    
 
     /**
      * Display the specified resource.
