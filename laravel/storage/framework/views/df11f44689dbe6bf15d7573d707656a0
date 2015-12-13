@@ -1,0 +1,40 @@
+<?php $__env->startSection('content'); ?>
+<div class="container" role="main">
+	<h1>Welcome <?php echo e(Auth::user()->name); ?>!</h1>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<ul class="nav nav-pills span2">
+				<li role="presentation" class="active"><a href="#classes" aria-controls="classes" role="tab" data-toggle="tab">Classes</a></li>
+				<li role="presentation"><a href="#scores" aria-controls="scores" role="tab" data-toggle="tab">Quizzes</a></li>
+				<li role="presentation"><a href="/create_quiz" aria-controls="take-quiz" role="tab" >Create A Quiz</a></li>
+				<li role="presentation"><a href="/create_question" aria-controls="take-quiz" role="tab" >Create A Question</a></li>
+			</ul>
+			<br>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="classes">
+					 <div class="panel panel-default">
+						<div class="panel-body">
+							<?php /* <?php echo $__env->make('user.professors.courses', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> */ ?>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="scores">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<?php /* <?php echo $__env->make('user.professors.quizzes', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> */ ?>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="take-quiz">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+	  </div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,1652 @@
+{
+  "questions": [
+    {
+      "prompt": "The simplest way to search an array is called...",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "binary search",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "sequential search",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "interpolation search",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "quasi-linear search",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "Boyer-Moore string search",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+
+    {
+      "prompt": "Arrange the following complexities in increasing order: Quadratic, constant, exponential, logarithmic.",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "logarithmic, constant, exponential, quadratic",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "constant, quadratic, logarithmic, exponential",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "constant, logarithmic, quadratic, exponential",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "logarithmic, constant, quadratic, exponential",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "constant, logarithmic, exponential, quadratic",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Suppose a sorting function “f” is O(n log n) where n is the number of elements in an array.  Select all true statements:",
+      "difficulty": "medium",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Function “f” is O(g) where g is second degree polynomial",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "Function “f” is O(g) where g is a third degree polynomial",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "Function “f” is O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "Function “f” is O(log(n) * log(n))",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "Function “f” is O(log(n) + n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Suppose real-valued functions “f” and “g” (with domain all real numbers) are both O(log n).  Which of the following statements must be true?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "f is equal to g for all real x",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "f is not equal to g for all real x",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "the quotient f(x) / g(x) is the same for all real x",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "log(f(x)) = log(g(x)) for all real x",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "f and g are both O(n)",
+          "image": null,
+          "is_correct": "true"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the minimum time complexity of insertion and deletion of data using a Stack, where the item for deletion is at the top of the Stack?",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(n * n/2)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Consider the algorithm for determining whether a sequence of parentheses is balanced using a stack.  However, this time, the left parenthesis is replaced by the letter “L”, and the right  (matching) parenthesis is replaced by the letter R.  Determine how many “L” characters will appear on the stack after the following sequence is analyzed: RRLLRLRRLRRRLL",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "0",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "1",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "3",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "4",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following operations are NOT part of the Abstract Data Type Stack? ",
+      "difficulty": "easy",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "push()",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "reverse()",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "getFirstElement()",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "pop()",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "rotate",
+          "image": null,
+          "is_correct": "true"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the storage policy for a Stack?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "LIFO",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "FIFO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "NEMO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "NOMO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "LIMO",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the storage policy for a Stack?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "LIFO",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "FIFO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "NEMO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "NOMO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "LIMO",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the storage policy of a Queue?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "LIFO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "FIFO",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "NEMO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "FOFO",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "LIMO",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Given a sorting algorithm that is O(N lg (N)) where “lg” is the base-2 logarithm, and N is the number of elements in the array to be sorted, how many additional operations are needed when the number of elements is doubled?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "2",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "N lg N",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2N + N lg N",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "2N + 2N lg N",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2N lg N",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Determine the efficiency of the following code: \r\n\tpublic static int factorialIter(int n){ \r\n\t\tint result = 1;\r\n\t\tfor(int k = 1; k <=n; k++)\r\n\t\t\tresult = result * k;\r\n\t\treturn result;\r\n\t}",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What are any 2 characteristics of a good algorithm?",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    
+    {
+      "prompt": "What notation have we learned that gives an upper bound on algorithms performance?",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Determine the time complexity of the following code: (Assume the array has n elements) \n\tfor(int i = 1; i < arr.length; i *= 2){\n\t\tvalue = value + arr[i];\n\t}\n",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Consider the following code:\n\tint calculate(int val, int raise, int total){\n\t\tint mid = (val + raise)/2;\n\t\traise = val + mid;\n\t\ttotal = raise * total;\n\t\treturn total;\n\t}\n",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Given T(n) = n^2 +4n + 16, show that T(n) is O(n^2).",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which Java class provides implementations of common data structures?",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "What is the difference between an interface and an abstract class in Java?",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What are two useful characteristics of Abstract Data Types (ADT)",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What method is used to compare the contents of arrays in Java?",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Mention any two ways to copy arrays in Java",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Name two methods that are introduced in ArrayList but are not in Arrays",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What class is the thread-safe equivalent of ArrayList in Java?",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "How do you indicate an unsuccessful search of an element in an array or ArrayList?",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Complete the method to implement insertion of an element in an array. Assume there is space at the end of the array already for additional data.  Method signature: public void myInsert(int value, int index, int[ ] data)",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Determine the time complexity of the following code: (Assume the array map has n elements)\n\tfor(int i = 1, value = 0; i < map.length; i += 2){\n\t\tvalue = value + map[i];\n\t}\n\n",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Determine the time complexity of the following code: (Assume the array map has n elements)\n\tfor(int i = 1, value = 0; i < map.length; i += 2){\n\t\tvalue = value + map[i];\n\t}\n\n",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is one difference between StringBuilder and StringBuffer?",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "In the implementation of ArrayList using an array, what is done when the array becomes full and more elements are required to be inserted?",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Why is a circular array used in the implementation of a stack?",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Should a circular array be used to implement a Queue? Why or why not?",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity for inserting and deleting data in a Queue?",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which data structure allows insertion and deletion at both the front and the rear?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "stack",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "queue",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "double-ended queue",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "AVL Tree",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "heap",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Write a method that takes an integer array as input, and returns the maximum element from the array. What is the time complexity of the program? Method signature: int FindMax (int [ ] myArray)",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Write a method that takes an integer array as input, and returns the maximum element from the array. What is the time complexity of the program? Method signature: int FindMax (int [ ] myArray)",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Write the enqueue() method for a queue implementation using circular array",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Given an array of integers and a target value, find all pairs of elements from the array that sum upto target value. What is the time complexity of your algorithm? [Ex: myArray[ ] = {1,3,2,7,9,5,4,6} and target = 8; Output: {1,7}, {3,5}, {2,6}]",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Convert the infix expression, A + B * C + D, to postfix expression showing the state of the stack after processing each element of the infix input.",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "Write the method reallocate() for an array implementation of stack, for inserting data into full stack",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "Write the method push() for a stack implementation.",
+      "difficulty": "easy",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Implement the enqueue() and dequeue() methods of a queue using stack(s). Assume the stack implementation already exists.",
+      "difficulty": "medium",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity of inserting data at the end of an n-element singly linked list?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n!)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "What is the time complexity of inserting data at an arbitrary location of an n-element singly linked list?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n!)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "Given a 5 element stack S (from top to bottom: 2, 4, 6, 8, 10), and an empty queue Q, remove the elements one-by-one from S and insert them into Q, then remove them one-by-one from Q and re-insert them into S. What does S now look like (from top to bottom). ",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "from top to bottom: 2, 4, 6, 8, 10",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "from top to bottom: 10, 8, 6, 4, 2",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "from top to bottom: 10, 8, 2, 4, 6",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "from top to bottom: 10, 8, 6, 2, 4",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "from top to bottom: 2, 4, 6, 10, 8",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "Which of the following are data structures that can be implemented using an array?",
+      "difficulty": "medium",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "stack",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "queue",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "binary search tree",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "heap",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "doubly-linked list",
+          "image": null,
+          "is_correct": "true"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following insertion operations are done in O(1) time? Assume the data structures follow their Abstract Data Type definitions (no additional modifications)",
+      "difficulty": "medium",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "inserting at the top of a stack",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "inserting at the bottom of a stack",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "inserting at the front of a queue",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "inserting at the end of a queue",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "inserting into a binary search tree",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following deletion operations are done in O(1) time? Assume the data structures follow their Abstract Data Type definitions (no additional modifications)",
+      "difficulty": "medium",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "deleting at the top of a stack",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "deleting at the bottom of a stack",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "deleting at the front of a queue",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "deleting at the end of a queue",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "deleting the root of binary search tree",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following data structures requires a MINIMUM of O(n) time to determine whether a given element is present in the structure?",
+      "difficulty": "medium",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "stack",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "queue",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "list",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "binary search tree",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "heap",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following data structures requires an AVERAGE of O(log n) time to determine whether a given element is present in the structure?",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "stack",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "queue",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "list",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "binary search tree",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "doubly linked list",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the worst case run time for searching for an element in a binary search tree with n elements?",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the worst case run time for inserting an element in a binary search tree with n elements?",
+      "difficulty": "medium",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the worst case run time for deleting an element in a binary search tree with n elements?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the maximum number of nodes at level X in a binary search tree?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "log X",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2X",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^X",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^(X+1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^(X-1)",
+          "image": null,
+          "is_correct": "true"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the maximum number of nodes in a binary tree of height H?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "log H",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^(H+1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^H + 1",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "2^H - 1",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "2^(H-1)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following are all depth-first traversals of a binary search tree?",
+      "difficulty": "hard",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "preorder traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "inorder traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "postorder traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "level order traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "breadth-first traversal",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Which of the following are all breadth-first traversals of a binary search tree?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "preorder traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "inorder traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "postorder traversal",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "level order traversal",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "node rotation traversal",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "Select all correct statements: ",
+      "difficulty": "hard",
+      "type": "multi-value",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "A binary heap is a complete binary tree",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "a binary heap is a binary tree where every node has exactly two children",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "a binary heap is a binary tree where every node has exactly one child",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "a binary heap that is a min heap has exactly one root, and this root is minimum among all keys in the heap",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "a binary heap that is a max heap has exactly one root, and this root is maximum among all keys in the heap",
+          "image": null,
+          "is_correct": "true"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity of retrieving (not removing) the minimum key in a min binary heap?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity of REMOVING the minimum key in a min binary heap?",
+      "difficulty": "hard",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    },
+    
+    {
+      "prompt": "What is the time complexity of inserting a new key in a min binary heap?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "What is the time complexity of deleting a key in a min binary heap?",
+      "difficulty": "easy",
+      "type": "single",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "O(1)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log n)",
+          "image": null,
+          "is_correct": "true"
+        },
+        {
+          "text": "O(n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(n log n)",
+          "image": null,
+          "is_correct": "false"
+        },
+        {
+          "text": "O(log log n)",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }, 
+    
+    {
+      "prompt": "Implement a method that inserts an integer into a binary search tree that contains integers. ",
+      "difficulty": "hard",
+      "type": "free-response",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answers": [
+        {
+          "text": "Answer Key",
+          "image": null,
+          "is_correct": "false"
+        }
+      ]
+    }
+    ]
+}
