@@ -7,7 +7,7 @@ use App\Http\Middleware\Authenticate;
 use App\Quiz;
 use App\Subject;
 use App\ScoreCard;
-
+use App\Library\MyTimer;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -33,6 +33,27 @@ use App\ScoreCard;
 |
 |
 */
+
+// use Symfony\Component\Process\Process as Process;
+//     /**
+//     * 
+//     */
+//     class MyTimer extends Thread
+//     {
+        
+//         public function __construct($arg) {
+//             $this->arg = $arg;
+//         }
+
+//     public function run() {
+//         if ($this->arg) {
+//             $sleep = mt_rand(1, 10);
+//             printf('%s: %s  -start -sleeps %d' . "\n", date("g:i:sa"), $this->arg, $sleep);
+//             sleep($sleep);
+//             printf('%s: %s  -finish' . "\n", date("g:i:sa"), $this->arg);
+//         }
+//     }
+// }
 
 
 
@@ -231,11 +252,7 @@ Route::get('/test', function (){
 
 });
 
-//[DELETE THIS]
-Route::get('/t', function ()
-{
-    return User::find(1)->scoreCards()->get();
-});
+
 
 Route::get('/test/genQ', function ()
 {

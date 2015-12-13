@@ -19,7 +19,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return view('question.view', ['questions' => Question::all()]);
+        return view('question.exp_view', ['questions' => Question::all()]);
     }
 
     /**
