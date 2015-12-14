@@ -4,15 +4,15 @@
 <br>
     <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
-    <div class="panel-heading text-center">Create Question
+    <div class="panel-heading text-center">Create Free Response Question
     </div>
     <div class="panel-body">  
-    <p class="text-center">Input the question you want to create. Check at least one correct answer option.</p>
-        {!! Form::open(array('route' => array('question.store'), 'method' => 'post', 'class' => 'form-horizontal')) !!}
+    <p class="text-center">Input the free response question you want to create. Check at least one correct answer option.</p>
+        {!! Form::open(array('url' => 'save_free_response_question', 'class' => 'form-horizontal', 'role' => 'form')) !!}
             
         <div class="form-group">
-            {!! Form::label("Question: ", null, array('class' => 'col-md-2 control-label')) !!}
-            <div class="col-md-10">
+            {!! Form::label("Question: ", null, array('class' => 'col-md-3 control-label')) !!}
+            <div class="col-md-9">
             {!! Form::textarea('prompt', null, array('required', 
                     'class' => 'form-control',
                     'placeholder' => "What's your  question?" )) !!}
@@ -21,7 +21,7 @@
         
         <input type="hidden" name="difficulty" id="myType"/>
         <div class="form-group">
-            <label class="col-md-2 control-label">Difficulty</label>
+            <label class="col-md-3 control-label">Difficulty</label>
             <div class="dropdown col-md-8">
                 <input type="submit" value="Choose Difficulty" class="btn btn-default selectpicker dropdown-toggle"  id="difficultyMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
                 <ul class="dropdown-menu inner selectpicker" role='menu' aria-labelledby="difficultyMenu">
@@ -32,19 +32,15 @@
             </div>
         </div>
         
+        {{-- Modified from question.create --}}
+        @for($q = 1; $q <= 1; $q++)
         <div class="form-group">
-        Total Score: 
-        {!! Form::number('total_score', 'total available points') !!}
-        </div>
-
-        @for($q = 1; $q <= 5; $q++)
-        <div class="form-group">
-            <div class="col-md-2 control-label">
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="isCorrect{{ $q }}" name="isCorrect{{ $q }}" value="1"> Option {{ $q }} 
+            <div class="col-md-3 control-label">
+                <label>
+                    Answer Key
                 </label>  
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <textarea name="choice{{ $q }}" rows="5" required="required" class="form-control option"></textarea>
             </div>
         </div>
@@ -63,3 +59,5 @@
     </div>
     </div>
 @endsection
+
+

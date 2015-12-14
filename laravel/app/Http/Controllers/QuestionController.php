@@ -59,6 +59,7 @@ class QuestionController extends Controller
         $question = new Question;
         $question->prompt = $request->prompt;
         $question->difficulty = $request->difficulty;
+        $question->total_score = $request->total_score;
         $question->subject_id = 1;
         $question->save();
 
@@ -87,7 +88,7 @@ class QuestionController extends Controller
         $question->answers()->attach($a5->id, array('is_correct' => ($request->isCorrect5 != 1 ? 0 : 1)));
 
         // return Redirect::back()->withMsg('Quiz Question Created');
-        return redirect('/questions');
+        return redirect('/question');
     }
     
     public function store_free_response(Request $request)
@@ -116,7 +117,13 @@ class QuestionController extends Controller
      */
     public function show($id)
     {
-        return Question::find($id);
+        // display an individual question
+        // get the question to display
+        $question = Question::find($id);
+        
+        // pass it to the view
+        return view('question.show', ['question' => $question]);
+        //return Question::find($id);
     }
 
     /**
@@ -127,7 +134,8 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $question = Question::find($id);
+        return view('question.edit', ['question' => $question]);
     }
 
     /**
@@ -137,9 +145,65 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     
+     // WARNING: Request $request was originally first parameter
     public function update(Request $request, $id)
     {
-        //
+        // the form sends the request
+        // the id indicates which question to update
+        
+        // store
+            $question = Question::find($id);
+            $question->prompt = $request->input('prompt'); // works! 
+            
+            // what happens if we leave it unselected? 
+            // nice, doesn't change it if nothing selected
+            // I think it has the previous selected
+            $question->difficulty = $request->input('difficulty'); // works!
+            $question->total_score = $request->input('total_score'); // works!
+            
+            $question->save();
+            
+            // detach all answers from the question
+            // attach the newly created ones from the form; overwrites.  
+            
+            $question->answers()->detach(); // detach all answers from question
+            
+            $a1 = new Answer;
+            $a2 = new Answer;
+            $a3 = new Answer;
+            $a4 = new Answer;
+            $a5 = new Answer;
+            
+            $a1->text = $request->choice1;
+            $a2->text = $request->choice2;
+            $a3->text = $request->choice3;
+            $a4->text = $request->choice4;
+            $a5->text = $request->choice5;
+
+            $a1->save();
+            $a2->save();
+            $a3->save();
+            $a4->save();
+            $a5->save();
+
+            $question->answers()->attach($a1->id, array('is_correct' => ($request->isCorrect1 != 1 ? 0 : 1)));
+            $question->answers()->attach($a2->id, array('is_correct' => ($request->isCorrect2 != 1 ? 0 : 1)));
+            $question->answers()->attach($a3->id, array('is_correct' => ($request->isCorrect3 != 1 ? 0 : 1)));
+            $question->answers()->attach($a4->id, array('is_correct' => ($request->isCorrect4 != 1 ? 0 : 1)));
+            $question->answers()->attach($a5->id, array('is_correct' => ($request->isCorrect5 != 1 ? 0 : 1)));
+            
+            // question now has the new answers attached to it.  
+            
+            
+            // need this line or else it redirects to the non-GET URL
+            // it has a PUT request instead, so nothing displays
+            // because there is no view associated with a PUT
+            // YES IT WORKS
+            // THAT IS WHAt I AM TALKING ABOUT
+            
+            return view('question.show', ['question' => $question]);
+            
     }
 
     /**
@@ -150,6 +214,11 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // retrieve model from database and delete it
+        $question = Question::find($id);
+        $question->delete(); 
+        
+        // after deletion, redirect
+        return redirect('/question');
     }
 }

@@ -5,12 +5,30 @@
         <div class="container">
             <div class="content">
                 <H1>Quiz Questions</H1>
+
                 <ol>
                   <?php foreach($questions as $question): ?>
                    <li> <div class="panel panel-default">
                    <div class="panel-heading clearfix">
+                      
+                       <?php echo Form::open(array('route' => array('question.destroy', $question->id), 'method' => 'delete')); ?>
+
+                      <button class="btn btn-danger" type="submit" >Delete Question</button>
+                      <?php echo Form::close(); ?>
+
+                      
+                      <?php /* Clicking this takes them to edit update form */ ?>
+                      <?php echo Form::open(array('route' => array('question.edit', $question->id), 'method' => 'get')); ?>
+
+                      <button class="btn btn-danger" type="submit" >Edit Question</button>
+                      <?php echo Form::close(); ?>
+
+                      
                       <?php echo e($question->prompt); ?>
 
+                      
+                      
+                      ( <?php echo e($question->total_score); ?> Points )
                       <div class="pull-right">
                        <?php if( $question->difficulty == "easy" ): ?>
                        <span class="label label-info">Easy</span>
@@ -48,6 +66,7 @@
                  </div> <?php /* end panel */ ?> </li>
                  <?php endforeach; ?>
                </ol>
+              
             </div>
             <?php echo $questions->render(); ?>
 

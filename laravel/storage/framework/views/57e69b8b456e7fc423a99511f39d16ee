@@ -6,14 +6,14 @@
     </div>
     <div class="panel-body">  
     <p class="text-center">Input the question you want to create. Check at least one correct answer option.</p>
-        <?php echo Form::open(array('url' => 'save_question', 'class' => 'form-horizontal', 'role' => 'form')); ?>
+        <?php echo Form::open(array('route' => array('question.store'), 'method' => 'post', 'class' => 'form-horizontal')); ?>
 
             
         <div class="form-group">
             <?php echo Form::label("Question: ", null, array('class' => 'col-md-2 control-label')); ?>
 
             <div class="col-md-10">
-            <?php echo Form::text('prompt', null, array('required', 
+            <?php echo Form::textarea('prompt', null, array('required', 
                     'class' => 'form-control',
                     'placeholder' => "What's your  question?" )); ?>
 
@@ -31,6 +31,12 @@
                     <li value='hard'><a href="#">Hard</a></li>
                 </ul>
             </div>
+        </div>
+        
+        <div class="form-group">
+        Total Score: 
+        <?php echo Form::number('total_score', 'total available points'); ?>
+
         </div>
 
         <?php for($q = 1; $q <= 5; $q++): ?>

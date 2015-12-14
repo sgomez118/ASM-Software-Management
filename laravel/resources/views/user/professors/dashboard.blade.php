@@ -9,7 +9,7 @@
 				<li role="presentation" class="active"><a href="#classes" aria-controls="classes" role="tab" data-toggle="tab">Classes</a></li>
 				<li role="presentation"><a href="#scores" aria-controls="scores" role="tab" data-toggle="tab">Quizzes</a></li>
 				<li role="presentation"><a href="/create_quiz" aria-controls="take-quiz" role="tab" >Create A Quiz</a></li>
-				<li role="presentation"><a href="/create_question" aria-controls="take-quiz" role="tab" >Create A Question</a></li>
+				<li role="presentation"><a href="/question/create" aria-controls="take-quiz" role="tab" >Create A Question</a></li>
 			</ul>
 			<br>
 			<div class="tab-content">
