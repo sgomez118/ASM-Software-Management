@@ -41,18 +41,22 @@
                </ol>
              @endif
            </div>   
-           <div class="panel-footer">                
+           <div class="panel-footer">       
+
+           <div class="pull-right">
+             
               {!! Form::open(array('route' => array('question.destroy', $question->id), 'method' => 'delete')) !!}
-              <button class="btn btn-danger" type="submit" >
+              <button class="btn btn-default" type="submit" >
                 <span class="glyphicon glyphicon-remove" aria-hidden="true">
                 </span>
                   Delete Question
               </button>
               {!! Form::close() !!}
+           </div>         
                 
               {{-- Clicking this takes them to edit update form --}}
               {!! Form::open(array('route' => array('question.edit', $question->id), 'method' => 'get')) !!}
-              <button class="btn btn-danger" type="submit" >
+              <button class="btn btn-default" type="submit" >
               <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
               Edit Question
 

@@ -20,8 +20,11 @@ class QuestionSeeder extends Seeder
 
         foreach($questions['questions'] as $question_keys => $question){
             $this->command->info("Adding Question: ".$question_keys."..."); 
-    		$answers = $question['answers'];
-    		unset($question['answers']);
+
+    		if($question["type"] != "true-false"){
+                $answers = $question['answers'];
+                unset($question['answers']);
+            }
         	$q = new Question($question);
         	$q->save();
         	foreach ($question as $question_attribute_name => $question_attribute_value) {
