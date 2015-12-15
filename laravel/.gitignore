@@ -5,7 +5,7 @@ Homestead.json
 .env
 /bootstrap
 /config
-
+/storage/logs/laravel.log
 composer.*
 Notes on Questions and Answers.txt
 Log in Notes.txt

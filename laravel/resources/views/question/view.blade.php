@@ -22,7 +22,7 @@
                @endif
              </div>
            </div>
-           <div class="panel-body">
+            <div class="panel-body">
              @if($question->type == "free-response")
                  @foreach($question->answers as $answer)
                       Answer Key: {{$answer->text}}
