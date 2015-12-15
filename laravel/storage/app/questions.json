@@ -1647,6 +1647,107 @@
           "is_correct": "false"
         }
       ]
+    },
+    
+    {
+      "prompt": "True or false: The Stack follows the First-in-First-Out (FIFO) storage policy. ",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": false
+    },
+    
+    {
+      "prompt": "True or false: A binary search tree is a heap. ",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": false
+    },
+    
+    {
+      "prompt": "True or false: A binary search tree is always self-balancing",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": false
+    },
+    
+    {
+      "prompt": "True or false: Function push() is an operation associated with the Stack Abstract Data Type.",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": true
+    },
+    
+    {
+      "prompt": "True or false: Function pop() is an operation associated with the Stack Abstract Data Type.",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": true
+    },
+    
+    {
+      "prompt": "True or false: A Queue follows the First-in-first-out (FIFO) storage policy.",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": true
+    },
+    
+    {
+      "prompt": "True or false: A min-heap follows the First-in-first-out (FIFO) storage policy.",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": false
+    },
+    
+    {
+      "prompt": "True or false: A max-heap always contains more elements than a min-heap.",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": false
+    },
+    
+    {
+      "prompt": "True or false: An array can be used to implement a Stack.",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": true
+    },
+    
+    {
+      "prompt": "True or false: An array can be used to implement a heap.",
+      "difficulty": "easy",
+      "type": "true-false",
+      "total_score": "1",
+      "subject_id": "1",
+      "image": null,
+      "answer": true
     }
+    
     ]
 }
