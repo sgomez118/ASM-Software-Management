@@ -7,8 +7,11 @@
 		<div class="panel-body">
 			<ul class="nav nav-pills span2">
 				<li role="presentation" class="active"><a href="#classes" aria-controls="classes" role="tab" data-toggle="tab">Classes</a></li>
-				<li role="presentation"><a href="#scores" aria-controls="scores" role="tab" data-toggle="tab">Quizzes</a></li>
-				<li role="presentation"><a href="/create_quiz" aria-controls="take-quiz" role="tab" >Create A Quiz</a></li>
+                
+				<li role="presentation"><a href="/quiz" aria-controls="take-quiz" role="tab" >Quizzes</a></li>
+                
+				<li role="presentation"><a href="/quiz/create" aria-controls="take-quiz" role="tab" >Create A Quiz</a></li>
+                
 				<li role="presentation"><a href="/question/create" aria-controls="take-quiz" role="tab" >Create A Question</a></li>
 			</ul>
 			<br>

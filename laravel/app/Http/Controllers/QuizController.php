@@ -21,7 +21,12 @@ class QuizController extends Controller
      */
     public function index()
     {
-        return Quiz::all();
+        $quizzes = Quiz::paginate(10);
+
+        return view('quiz.view', ['quizzes' => $quizzes]);
+        
+       // return view('question.view', ['questions' => Question::all()]);
+       // return Quiz::all();
     }
 
     /**
@@ -56,7 +61,7 @@ class QuizController extends Controller
         $quiz->num_of_medium = $request->num_of_medium;
         $quiz->num_of_hard = $request->num_of_hard;
         $quiz->save();        
-        return redirect('/view_quizzes');
+        return redirect('/quiz');
     }
 
     /**
@@ -67,7 +72,16 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        return view('quiz.takeQuiz');
+        // display an individual quiz
+        // get the quiz to display
+        
+        $quiz = Quiz::find($id);
+        // pass it to the view
+        return view('quiz.show', ['quiz' => $quiz]);
+        
+
+        
+        //return view('quiz.takeQuiz');
         /*$user = User::find($id);
         switch ($user->type) {
             case 'student':
@@ -104,13 +118,22 @@ class QuizController extends Controller
     public function update(Request $request, $id)
     {
         $quiz = Quiz::find($id);
-        $quiz->class_id = $request->class_id;
-        $quiz->description = $request->description;
-        $quiz->quizTime = $request->quizTime;
-        $quiz->startDate = $request->startDate;
-        $quiz->endDate = $request->endDate;
+        $quiz->user_id = Auth::user()->id;
+        $quiz->subject_id = $request->subject_id;
+        $quiz->title = $request->title;
+        $quiz->quiz_time = $request->quiz_time;
+        $formatedStart = DateTime::createFromFormat('m/d/Y h:i a', $request->start_date);
+            $quiz->start_date =  $formatedStart->format("Y-m-d H:i:s");
+        $formatedEnd = DateTime::createFromFormat('m/d/Y H:i a', $request->end_date);
+            $quiz->end_date = $formatedEnd->format("Y-m-d H:i:s");
+        $quiz->num_of_questions = $request->num_of_questions;
+        $quiz->num_of_easy = $request->num_of_easy;
+        $quiz->num_of_medium = $request->num_of_medium;
+        $quiz->num_of_hard = $request->num_of_hard;
+        $quiz->save();        
+        return redirect('/quiz');
         $quiz->save();
-        return redirect('/quizzes');
+        return redirect('/quiz');
     }
 
     /**
@@ -122,6 +145,6 @@ class QuizController extends Controller
     public function destroy($id)
     {
         Quiz::destroy($id);
-        return redirect('/quizzes');
+        return redirect('/quiz');
     }
 }
