@@ -102,12 +102,6 @@ Route::get('/classes', 'CourseController@index');
 //[CHECK THIS]
 Route::get('/users', [ 'middleware' => 'auth', 'uses' => 'UserController@index' ]);
 
-//[CHECK THIS]
-Route::get('/questions', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@index' ]);
-
-//[CHECK THIS]
-Route::get('/questions/{id}', [ 'middleware' => 'auth', 'uses' =>  'QuestionController@show' ]);
-
 //[MODIFY THIS]
 Route::get('/take_quiz/{score_card_id}', 'ScoreCardController@take_quiz');
 
@@ -130,15 +124,14 @@ Route::get('/create_quiz', 'QuizController@create');
 //[MODIFY THIS ROUTE NAME]
 Route::post('/save_quiz', 'QuizController@store');
 
-//[MAKE RESTFUL]
-Route::post('/save_question', 'QuestionController@store');
-
 //[CHECK ROUTES]
 Route::resource('student', 'StudentController');
 
 //[CHECK ROUTES]
 Route::resource('quiz', 'QuizController');
 
+//[CHECK ROUTES]
+Route::resource('question', 'QuestionController');
 
 // Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
@@ -221,13 +214,21 @@ Route::get('/view_users', function() {
     return view('user.view', ['users' => $users]);
 });
 
-
-//[DELETE THIS]
-Route::get('/create_question', [ 'middleware' => 'auth', 'uses' => 'QuestionController@create']);
-
-
 Route::get('/create_free_response_question', 'QuestionController@create_free_response');
 Route::post('/save_free_response_question', 'QuestionController@store_free_response');
+
+Route::get('/test/answer_free_response/{question_id}', function($question_id)
+{
+    $question = Question::find($question_id);
+    //echo $question;
+    return view('scorecard.answer_free_response', ['question' => $question ]);
+});
+
+Route::post('/test/show_response', function($answer_question_id) {
+    
+    echo "Just testing to see if this link works!";
+});
+
 
 //[DELETE THIS]
 Route::get('/test', function (){

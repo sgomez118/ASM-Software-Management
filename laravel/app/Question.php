@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
 {
-    protected $fillable = ['subject_id', 'prompt', 'difficulty', 'type', 'image'];
+    protected $fillable = ['subject_id', 'prompt', 'difficulty', 'type', 'image', 'total_score'];
     use SoftDeletes;
     
     public function answers(){

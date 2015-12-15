@@ -1,13 +1,13 @@
-{{-- Displays all the questions --}}
+{{-- Show an individual Question --}}
+
 @extends('layouts.home')
 
 @section('content')
         <div class="container">
             <div class="content">
-                <H1>Quiz Questions</H1>
+                <H1>Individual Question View</H1>
 
                 <ol>
-                  @foreach($questions as $question)
                    <li> <div class="panel panel-default">
                    <div class="panel-heading clearfix">
                       
@@ -15,13 +15,12 @@
                       <button class="btn btn-danger" type="submit" >Delete Question</button>
                       {!! Form::close() !!}
                       
-                      {{-- Clicking this takes them to edit update form --}}
+                      
                       {!! Form::open(array('route' => array('question.edit', $question->id), 'method' => 'get')) !!}
                       <button class="btn btn-danger" type="submit" >Edit Question</button>
                       {!! Form::close() !!}
                       
                       {{$question->prompt}}
-                      
                       
                       ( {{$question->total_score}} Points )
                       <div class="pull-right">
@@ -57,11 +56,9 @@
                    </div>   
                    
                  </div> {{-- end panel --}} </li>
-                 @endforeach
                </ol>
               
             </div>
-            {!! $questions->render() !!}
         </div>
 
 @endsection
