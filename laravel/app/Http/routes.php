@@ -118,11 +118,6 @@ Route::get('/finished_quiz', function (Request $request)
 //[MODIFY THIS]
 Route::get('/student/{student_id}/scores', 'StudentController@scores');
 
-//[MODIFY THIS ROUTE NAME]
-Route::get('/create_quiz', 'QuizController@create');
-
-//[MODIFY THIS ROUTE NAME]
-Route::post('/save_quiz', 'QuizController@store');
 
 //[CHECK ROUTES]
 Route::resource('student', 'StudentController');
@@ -268,8 +263,6 @@ Route::get('/test/genQ', function ()
 //[DELETE THIS]
 Route::get('/t/wherepivot', "ScoreCardController@grade_quiz");
 
-//[DELETE/REPLACE THIS]
-Route::get('/t/{id}', 'QuizController@generateQuestions');
 
 //[DELETE THIS]
 Route::get('/t/wherepivo', function ()

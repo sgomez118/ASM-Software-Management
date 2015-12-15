@@ -1,16 +1,19 @@
-@extends('layouts.home')
-@section('content')
-<div class="container-fluid">
-    <div class="row">
+{{--extends('layouts.home') --}}
+@section('quiz_create')
+<!-- <div class="container-fluid">
+    <div class="row"> 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Create a Quiz!</div>
-                <div class="panel-body">
-                    {!! Form::open(array('url' => 'save_quiz', 
-                        'method' => 'post', 
-                        'class' => 'form-horizontal', 
-                        'role' => 'form'
-                    )) !!}
+                <div class="panel-body">-->
+                @if(isset($quiz))
+                    {!! Form::model($quiz, 
+                        ['route' => ['quiz.update', $quiz->id], 
+                        'method' => 'put', 'class' => 'form-horizontal'])
+                    !!}
+                @else
+                    {!! Form::open(array('route' => array('quiz.store'), 'method' => 'post', 'class' => 'form-horizontal')) !!}
+                @endif
                     <div class="form-group">
                         {!! Form::label('Title',
                         null,
@@ -28,7 +31,12 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Choose Subject</label>
                         <div class="dropdown col-md-6">
-                            <input type="submit" value="Subject" class="btn btn-default selectpicker dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <input type="submit" value="
+                                    @if(isset($quiz))
+                                    {{ App\Subject::find($quiz->subject_id)->name}}
+                                    @else
+                                    Subject
+                                    @endif" class="btn btn-default selectpicker dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <ul class="dropdown-menu inner selectpicker" role='menu' aria-labelledby="dropdownMenu1">
                                 @foreach(App\Subject::all() as $subject)
                                     <li value={{$subject->id}}><a href="#">{{$subject->name}}</a></li>
@@ -146,11 +154,11 @@
                         </div>
                     </div>
                     {!! Form::close() !!}
-                </div>
-            </div>
+              <!--   </div>
+           </div>
         </div>
-    </div>
-</div>
-@endsection
+     </div>
+</div> -->
+@show
 
 

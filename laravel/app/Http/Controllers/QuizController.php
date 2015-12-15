@@ -56,7 +56,7 @@ class QuizController extends Controller
         $quiz->num_of_medium = $request->num_of_medium;
         $quiz->num_of_hard = $request->num_of_hard;
         $quiz->save();        
-        return redirect('/view_quizzes');
+        return redirect('/dashboard');
     }
 
     /**
@@ -91,7 +91,7 @@ class QuizController extends Controller
     public function edit($id)
     {
         $quiz = Quiz::find($id);
-        return view('quiz.edit', ['quiz' => $quiz]);
+        return view('quiz.modify', ['quiz' => $quiz]);
     }
 
     /**
@@ -110,7 +110,7 @@ class QuizController extends Controller
         $quiz->startDate = $request->startDate;
         $quiz->endDate = $request->endDate;
         $quiz->save();
-        return redirect('/quizzes');
+        return redirect('/dashboard');
     }
 
     /**

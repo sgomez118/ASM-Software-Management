@@ -36,7 +36,7 @@
         {!! Form::close() !!}
     </div>
 
-@endsection
+@show
 
 
 
