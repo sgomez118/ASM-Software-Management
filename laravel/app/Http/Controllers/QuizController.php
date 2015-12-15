@@ -74,28 +74,8 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        // display an individual quiz
-        // get the quiz to display
-        
         $quiz = Quiz::find($id);
-        // pass it to the view
         return view('quiz.show', ['quiz' => $quiz]);
-        
-
-        
-        //return view('quiz.takeQuiz');
-        /*$user = User::find($id);
-        switch ($user->type) {
-            case 'student':
-                // return view('user.student.quizzes');
-            
-            case 'lecturer':
-                return view('user.lecturer.quizzes');
-            case 'chair':
-                return view('user.chair.quizzes');
-            default:
-                return redirect('/');
-        }*/
     }
 
     /**

@@ -44,7 +44,6 @@ class ScoreCardController extends Controller
     {
         $scoreCard = session('score_card'); 
         
-        echo Question::find($request->qID)->type;
         if (Question::find($request->qID)->type == 'free-response')
         {
             $free_response;
@@ -90,24 +89,11 @@ class ScoreCardController extends Controller
             $scoreCard->questions()->attach($request->qID, array('answer_question_id' => null));
         }
         }
+        
         if($request->has('next')){
             $question = $scoreCard->next();
             if($question != null){
-                echo $question->type;
-                if(Question::find($question->id)->type != 'free-response')
-                {
-                    echo "not free-response";
-                    return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get(), 'free_response' => $scoreCard->responses()->where('question_id', $question->id)->get()]);
-                }
-                else
-                {
-                    echo "free-response";
-                    
-                    //return view('scorecard.take', ['question' => $question, 'free_response' => $scoreCard->responses()->where('question_id', $question->id)->get()]);
-                }
-                
-                
-                
+                return $this->goto_qustion($question, $scoreCard);                
             }else{
                 return redirect('/finished_quiz');
             }
@@ -117,17 +103,27 @@ class ScoreCardController extends Controller
         if ($request->has('prev')){
             $question = $scoreCard->prev();
             if($question != null){
-                if($question->type !== "free-response")
+                return $this->goto_qustion($question, $scoreCard);
+            }
+        }
+    }
+
+    private function goto_qustion($question, $scoreCard)
+    {
+        if($question->type !== "free-response")
                 {
-                    echo 'not free response';
-                    return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get()]);
+                    return view('scorecard.take', ['question' => $question, 'question_count' => 1,
+                        'selected_answers' => $scoreCard->answer_questions()->
+                            where('answer_question.question_id', $question->id)->get()
+                            ]);
                 }
                 else
                 {
-                    return view('scorecard.take', ['question' => $question, 'free_response' => $scoreCard->responses()->where('question_id', $question->id)->get()]);
+                    $response = FreeResponse::where('question_id', $question->id)->
+                        where('score_card_id', $scoreCard->id)->get()->first();
+                    return view('scorecard.take', ['question' => $question, 
+                        'free_response' => $response, 'question_count' => 1]);
                 }
-            }
-        }
     }
 
     /**
@@ -185,9 +181,7 @@ class ScoreCardController extends Controller
         $first_question;
         if($scoreCard->questions()->count() > 0){
             $first_question = $scoreCard->load_questions();
-            echo "loading questions";
         }else{
-            echo "generating questions";
             $first_question = $scoreCard->get_questions();
         }
         session(['score_card' => $scoreCard]);
@@ -200,44 +194,30 @@ class ScoreCardController extends Controller
         $scoreCard = $request->session()->get('score_card'); 
         $num_correct = 0;
         $num_of_questions = $scoreCard->questions()->groupBy('id')->get()->count();
-    echo "==============================================";
-    foreach ($scoreCard->questions()->groupBy('id')->get() as $q) {
-        echo "<br>Question ".$q->id;
-        $correct_answers = $q->answers()->select('answer_question.id')->wherePivot('is_correct', '=', 1)->get();
-        $student_answers = $scoreCard->answer_questions()->select('answer_question_id')->wherePivot('question_id', '=', $q->id)->get();
-        $correct_ids = array();
-        $student_ids = array();
+        foreach ($scoreCard->questions()->groupBy('id')->get() as $q) {
+            $correct_answers = $q->answers()->select('answer_question.id')->wherePivot('is_correct', '=', 1)->get();
+            $student_answers = $scoreCard->answer_questions()->select('answer_question_id')->wherePivot('question_id', '=', $q->id)->get();
+            $correct_ids = array();
+            $student_ids = array();
 
-        foreach ($correct_answers as $correct_answer) {
-            array_push($correct_ids, $correct_answer->id);
+            foreach ($correct_answers as $correct_answer) {
+                array_push($correct_ids, $correct_answer->id);
+            }
+            foreach ($student_answers as $student_answer) {
+                array_push($student_ids, $student_answer->answer_question_id);
+            }
+            if($correct_ids == $student_ids){
+                $num_correct++;
+            }
         }
-        foreach ($student_answers as $student_answer) {
-            array_push($student_ids, $student_answer->answer_question_id);
-        }
-        // echo "<br>Correct".$correct_answers;
-        // echo "<br>Student".$student_answers;
-        echo "<br>----------------------------------------------";
-        if($correct_ids == $student_ids){
-            echo "<br>Answers: Correct<br>";
-            $num_correct++;
-        }else{
-            echo "<br>Answers: Incorrect<br>";
-        }
-        foreach ($correct_answers as $a) {
-            echo "id ".$a->id;   
-            echo "<br>";
-        }
-        echo "----------------------------------------------";
-        echo "<br>Student Answers:<br>";
-        foreach ($student_answers as $a) {
-            echo "id ".$a->answer_question_id;   
-            echo "<br>";
-        }
-        echo "==============================================";
-    }
-    echo "<br>num of questions: ".$num_of_questions;
-    echo "<br>num of correct: ".$num_correct;
-    echo "<br>score: ".(($num_correct/$num_of_questions)*100)."%";
+        
+        $scoreCard->multi_choice_score = $num_correct;
+        $scoreCard->is_available = 0;
+        $scoreCard->save();
+
+        return view('scorecard.finished', ['scorecard' => $scoreCard]);
+        
+
     }
   
 }

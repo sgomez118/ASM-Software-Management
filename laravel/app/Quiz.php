@@ -47,30 +47,39 @@ class Quiz extends Model
         $easyInDB = Question::where('difficulty', 'easy')->get()->count();
         $medInDB = Question::where('difficulty', 'medium')->get()->count();
         $hardInDB = Question::where('difficulty', 'hard')->get()->count();
+        $freeInDB = Question::where('type', 'free-response')->get()->count();
 
 
         if($easyInDB != 0 && $this->num_of_easy != 0){
             if($this->num_of_easy > $easyInDB){
-                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($easyInDB)->get();
+                $allQuestions = Question::where('type','<>','free-response')->where('difficulty', 'easy')->orderByRaw('RAND()')->take($easyInDB)->get();
             }else{
-                $allQuestions = Question::where('difficulty', 'easy')->orderByRaw('RAND()')->take($this->num_of_easy)->get();
+                $allQuestions = Question::where('type','<>','free-response')->where('difficulty', 'easy')->orderByRaw('RAND()')->take($this->num_of_easy)->get();
             }
         }
         
 
         if($medInDB != 0 && $this->num_of_medium != 0){
             if($this->num_of_medium > $medInDB){
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($medInDB)->get());
+                $allQuestions = $allQuestions->merge(Question::where('type','<>','free-response')->where('difficulty', 'medium')->orderByRaw('RAND()')->take($medInDB)->get());
             }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'medium')->orderByRaw('RAND()')->take($this->num_of_medium)->get());
+                $allQuestions = $allQuestions->merge(Question::where('type','<>','free-response')->where('difficulty', 'medium')->orderByRaw('RAND()')->take($this->num_of_medium)->get());
             }
         }
 
         if($hardInDB != 0 && $this->num_of_hard != 0){
             if($this->num_of_hard > $hardInDB){
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($hardInDB)->get());
+                $allQuestions = $allQuestions->merge(Question::where('type','<>','free-response')->where('difficulty', 'hard')->orderByRaw('RAND()')->take($hardInDB)->get());
             }else{
-                $allQuestions = $allQuestions->merge(Question::where('difficulty', 'hard')->orderByRaw('RAND()')->take($this->num_of_hard)->get());
+                $allQuestions = $allQuestions->merge(Question::where('type','<>','free-response')->where('difficulty', 'hard')->orderByRaw('RAND()')->take($this->num_of_hard)->get());
+            }
+        }
+
+        if($freeInDB != 0 && $this->num_of_free_response != 0){
+            if($this->num_of_free_response > $freeInDB){
+                $allQuestions = $allQuestions->merge(Question::where('type','free-response')->orderByRaw('RAND()')->take($freeInDB)->get());
+            }else{
+                $allQuestions = $allQuestions->merge(Question::where('type','free-response')->orderByRaw('RAND()')->take($this->num_of_free_response)->get());
             }
         }
 

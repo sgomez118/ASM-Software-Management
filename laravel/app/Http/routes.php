@@ -109,11 +109,7 @@ Route::get('/take_quiz/{score_card_id}', 'ScoreCardController@take_quiz');
 Route::post('/take_quiz', 'ScoreCardController@store');
 
 //[MODIFY THIS]
-Route::get('/finished_quiz', function (Request $request)
-{
-   $sc = ScoreCard::find(session('score_card')->id);
-   return view('scorecard.finished', ['scorecard' => $sc]);
-});
+Route::get('/finished_quiz', 'ScoreCardController@grade_quiz');
 
 //[MODIFY THIS]
 Route::get('/student/{student_id}/scores', 'StudentController@scores');
@@ -264,74 +260,6 @@ Route::get('/test/genQ', function ()
 });
 
 
-//[DELETE THIS]
-Route::get('/t/wherepivot', "ScoreCardController@grade_quiz");
-
-
-//[DELETE THIS]
-Route::get('/t/wherepivo', function ()
-{
-    $sc = ScoreCard::find(1);
-    echo "==============================================";
-    foreach ($sc->questions()->get() as $q) {
-        echo "<br>Question ".$q->id;
-        $correct_answers = $q->answers()->select('answer_question.id')->wherePivot('is_correct', '=', 1)->get();
-        $student_answers = $sc->answer_questions()->select('answer_question_id')->wherePivot('question_id', '=', $q->id)->get();
-        $correct_ids = array();
-        $student_ids = array();
-
-        foreach ($correct_answers as $correct_answer) {
-            array_push($correct_ids, $correct_answer->id);
-        }
-        foreach ($student_answers as $student_answer) {
-            array_push($student_ids, $student_answer->answer_question_id);
-        }
-        // echo "<br>Correct".$correct_answers;
-        // echo "<br>Student".$student_answers;
-        echo "<br>----------------------------------------------";
-        if($correct_ids == $student_ids){
-            echo "<br>Answers: Correct<br>";
-            
-        }else{
-            echo "<br>Answers: Incorrect<br>";
-            
-        }
-        foreach ($correct_answers as $a) {
-            echo "id ".$a->id;   
-            echo "<br>";
-        }
-        echo "----------------------------------------------";
-        echo "<br>Student Answers:<br>";
-        foreach ($student_answers as $a) {
-            echo "id ".$a->answer_question_id;   
-            echo "<br>";
-        }
-        echo "==============================================";
-    }
-});
-
-//[DELETE THIS]
-Route::get('/t/quiz/gen_question', function ()
-{
-    return Quiz::find(2)->generateQuestions()->count();  
-});
-
-
-//[DELETE THIS]
-Route::get('/t/quiz/scorecard', function ()
-{
-    $sc = ScoreCard::find(2);
-    if($sc->questions()->count() > 0){
-        echo "<br>Current: ".$sc->load_questions()->id;
-    }else{
-        echo "<br>Current: ".$sc->generate_questions()->id;
-    }
-    $test = $sc->next();
-    while($test != null){
-        echo "<br>Next: ".$test->id;
-        $test = $sc->next();
-    }
-});
 
 //[OK]
 Route::get('/{user}', function($user){

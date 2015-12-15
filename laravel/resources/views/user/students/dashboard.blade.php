@@ -30,7 +30,11 @@
 										<tr>
 											<td>{{ App\Subject::find(App\Quiz::find($scorecard->quiz_id)->subject_id)->name }}</td>
 											<td>{{ App\Quiz::find($scorecard->quiz_id)->title }}</td>
-											<td>{{ $scorecard->score }}%</td>
+											<td>											@if(App\Quiz::find($scorecard->quiz_id)->num_of_free_response > 0 && $scorecard->free_response_score == 0)
+													{{ ($scorecard->multi_choice_score/(App\Quiz::find($scorecard->quiz_id)->num_of_questions))*100 }}
+												@else
+													{{ $scorecard->score }}
+												@endif%</td>
 											<td>{{ App\Quiz::find($scorecard->quiz_id)->quiz_time }}</td>
 										</tr>
 									@endif

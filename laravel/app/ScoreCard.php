@@ -9,7 +9,7 @@ class ScoreCard extends Model
     protected $fillable = ['quiz_id', 'user_id', 'score', 'is_available'];
 
     private $my_questions;
-    private $current_question = 0;
+    public $current_question = 0;
 
     public function responses() {
         return $this->hasMany('App\FreeResponse');
