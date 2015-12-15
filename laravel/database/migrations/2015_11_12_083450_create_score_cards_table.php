@@ -20,13 +20,14 @@ class CreateScoreCardsTable extends Migration
             $table->double('multi_choice_score');
             $table->integer('quiz_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->timestamps();
             
             $table->foreign('quiz_id')
                     ->references('id')->on('quizzes');
             $table->foreign('user_id')
                     ->references('id')->on('users');
             
-            $table->timestamps();
+            
         });
     }
 

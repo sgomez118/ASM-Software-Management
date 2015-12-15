@@ -16,6 +16,7 @@ class CreateQuestionsQuizTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('quiz_id')->unsigned();
             $table->integer('question_id')->unsigned();
+            $table->timestamps();
             //Defining Foreign Relationships
             $table->foreign('quiz_id')
                     ->references('id')->on('quizzes');

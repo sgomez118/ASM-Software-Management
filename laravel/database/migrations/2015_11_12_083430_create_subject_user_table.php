@@ -16,6 +16,7 @@ class CreateSubjectUserTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('subject_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->timestamps();
             
             $table->foreign('subject_id')
                     ->references('id')->on('subjects');
