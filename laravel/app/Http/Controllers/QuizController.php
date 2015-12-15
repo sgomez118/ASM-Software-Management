@@ -52,9 +52,9 @@ class QuizController extends Controller
         $formatedEnd = DateTime::createFromFormat('m/d/Y H:i a', $request->end_date);
             $quiz->end_date = $formatedEnd->format("Y-m-d H:i:s");
         $quiz->num_of_questions = $request->num_of_questions;
-        $quiz->percentage_easy = $request->percentage_easy;
-        $quiz->percentage_medium = $request->percentage_medium;
-        $quiz->percentage_hard = $request->percentage_hard;
+        $quiz->num_of_easy = $request->num_of_easy;
+        $quiz->num_of_medium = $request->num_of_medium;
+        $quiz->num_of_hard = $request->num_of_hard;
         $quiz->save();        
         return redirect('/view_quizzes');
     }
