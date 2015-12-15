@@ -19,6 +19,11 @@
             </div>
         </div>
         
+        <div class="form-group">
+    Total score:  
+    {!! Form::number('total_score', 1) !!}
+    </div>
+        
         <input type="hidden" name="difficulty" id="myType"/>
         <div class="form-group">
             <label class="col-md-3 control-label">Difficulty</label>

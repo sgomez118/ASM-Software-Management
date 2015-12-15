@@ -1,9 +1,9 @@
 @section('question')
-<H1>Quiz</H1>
+@if(!isset($select_answer))
     {!! Form::open(array('url' => '/take_quiz', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        <strong>{{$question->prompt}}</strong>
+        {{-- $question_count --}}<strong>{{$question->prompt}}</strong>
       </div>
       <input type="hidden" name="qID" value="{{ $question->id }}">
       <div class="panel-body">
@@ -29,4 +29,5 @@
       </div>
     </div>
     {!! Form::close() !!}
+@endif
 @endsection

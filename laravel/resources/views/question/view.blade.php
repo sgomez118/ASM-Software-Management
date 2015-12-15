@@ -1,7 +1,7 @@
 {{-- Displays all the questions --}}
-@extends('layouts.home')
+@extends('user.professors.dashboard')
 
-@section('content')
+@section('view')
 <div class="container">
   <div class="content" id="copypaste">
     <H1>Quiz Questions</H1>
@@ -27,6 +27,18 @@
                  @foreach($question->answers as $answer)
                       Answer Key: {{$answer->text}}
                  @endforeach
+             @elseif($question->type == "true-false")
+             <ol style="list-style-type: lower-alpha"> 
+                 @foreach($question->answers as $answer)
+                 <li> 
+                      @if($answer->pivot->is_correct == TRUE)
+                       <span class="label label-success"> {{$answer->text}} </span>
+                      @else
+                          {{$answer->text}}
+                      @endif
+                 </li>
+                 @endforeach
+              </ol>
              @else
                <ol style="list-style-type: lower-alpha"> 
                  @foreach($question->answers as $answer)
@@ -68,6 +80,9 @@
         @endforeach
       </ol>
   </div>
+  <div class="text-center">
+    
   {!! $questions->render() !!}
+  </div>
 </div>
 @endsection
