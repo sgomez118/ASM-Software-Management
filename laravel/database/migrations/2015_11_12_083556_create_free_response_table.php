@@ -18,6 +18,7 @@ class CreateFreeResponseTable extends Migration
             $table->integer('graded_by')->unsigned();
             $table->longtext('response');
             $table->double('actual_score');
+            $table->timestamps();
             
             $table->foreign('question_id')
                     ->references('id')->on('questions');

@@ -17,6 +17,7 @@ class CreateAnswerQuestionTable extends Migration
             $table->integer('question_id')->unsigned();
             $table->integer('answer_id')->unsigned();
             $table->boolean('is_correct');
+            $table->timestamps();
             
             //Defining Foreign Relationships
             $table->foreign('question_id')

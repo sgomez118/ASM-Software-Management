@@ -26,6 +26,7 @@ class CreateQuizzesTable extends Migration
             $table->double('num_of_easy');
             $table->double('num_of_medium');
             $table->double('num_of_hard');
+            $table->timestamps();
             
             $table->foreign('subject_id')
                     ->references('id')->on('subjects');
