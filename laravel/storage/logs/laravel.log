@@ -9691,3 +9691,49 @@ Stack trace:
 #10 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #11 C:\Users\NovaStar\Desktop\582\repo\laravel\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
 #12 {main}  
+[2015-12-15 09:10:29] local.ERROR: exception 'ErrorException' with message 'Undefined variable: q' in C:\Users\NovaStar\Desktop\582\repo\laravel\database\seeds\QuestionSeeder.php:23
+Stack trace:
+#0 C:\Users\NovaStar\Desktop\582\repo\laravel\database\seeds\QuestionSeeder.php(23): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Undefined varia...', 'C:\\Users\\NovaSt...', 23, Array)
+#1 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Database\Console\Seeds\SeedCommand.php(61): QuestionSeeder->run()
+#2 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#3 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(503): call_user_func_array(Array, Array)
+#4 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php(150): Illuminate\Container\Container->call(Array)
+#5 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Command\Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php(136): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(838): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(189): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\Users\NovaStar\Desktop\582\repo\laravel\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 {main}  
+[2015-12-15 09:11:17] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in C:\Users\NovaStar\Desktop\582\repo\laravel\database\seeds\QuestionSeeder.php:23
+Stack trace:
+#0 C:\Users\NovaStar\Desktop\582\repo\laravel\database\seeds\QuestionSeeder.php(23): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\Users\\NovaSt...', 23, Array)
+#1 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Database\Console\Seeds\SeedCommand.php(61): QuestionSeeder->run()
+#2 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#3 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(503): call_user_func_array(Array, Array)
+#4 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php(150): Illuminate\Container\Container->call(Array)
+#5 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Command\Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php(136): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(838): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(189): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\Users\NovaStar\Desktop\582\repo\laravel\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 {main}  
+[2015-12-15 09:11:48] local.ERROR: exception 'ErrorException' with message 'Array to string conversion' in C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php:331
+Stack trace:
+#0 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php(331): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Array to string...', 'C:\\Users\\NovaSt...', 331, Array)
+#1 C:\Users\NovaStar\Desktop\582\repo\laravel\database\seeds\QuestionSeeder.php(23): Illuminate\Console\Command->info(Array)
+#2 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Database\Console\Seeds\SeedCommand.php(61): QuestionSeeder->run()
+#3 [internal function]: Illuminate\Database\Console\Seeds\SeedCommand->fire()
+#4 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(503): call_user_func_array(Array, Array)
+#5 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php(150): Illuminate\Container\Container->call(Array)
+#6 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Command\Command.php(256): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Console\Command.php(136): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#8 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(838): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(189): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Seeds\SeedCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\symfony\console\Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#11 C:\Users\NovaStar\Desktop\582\repo\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(107): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#12 C:\Users\NovaStar\Desktop\582\repo\laravel\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#13 {main}  

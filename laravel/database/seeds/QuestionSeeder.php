@@ -14,22 +14,17 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        // $json = Storage::get('questions.json');
-        $json = '{"questions": [{
-      "prompt": "True or false: An array can be used to implement a heap.",
-      "difficulty": "easy",
-      "type": "true-false",
-      "total_score": "1",
-      "subject_id": "1",
-      "answer": true
-    }]}';
+        $json = Storage::get('questions.json');
         $this->command->info($json);
         $questions = json_decode($json, true);
 
         foreach($questions['questions'] as $question_keys => $question){
             $this->command->info("Adding Question: ".$question_keys."..."); 
-    		
-    		unset($question['answers']);
+
+    		if($question["type"] != "true-false"){
+                $answers = $question['answers'];
+                unset($question['answers']);
+            }
         	$q = new Question($question);
         	$q->save();
         	foreach ($question as $question_attribute_name => $question_attribute_value) {
@@ -56,7 +51,7 @@ class QuestionSeeder extends Seeder
                 $q->answers()->save($aTrue, ['is_correct' => ($answer ? 1 : 0)]);
             }else{
                 $this->command->info("Adding answers..."); 
-                $answers = $question['answers'];
+                
                 
                 $answer_ids = array();
                 foreach ($answers as $answer_index => $answer) {
