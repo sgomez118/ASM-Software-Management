@@ -59,12 +59,6 @@
                    
                  </div> {{-- end panel --}} </li>
                </ol>
-              This is the next part.  We test first if we can update all fields of a question.  Just put the create question form in here and see what happens.  
-              
-              The form view should be different if the question is multiple choice vs free response 
-              
-              Keep it simple; edit prompt only first.  
-              
               
               {!! Form::model($question, array('route' => array('question.update', $question->id), 'method' => 'put')) !!}
 
