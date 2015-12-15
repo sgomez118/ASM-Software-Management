@@ -26,7 +26,7 @@ class QuestionController extends Controller
     {
 
         
-        $questions = Question::paginate(10);
+        $questions = Question::paginate(5);
 
         return view('question.view', ['questions' => $questions]);
         

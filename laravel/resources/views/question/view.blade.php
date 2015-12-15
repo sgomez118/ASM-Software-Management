@@ -1,7 +1,7 @@
 {{-- Displays all the questions --}}
-@extends('layouts.home')
+@extends('user.professors.dashboard')
 
-@section('content')
+@section('view')
 <div class="container">
   <div class="content">
     <H1>Quiz Questions</H1>
@@ -68,6 +68,9 @@
         @endforeach
       </ol>   
   </div>
+  <div class="text-center">
+    
   {!! $questions->render() !!}
+  </div>
 </div>
 @endsection

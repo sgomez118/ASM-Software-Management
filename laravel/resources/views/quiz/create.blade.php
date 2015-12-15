@@ -116,8 +116,6 @@
                             <span class="input-group-addon" id="basic-addon2">#</span>
                             <input type="text" name="num_of_easy" class="form-control" 
                             placeholder="# of easy [Max {{App\Question::where('difficulty', 'easy')->get()->count()}}]" aria-describedby="basic-addon2">
-                        </div>
-                        </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('Medium',

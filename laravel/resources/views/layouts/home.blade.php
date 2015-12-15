@@ -13,6 +13,8 @@
             <!-- theme -->
             <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/carousel.css') }}">
             <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/bootstrap.darkly.css') }}">
+            <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/sb-admin.css') }}">
+            <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/plugins/morris.css') }}">
             <!-- <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/custom.css') }}"> -->
             <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/app.css') }}">
             
@@ -40,6 +42,11 @@
         <script src="{{ URL::asset('bootstrap/js/collapse.js') }}"></script>
         <script src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('bootstrap/js/bootstrap-datetimepicker.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/morris/raphael.min.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/morris/morris.min.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/morris/morris-data.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/morris/morris-data.js') }}"></script>
+        
         <script src="{{ URL::asset('bootstrap/js/app.js') }}"></script>
 
         <ul class='custom-menu'>

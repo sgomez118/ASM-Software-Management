@@ -23,11 +23,11 @@
 							<th>Name</th>
 							<th>Time Length</th>
 							<th># of Questions</th>
-							<th>Start Date</th>
-							<th>End Date</th>
 							<th># of Easy</th>
 							<th># of Medium</th>
 							<th># of Hard</th>
+							<th></th>
+							<th></th>
 							<th></th>
 						</thead>
 						<tbody>
@@ -37,11 +37,21 @@
 						 			<td><a href="#{{ $quiz->id }}" aria-controls="{{ $quiz->id }}" role="tab" data-toggle="tab">{{ $quiz->title }}</a></td>
 									<td>{{ $quiz->quiz_time }}</td>
 									<td>{{ $quiz->num_of_questions }}</td>
-									<td>{{ $quiz->start_date }}</td>
-									<td>{{ $quiz->end_date }}</td>
 									<td>{{ $quiz->num_of_easy }}</td>
 									<td>{{ $quiz->num_of_medium }}</td>
 									<td>{{ $quiz->num_of_hard }}</td>
+								    <td>
+								        <form action="/quiz/{{ $quiz->id }}" method="GET">
+								            <button class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
+								        </form>
+							        </td>
+							        <td>
+								        <form action="/quiz/{{ $quiz->id }}/edit" method="GET">
+								            {{ csrf_field() }}
+								            {{ method_field('PUT') }}
+								            <button class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+								        </form>
+							        </td>
 									<td>
 										<form action="/quiz/{{ $quiz->id }}" method="POST">
 								            {{ csrf_field() }}
@@ -49,13 +59,6 @@
 								            <button class="btn btn-default"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
 								        </form>
 								    </td>
-								    <td>
-								        <form action="/quiz/{{ $quiz->id }}/edit" method="GET">
-								            {{ csrf_field() }}
-								            {{ method_field('PUT') }}
-								            <button class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-								        </form>
-							        </td>
 								</tr>
 							@endforeach
 						</tbody>
@@ -65,7 +68,7 @@
 					<p>No quizzes for this class</p>
 				@endif
 				<div class="pull-right">
-			        <a href="#create-quiz"  aria-controls="create-quiz" role="tab" data-toggle="tab"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Quiz</button></a>
+			        <a href="/quiz/create"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Quiz</button></a>
 				</div>
 			</div>
 		@endforeach

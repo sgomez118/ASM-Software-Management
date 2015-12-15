@@ -24,9 +24,6 @@ class QuizController extends Controller
         $quizzes = Quiz::paginate(10);
 
         return view('quiz.view', ['quizzes' => $quizzes]);
-        
-       // return view('question.view', ['questions' => Question::all()]);
-       // return Quiz::all();
     }
 
     /**
@@ -61,7 +58,7 @@ class QuizController extends Controller
         $quiz->num_of_medium = $request->num_of_medium;
         $quiz->num_of_hard = $request->num_of_hard;
         $quiz->save();        
-        return redirect('/quiz');
+        return redirect('/dashboard');
     }
 
     /**
@@ -131,9 +128,7 @@ class QuizController extends Controller
         $quiz->num_of_medium = $request->num_of_medium;
         $quiz->num_of_hard = $request->num_of_hard;
         $quiz->save();        
-        return redirect('/quiz');
-        $quiz->save();
-        return redirect('/quiz');
+        return redirect('/dashboard');
     }
 
     /**
@@ -145,6 +140,6 @@ class QuizController extends Controller
     public function destroy($id)
     {
         Quiz::destroy($id);
-        return redirect('/quiz');
+        return redirect('/dashboard');
     }
 }
