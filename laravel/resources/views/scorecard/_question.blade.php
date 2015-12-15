@@ -1,5 +1,6 @@
 @section('question')
-<H1>Quiz</H1>
+<H1>Quiz Not Free Response</H1>
+@if(!isset($select_answer))
     {!! Form::open(array('url' => '/take_quiz', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -29,4 +30,5 @@
       </div>
     </div>
     {!! Form::close() !!}
+@endif
 @endsection

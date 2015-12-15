@@ -10,6 +10,11 @@ class Question extends Model
     protected $fillable = ['subject_id', 'prompt', 'difficulty', 'type', 'image', 'total_score'];
     use SoftDeletes;
     
+    public function responses()
+    {
+        return $this->hasMany('App\FreeResponse');
+    }
+    
     public function answers(){
     	return $this->belongsToMany('App\Answer')->withPivot('id','is_correct');
     }

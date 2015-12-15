@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\ScoreCard;
 use App\Quiz;
 use App\Question;
+use App\FreeResponse;
 
 class ScoreCardController extends Controller
 {
@@ -42,6 +43,31 @@ class ScoreCardController extends Controller
     public function store(Request $request)
     {
         $scoreCard = session('score_card'); 
+        
+        echo Question::find($request->qID)->type;
+        if (Question::find($request->qID)->type == 'free-response')
+        {
+            $free_response;
+            $question = Question::find($request->qID);
+            if ($scoreCard->responses()->where('question_id', $question->id)->count() >= 1)
+            {
+                $free_response_id = $scoreCard->responses()->where('question_id', $question->id)->first()->id;
+                $free_response = FreeResponse::find($free_response_id);
+                
+            }
+            else 
+            {
+                $free_response = new FreeResponse; 
+            }
+            $free_response->question_id = $request->qID;
+            $free_response->response = $request->response;
+            $free_response->score_card_id = $scoreCard->id;
+            $free_response->save();
+            
+            $scoreCard->responses()->save($free_response);
+        }
+        else {
+            
         $answers = $scoreCard->answer_questions()->wherePivot('question_id', '=', $request->qID)->get();
         $student_response = $scoreCard->questions()->where('questions.id', '=', $request->qID)->get();
 
@@ -63,11 +89,25 @@ class ScoreCardController extends Controller
             $scoreCard->questions()->detach($request->qID);
             $scoreCard->questions()->attach($request->qID, array('answer_question_id' => null));
         }
-
+        }
         if($request->has('next')){
             $question = $scoreCard->next();
             if($question != null){
-                return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get()]);
+                echo $question->type;
+                if(Question::find($question->id)->type != 'free-response')
+                {
+                    echo "not free-response";
+                    return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get(), 'free_response' => $scoreCard->responses()->where('question_id', $question->id)->get()]);
+                }
+                else
+                {
+                    echo "free-response";
+                    
+                    //return view('scorecard.take', ['question' => $question, 'free_response' => $scoreCard->responses()->where('question_id', $question->id)->get()]);
+                }
+                
+                
+                
             }else{
                 return redirect('/finished_quiz');
             }
@@ -77,7 +117,15 @@ class ScoreCardController extends Controller
         if ($request->has('prev')){
             $question = $scoreCard->prev();
             if($question != null){
-                return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get()]);
+                if($question->type !== "free-response")
+                {
+                    echo 'not free response';
+                    return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get()]);
+                }
+                else
+                {
+                    return view('scorecard.take', ['question' => $question, 'free_response' => $scoreCard->responses()->where('question_id', $question->id)->get()]);
+                }
             }
         }
     }

@@ -54,6 +54,10 @@ class QuestionController extends Controller
         return view('question.create_free_response');
     }
     
+    public function create_true_false(Request $request)
+    {
+        return view('question.create_true_false');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -105,13 +109,38 @@ class QuestionController extends Controller
         $question->difficulty = $request->difficulty;
         $question->subject_id = 1;
         $question->type = 'free-response';
+        $question->total_score = $request->total_score;
         $question->save();
         
         $a1 = new Answer;
         $a1->text = $request->choice1;
         $a1->save();
         $question->answers()->attach($a1->id, array('is_correct' => 0));
-        return redirect('/questions');
+        return redirect('/question');
+    }
+    
+    public function store_true_false(Request $request)
+    {
+        $question = new Question;
+        $question->prompt = $request->prompt;
+        $question->difficulty = $request->difficulty;
+        $question->subject_id = 1;
+        $question->type = 'true-false';
+        $question->total_score = $request->total_score;
+        $question->save();
+        
+        $answer_true = new Answer;
+        $answer_false = new Answer;
+        
+        $answer_true->text = $request->choice1;
+        $answer_false->text = $request->choice2;
+        
+        $answer_true->save();
+        $answer_false->save();
+        
+        $question->answers()->attach($answer_true->id, array('is_correct' => ($request->isCorrect1 != 1 ? 0 : 1)));
+        $question->answers()->attach($answer_false->id, array('is_correct' => ($request->isCorrect2 != 1 ? 0 : 1)));
+        return redirect('/question');
     }
     
     
@@ -160,6 +189,9 @@ class QuestionController extends Controller
         // the id indicates which question to update
         
         // store
+        //echo $request;
+        if($request->type == 'single' || $request->type == 'multi-value')
+        {
             $question = Question::find($id);
             $question->prompt = $request->input('prompt'); // works! 
             
@@ -208,7 +240,55 @@ class QuestionController extends Controller
             // because there is no view associated with a PUT
             // YES IT WORKS
             // THAT IS WHAt I AM TALKING ABOUT
+        }
+        elseif($request->type == 'true-false')
+        {
+            $question = Question::find($id);
+            $question->prompt = $request->input('prompt'); // works! 
+            $question->difficulty = $request->input('difficulty'); // works!
+            $question->total_score = $request->input('total_score'); // works!
+            $question->type = 'true-false';
+            $question->save();
             
+            // detach all answers from the question
+            // attach the newly created ones from the form; overwrites.  
+            
+            $question->answers()->detach(); // detach all answers from question
+            
+            $a1 = new Answer;
+            $a2 = new Answer;
+            
+            $a1->text = $request->choice1;
+            $a2->text = $request->choice2;
+            
+            $a1->save();
+            $a2->save();
+            
+            $question->answers()->attach($a1->id, array('is_correct' => ($request->isCorrect1 != 1 ? 0 : 1)));
+            $question->answers()->attach($a2->id, array('is_correct' => ($request->isCorrect2 != 1 ? 0 : 1)));
+        }
+        elseif($request->type == 'free-response')
+        {
+            $question = Question::find($id);
+            $question->prompt = $request->prompt;
+            $question->difficulty = $request->difficulty;
+            $question->subject_id = 1;
+            $question->type = 'free-response';
+            $question->total_score = $request->total_score;
+            $question->save();
+            
+            $question->answers()->detach();
+        
+            $a1 = new Answer;
+            $a1->text = $request->choice1;
+            $a1->save();
+            $question->answers()->attach($a1->id, array('is_correct' => 0));
+        }
+        else
+        {
+            echo "Nothing worked!";
+        }
+        
             return view('question.show', ['question' => $question]);
             
     }

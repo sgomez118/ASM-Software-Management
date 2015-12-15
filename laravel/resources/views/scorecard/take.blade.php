@@ -3,8 +3,19 @@
 @section('content')
 <div class="container">
   <div class="content">
-  @include('scorecard._question')
-    @section('question')
+  
+  
+  @if($question->type == 'free-response')
+      @include('scorecard.answer_free_response')
+  free response
+     @section('free-response')
+  @else
+      not free response
+      @include('scorecard._question')
+  @section('question')
+  
+  @endif
+     
     @show
   </div>
 </div>

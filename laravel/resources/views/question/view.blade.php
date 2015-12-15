@@ -27,6 +27,18 @@
                  @foreach($question->answers as $answer)
                       Answer Key: {{$answer->text}}
                  @endforeach
+             @elseif($question->type == "true-false")
+             <ol style="list-style-type: lower-alpha"> 
+                 @foreach($question->answers as $answer)
+                 <li> 
+                      @if($answer->pivot->is_correct == TRUE)
+                       <span class="label label-success"> {{$answer->text}} </span>
+                      @else
+                          {{$answer->text}}
+                      @endif
+                 </li>
+                 @endforeach
+              </ol>
              @else
                <ol style="list-style-type: lower-alpha"> 
                  @foreach($question->answers as $answer)

@@ -212,6 +212,10 @@ Route::get('/view_users', function() {
 Route::get('/create_free_response_question', 'QuestionController@create_free_response');
 Route::post('/save_free_response_question', 'QuestionController@store_free_response');
 
+Route::get('/create_true_false_question', 'QuestionController@create_true_false');
+Route::post('/save_true_false_question', 'QuestionController@store_true_false');
+
+
 Route::get('/test/answer_free_response/{question_id}', function($question_id)
 {
     $question = Question::find($question_id);
