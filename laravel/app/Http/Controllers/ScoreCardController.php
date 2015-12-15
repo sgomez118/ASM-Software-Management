@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\ScoreCard;
 use App\Quiz;
 use App\Question;
+use DateTime;
+use DateInterval;
 
 class ScoreCardController extends Controller
 {
@@ -67,7 +69,7 @@ class ScoreCardController extends Controller
         if($request->has('next')){
             $question = $scoreCard->next();
             if($question != null){
-                return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get()]);
+                return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get(), 'date'=>session('date')]);
             }else{
                 return redirect('/finished_quiz');
             }
@@ -77,7 +79,7 @@ class ScoreCardController extends Controller
         if ($request->has('prev')){
             $question = $scoreCard->prev();
             if($question != null){
-                return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get()]);
+                return view('scorecard.take', ['question' => $question, 'selected_answers' => $scoreCard->answer_questions()->where('answer_question.question_id', $question->id)->get(), 'date'=>session('date')]);
             }
         }
     }
@@ -142,9 +144,13 @@ class ScoreCardController extends Controller
             echo "generating questions";
             $first_question = $scoreCard->get_questions();
         }
-        session(['score_card' => $scoreCard]);
+        $minutes = Quiz::find($scoreCard->quiz_id)->quiz_time;
+        $date = new DateTime();
+        $date->add(new DateInterval('PT'.$minutes.'M'));
+        session(['score_card' => $scoreCard, 'date' => $date]);
         return view('scorecard.take', ['question' => $first_question, 
-          'selected_answers' => $scoreCard->selected_answers($first_question->id)]);
+          'selected_answers' => $scoreCard->selected_answers($first_question->id),
+            'date' => $date]);
     }
 
     public function grade_quiz(Request $request)

@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-  <div class="content">
+  <div class="content" id="copypaste">
     <H1>Quiz Questions</H1>
       <ol>
         @foreach($questions as $question)
@@ -66,7 +66,7 @@
          </div> {{-- end panel --}} 
         </li>
         @endforeach
-      </ol>   
+      </ol>
   </div>
   {!! $questions->render() !!}
 </div>
