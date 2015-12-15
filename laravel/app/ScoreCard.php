@@ -11,6 +11,11 @@ class ScoreCard extends Model
     private $my_questions;
     private $current_question = 0;
 
+    public function responses() {
+        return $this->hasMany('App\FreeResponse');
+    }
+    
+    
     public function quiz(){
     	return $this->belongsTo('App\Quiz');
     }
