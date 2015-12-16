@@ -95,6 +95,9 @@ class ScoreCardController extends Controller
         if($request->has('next')){
             $question = $scoreCard->next();
             if($question != null){
+                $questionNumber = $request->session()->get('questionNumber');
+                $questionNumber++;
+                $request->session()->put('questionNumber', $questionNumber);
                 return $this->goto_qustion($question, $scoreCard);
             }else{
                 return redirect('/finished_quiz');
@@ -105,7 +108,9 @@ class ScoreCardController extends Controller
         if ($request->has('prev')){
             $question = $scoreCard->prev();
             if($question != null){
-
+                $questionNumber = $request->session()->get('questionNumber');
+                $questionNumber--;
+                $request->session()->put('questionNumber', $questionNumber);
                 return $this->goto_qustion($question, $scoreCard);
             }
         }
@@ -117,7 +122,8 @@ class ScoreCardController extends Controller
                 {
                     return view('scorecard.take', ['question' => $question, 'question_count' => 1,
                         'selected_answers' => $scoreCard->answer_questions()->
-                            where('answer_question.question_id', $question->id)->get(), 'date'=>session('date')
+                            where('answer_question.question_id', $question->id)->get(), 'date'=>session('date'),
+                        'questionNumber'=>session('questionNumber')
                             ]);
                 }
                 else
@@ -125,7 +131,8 @@ class ScoreCardController extends Controller
                     $response = FreeResponse::where('question_id', $question->id)->
                         where('score_card_id', $scoreCard->id)->get()->first();
                     return view('scorecard.take', ['question' => $question, 
-                        'free_response' => $response, 'question_count' => 1, 'date'=>session('date')]);
+                        'free_response' => $response, 'question_count' => 1, 'date'=>session('date'),
+                    'questionNumber' => session('questionNumber')]);
                 }
     }
 
@@ -181,6 +188,7 @@ class ScoreCardController extends Controller
 
     public function take_quiz(){
         $scoreCard = ScoreCard::find(session("scorecardID"));
+        $questionNumber = 1;
         $first_question;
         if($scoreCard->questions()->count() > 0){
             $first_question = $scoreCard->load_questions();
@@ -190,10 +198,10 @@ class ScoreCardController extends Controller
         $minutes = Quiz::find($scoreCard->quiz_id)->quiz_time;
         $date = new DateTime();
         $date->add(new DateInterval('PT'.$minutes.'M'));
-        session(['score_card' => $scoreCard, 'date' => $date]);
+        session(['score_card' => $scoreCard, 'date' => $date, 'questionNumber' => $questionNumber]);
         return view('scorecard.take', ['question' => $first_question, 
           'selected_answers' => $scoreCard->selected_answers($first_question->id),
-            'date' => $date]);
+            'date' => $date, 'questionNumber' => $questionNumber]);
     }
 
     public function grade_quiz(Request $request)
