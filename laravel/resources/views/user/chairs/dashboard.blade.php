@@ -15,8 +15,8 @@
 			@foreach($subjects as $subject)
 				<tr data-lecturerID="{{ $subject->lecturer_id }}" data-subjectID="{{ $subject->id }}">
 					<td>{{ $subject->name }}</td>
-					<td>{{ $subject->lecturers()->count() }}</td>
-					<td>{{ $subject->users()->count() }}</td>
+					<td>{{ $subject->users()->where('type', 'lecturer')->count() }}</td>
+					<td>{{ $subject->users()->where('type', 'students')->count() }}</td>
 				</tr>
 			@endforeach
 		</tbody>

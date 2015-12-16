@@ -67,11 +67,11 @@
 							</div>
 						</div>
 
-
 						<div class="form-group">
-							{!! Form::label('Password', null, array('class' => 'col-md-4 control-label')) !!}
+							{!! Form::label('Suggested Random Generated Password', null, array('class' => 'col-md-4 control-label')) !!}
 							<div class="col-md-6">
-								{!! Form::password('password', 
+								{{str_random(10)}}
+								{!! Form::password('password',
 									array('required', 
 				                    	'class' => 'form-control',
 				                    	'placeholder' => "password"
