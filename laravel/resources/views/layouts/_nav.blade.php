@@ -22,7 +22,7 @@
           @elseif(Auth::user()->type == 'lecturer')
             <li class="active"><a href="/dashboard">Professor Dashboard</a></li>
             <li><a href="/question">View Questions</a></li>
-            <li><a href="/register_students">Register Students</a></li>
+            <li><a href="/student">Register Students</a></li>
           @elseif(Auth::user()->type == 'chair')
             <li class="active"><a href="/dashboard">Chair Dashboard</a></li> 
           @endif

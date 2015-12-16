@@ -1,11 +1,11 @@
-{{--extends('layouts.home') --}}
+@extends('layouts.home')
 @section('quiz_create')
-<!-- <div class="container-fluid">
+ <div class="container-fluid">
     <div class="row"> 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Create a Quiz!</div>
-                <div class="panel-body">-->
+                <div class="panel-body">
                 @if(isset($quiz))
                     {!! Form::model($quiz, 
                         ['route' => ['quiz.update', $quiz->id], 
@@ -73,38 +73,7 @@
                             )) !!}
                         </div>
                     </div>
-
-                     <div class="form-group">
-                        {!! Form::label('Start Date',
-                        null, array(
-                        'class' => 'col-md-4 control-label')
-                        ) !!}
-                        <div class='col-md-6'>
-                            <div class='input-group date' id='datetimepicker6' >
-                                <input type='datetime' class="form-control" name='start_date' />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('End Date',
-                        null, array(
-                        'class' => 'col-md-4 control-label')
-                        ) !!}
-                         <div class='col-md-6'>
-                            <div class='input-group date' id='datetimepicker7' >
-                                <input type='datetime' class="form-control"name='end_date' />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-
+                 
                     <div class="form-group">
                         {!! Form::label('Easy',
                         null, array(
@@ -116,6 +85,8 @@
                             <span class="input-group-addon" id="basic-addon2">#</span>
                             <input type="text" name="num_of_easy" class="form-control" 
                             placeholder="# of easy [Max {{App\Question::where('difficulty', 'easy')->get()->count()}}]" aria-describedby="basic-addon2">
+                        </div>
+                    </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('Medium',
@@ -136,11 +107,11 @@
                         'class' => 'col-md-4 control-label')
                         ) !!}
                         <div class="col-md-6">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon2">#</span>
-                            <input type="text" name="num_of_hard" class="form-control" 
-                            placeholder="# of meduim [Max {{App\Question::where('difficulty', 'hard')->get()->count()}}]" aria-describedby="basic-addon2">
-                        </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">#</span>
+                                <input type="text" name="num_of_hard" class="form-control" 
+                                placeholder="# of meduim [Max {{App\Question::where('difficulty', 'hard')->get()->count()}}]" aria-describedby="basic-addon2">
+                            </div>
                         </div>
                     </div>
 
@@ -152,11 +123,11 @@
                         </div>
                     </div>
                     {!! Form::close() !!}
-              <!--   </div>
+                </div>
            </div>
         </div>
      </div>
-</div> -->
+</div></div>
 @show
 
 

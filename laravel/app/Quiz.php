@@ -33,6 +33,8 @@ class Quiz extends Model
         return $this->belongsTo('App\User');
     }
 
+
+
     /**
      * Returns a list of quiz qustions based on quiz id.
      * Currently assumes that questions are in quiz bank and if there aren't enough

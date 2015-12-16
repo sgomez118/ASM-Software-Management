@@ -4,7 +4,7 @@
 @section('view')
 <div class="container">
   <div class="content">
-    <H1>Quiz Questions</H1>
+    <H2>Quiz Questions</H2>
       <ol>
         @foreach($questions as $question)
         <li> 

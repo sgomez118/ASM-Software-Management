@@ -1,7 +1,6 @@
 @extends('layouts.home')
 
 @section('content')
-
         <div class="container">
             <div class="content">
                 <H1>Quiz List</H1>

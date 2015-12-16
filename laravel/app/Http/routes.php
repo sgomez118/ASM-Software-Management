@@ -7,7 +7,6 @@ use App\Http\Middleware\Authenticate;
 use App\Quiz;
 use App\Subject;
 use App\ScoreCard;
-use App\Library\MyTimer;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -34,29 +33,6 @@ use App\Library\MyTimer;
 |
 */
 
-// use Symfony\Component\Process\Process as Process;
-//     /**
-//     * 
-//     */
-//     class MyTimer extends Thread
-//     {
-        
-//         public function __construct($arg) {
-//             $this->arg = $arg;
-//         }
-
-//     public function run() {
-//         if ($this->arg) {
-//             $sleep = mt_rand(1, 10);
-//             printf('%s: %s  -start -sleeps %d' . "\n", date("g:i:sa"), $this->arg, $sleep);
-//             sleep($sleep);
-//             printf('%s: %s  -finish' . "\n", date("g:i:sa"), $this->arg);
-//         }
-//     }
-// }
-
-
-
 //[OK]
 Route::get('/', function () {
     return view('landing');
@@ -80,9 +56,10 @@ Route::get('/dashboard', function (Request $request){
     }
 });
 
+
 /* Student Route */
-//[CHECK THIS]
-Route::get('/all_students', 'StudentController@index');
+
+
 
 Route::get('/instructions/{scorecardID}', function($scorecardID){ 
     session(['scorecardID'=> $scorecardID]); 

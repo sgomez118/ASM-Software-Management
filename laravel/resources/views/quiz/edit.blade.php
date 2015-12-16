@@ -26,8 +26,8 @@
                     Title: {{$quiz->title}} <br>
                     Quiz Time: {{$quiz->quiz_time}} <br>
                     Number of Questions: {{$quiz->num_of_questions}} <br>
-                    Start Date: {{$quiz->start_date}} <br>
-                    End Date: {{$quiz->end_date}} <br>
+                   {{--  Start Date: quiz->start_date <br>
+                    End Date: quiz->end_date <br> --}}
                     Number of Easy Question: {{$quiz->num_of_easy}} <br>
                     Number of Medium Questions: {{$quiz->num_of_medium}} <br>
                     Number of Hard Questions: {{$quiz->num_of_hard}} <br>
@@ -40,7 +40,7 @@
         {{-- Put form for editing the quiz here --}}
         {{-- Based on the form for creating a quiz --}}
         
-        {!! Form::model($quiz, array('route' => array('quiz.update', $quiz->id), 'method' => 'put')) !!}
+        {!! Form::model($quiz, array('route' => array('quiz.update', $quiz->id), 'method' => 'put', 'class' => 'form-horizontal')) !!}
         
         <div class="container-fluid">
     <div class="row">
@@ -103,36 +103,7 @@
                         </div>
                     </div>
 
-                     <div class="form-group">
-                        {!! Form::label('Start Date',
-                        null, array(
-                        'class' => 'col-md-4 control-label')
-                        ) !!}
-                        <div class='col-md-6'>
-                            <div class='input-group date' id='datetimepicker6' >
-                                <input type='datetime' class="form-control" name='start_date' />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        {!! Form::label('End Date',
-                        null, array(
-                        'class' => 'col-md-4 control-label')
-                        ) !!}
-                         <div class='col-md-6'>
-                            <div class='input-group date' id='datetimepicker7' >
-                                <input type='datetime' class="form-control"name='end_date' />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
+          
 
                     <div class="form-group">
                         {!! Form::label('Easy',
@@ -143,8 +114,8 @@
                             
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2">#</span>
-                            <input type="text" name="num_of_easy" class="form-control" 
-                            placeholder="# of easy [Max {{App\Question::where('difficulty', 'easy')->get()->count()}}]" aria-describedby="basic-addon2">
+                            <input type="text" name="num_of_easy" class="form-control"
+                            placeholder="# of easy [Max {{App\Question::where('difficulty', 'easy')->get()->count()}}] (currently: {{$quiz->num_of_easy}})" aria-describedby="basic-addon2">
                         </div>
                         </div>
                     </div>

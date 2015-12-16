@@ -111,19 +111,19 @@ class ScoreCardController extends Controller
     private function goto_qustion($question, $scoreCard)
     {
         if($question->type !== "free-response")
-                {
-                    return view('scorecard.take', ['question' => $question, 'question_count' => 1,
-                        'selected_answers' => $scoreCard->answer_questions()->
-                            where('answer_question.question_id', $question->id)->get()
-                            ]);
-                }
-                else
-                {
-                    $response = FreeResponse::where('question_id', $question->id)->
-                        where('score_card_id', $scoreCard->id)->get()->first();
-                    return view('scorecard.take', ['question' => $question, 
-                        'free_response' => $response, 'question_count' => 1]);
-                }
+        {
+            return view('scorecard.take', ['question' => $question, 'question_count' => 1,
+                'selected_answers' => $scoreCard->answer_questions()->
+                    where('answer_question.question_id', $question->id)->get()
+                    ]);
+        }
+        else
+        {
+            $response = FreeResponse::where('question_id', $question->id)->
+                where('score_card_id', $scoreCard->id)->get()->first();
+            return view('scorecard.take', ['question' => $question, 
+                'free_response' => $response, 'question_count' => 1]);
+        }
     }
 
     /**
