@@ -6,9 +6,6 @@
             <!-- Custom -->
             <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/sb-admin.css') }}">
             <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/timeline.css') }}">
-
-            <!-- MetisMenu CSS -->
-            <link href="{{ URL::asset('../bower_components/metisMenu/dist/metisMenu.min.css') }}" rel="stylesheet">
             
             <!-- theme -->
             <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/carousel.css') }}">
@@ -42,10 +39,9 @@
         <script src="{{ URL::asset('bootstrap/js/collapse.js') }}"></script>
         <script src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('bootstrap/js/bootstrap-datetimepicker.js') }}"></script>
-        <script src="{{ URL::asset('bootstrap/js/morris/raphael.min.js') }}"></script>
-        <script src="{{ URL::asset('bootstrap/js/morris/morris.min.js') }}"></script>
-        <script src="{{ URL::asset('bootstrap/js/morris/morris-data.js') }}"></script>
-        <script src="{{ URL::asset('bootstrap/js/morris/morris-data.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/plugins/morris/raphael.min.js') }}"></script>
+        {{-- <script src="{{ URL::asset('bootstrap/js/plugins/morris/morris.min.js') }}"></script>
+        <script src="{{ URL::asset('bootstrap/js/plugins/morris/morris-data.js') }}"></script>--}}
         
         <script src="{{ URL::asset('bootstrap/js/app.js') }}"></script>
 

@@ -88,8 +88,9 @@ Route::post('/take_quiz', 'ScoreCardController@store');
 //[MODIFY THIS]
 Route::get('/finished_quiz', 'ScoreCardController@grade_quiz');
 
-//[MODIFY THIS]
-Route::get('/student/{student_id}/scores', 'StudentController@scores');
+Route::get('/student/add_quiz/{quiz_id}', 'StudentController@add_quiz');
+
+Route::post('/student/remove_quiz/{score_card_id}', 'StudentController@remove_quiz');
 
 
 //[CHECK ROUTES]

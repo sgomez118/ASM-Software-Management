@@ -183,7 +183,9 @@ class ScoreCardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sc = ScoreCard::find($id);
+        $sc->delete();
+        return redirect('/student');
     }
 
     public function take_quiz(){

@@ -51,7 +51,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        return view('user.professors.student_info', ['student' => User::find($id)]);
     }
 
     /**
@@ -85,7 +85,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect('/student');
     }
 
     /**
@@ -102,5 +103,23 @@ class StudentController extends Controller
             return 'No results to display.';
         else
             return $scores;
+    }
+
+    public function add_quiz(Request $request, $quiz_id)
+    {
+        $sc = new ScoreCard;
+        $sc->user_id = $request->student_id;
+        $sc->quiz_id = $quiz_id;
+        $sc->is_available = 1;
+        $sc->save();
+        return redirect('/student/'.$sc->user_id);
+    }
+
+    public function remove_quiz(Request $request, $score_card_id)
+    {
+        $sc = ScoreCard::find($score_card_id);
+        $sc->delete();
+        echo "remove";
+        return redirect('/student/'.$request->user_id);
     }
 }

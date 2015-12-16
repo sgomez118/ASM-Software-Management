@@ -5,7 +5,7 @@
 	<div class="content">
 		<div class="panel panel-default">
 			<div class="panel panel-heading">
-				
+				Registred Students
 			</div>
 			<div class="panel panel-body">
 				<div class="form-group pull-right">
@@ -25,7 +25,7 @@
       <td colspan="4"><i class="fa fa-warning"></i> No result</td>
     </tr>
   </thead>
-  <tbody id="myTable">
+  <tbody>
   <?php $count = 1 ?>
     	@foreach($students as $student)
     <tr>

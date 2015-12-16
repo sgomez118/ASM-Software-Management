@@ -34,7 +34,7 @@
 							@foreach($subject->quizzes as $quiz)
 								<tr>
 									<td>{{ $quizCount++ }}</td>
-						 			<td><a href="#{{ $quiz->id }}" aria-controls="{{ $quiz->id }}" role="tab" data-toggle="tab">{{ $quiz->title }}</a></td>
+						 			<td><a href="/quiz/{{ $quiz->id }}" aria-controls="{{ $quiz->id }}">{{ $quiz->title }}</a></td>
 									<td>{{ $quiz->quiz_time }}</td>
 									<td>{{ $quiz->num_of_questions }}</td>
 									<td>{{ $quiz->num_of_easy }}</td>
