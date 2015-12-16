@@ -115,7 +115,7 @@
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2">#</span>
                             <input type="text" name="num_of_easy" class="form-control"
-                            placeholder="# of easy [Max {{App\Question::where('difficulty', 'easy')->get()->count()}}] (currently: {{$quiz->num_of_easy}})" aria-describedby="basic-addon2">
+                            placeholder="# of easy [Max {{App\Question::where('difficulty', 'easy')->get()->count()}}] (currently {{$quiz->num_of_easy}})" aria-describedby="basic-addon2">
                         </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2">#</span>
                             <input type="text" name="num_of_medium" class="form-control" 
-                            placeholder="# of meduim [Max {{App\Question::where('difficulty', 'medium')->get()->count()}}]" aria-describedby="basic-addon2">
+                            placeholder="# of meduim [Max {{App\Question::where('difficulty', 'medium')->get()->count()}}] (currently {{$quiz->num_of_medium}})" aria-describedby="basic-addon2">
                         </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon2">#</span>
                             <input type="text" name="num_of_hard" class="form-control" 
-                            placeholder="# of meduim [Max {{App\Question::where('difficulty', 'hard')->get()->count()}}]" aria-describedby="basic-addon2">
+                            placeholder="# of meduim [Max {{App\Question::where('difficulty', 'hard')->get()->count()}}] (currently {{$quiz->num_of_hard}})" aria-describedby="basic-addon2">
                         </div>
                         </div>
                     </div>
